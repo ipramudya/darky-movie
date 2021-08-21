@@ -1,16 +1,19 @@
 import React from 'react';
+import { MoviesTVsProvider } from './context/MoviesTVsContext';
 
 // Global Styles
 import { GlobalStyle } from './GlobalStyles';
 
-// Components
-import { Hero } from './components';
+// Pages
+import { Home, DetailPage } from './pages';
 
 const App = () => {
    return (
       <>
          <GlobalStyle />
-         <Hero />
+         <MoviesTVsProvider>
+            <Home />
+         </MoviesTVsProvider>
       </>
    );
 };

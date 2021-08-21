@@ -8,6 +8,7 @@ import {
    HeroBackdrop,
    BackdropImg,
    HeroDescWrapper,
+   Title,
    Text,
    Text2,
    Meta,
@@ -23,8 +24,6 @@ const Hero = () => {
          ApiRequest.fetchMovie(id).then((movie) => setRandomMovie(movie));
       });
    }, []);
-
-   console.log(randomMovie);
 
    let rating;
    if (randomMovie) {
@@ -44,9 +43,7 @@ const Hero = () => {
             <HeroContainer>
                <HeroDescWrapper>
                   <div>
-                     <h1 style={{ marginBottom: '.5em' }}>
-                        {randomMovie.title}
-                     </h1>
+                     <Title>{randomMovie.title}</Title>
                      <Meta>
                         <SubMeta>
                            <StarRating {...starConfig} />

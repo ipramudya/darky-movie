@@ -3,14 +3,16 @@ import styled from 'styled-components';
 export const HeroContainer = styled.div`
    width: 100%;
    padding-bottom: 40%;
-   display: flex;
-   justify-content: center;
    background-color: black;
    position: relative;
 
-   /* @media screen and (max-width: 1280px) {
-
-    } */
+   @media screen and (max-width: 970px) {
+      position: unset;
+      padding: 0;
+      height: 50rem;
+      display: flex;
+      flex-direction: column;
+   }
 `;
 
 export const HeroBackdrop = styled.div`
@@ -19,6 +21,7 @@ export const HeroBackdrop = styled.div`
    right: 0;
    width: 70%;
    height: 100%;
+   animation: fadeInRight 1s ease;
 
    &::after {
       position: absolute;
@@ -35,11 +38,30 @@ export const HeroBackdrop = styled.div`
          transparent
       );
    }
+
+   @media screen and (max-width: 970px) {
+      position: relative;
+      width: 100%;
+
+      &::after {
+         background-image: linear-gradient(
+            0deg,
+            #000 0,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.1)
+         );
+      }
+   }
 `;
 
 export const BackdropImg = styled.img`
    height: 100%;
    display: inline-block;
+
+   @media screen and (max-width: 970px) {
+      width: 100%;
+      object-fit: cover;
+   }
 `;
 
 export const HeroDescWrapper = styled.div`
@@ -53,6 +75,22 @@ export const HeroDescWrapper = styled.div`
    height: 100%;
    display: flex;
    align-items: center;
+   animation: fadeInLeft 1s;
+
+   @media screen and (max-width: 970px) {
+      order: 2;
+      position: static;
+      width: 100%;
+      height: 50%;
+   }
+`;
+
+export const Title = styled.h1`
+   margin-bottom: 0.5em;
+
+   @media screen and (max-width: 970px) {
+      font-size: 1.5em;
+   }
 `;
 
 export const Text = styled.p`
