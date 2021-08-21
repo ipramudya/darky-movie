@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { MoviesTVsProvider } from './context/MoviesTVsContext';
 
 // Global Styles
@@ -10,10 +11,12 @@ import { Home, DetailPage } from './pages';
 const App = () => {
    return (
       <>
-         <GlobalStyle />
-         <MoviesTVsProvider>
-            <Home />
-         </MoviesTVsProvider>
+         <Router>
+            <GlobalStyle />
+            <MoviesTVsProvider>
+               <Home />
+            </MoviesTVsProvider>
+         </Router>
       </>
    );
 };

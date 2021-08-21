@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 import ApiMovies from '../api/movies';
-import ApiRequest from '../api/request';
 import ApiTv from '../api/tv';
 
 const MoviesTVsContext = createContext();

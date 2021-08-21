@@ -46,6 +46,10 @@ export const GlobalStyle = createGlobalStyle`
             max-width: 100%;
             border-style: none;
         }
+
+        a {
+            text-decoration: none;
+        }
     }
 
     .fadeInRight {

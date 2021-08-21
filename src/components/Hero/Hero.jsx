@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import StarRating from 'react-star-ratings';
+import StarRatings from 'react-star-ratings';
 
 import ApiRequest from '../../api/request';
 import { IMAGE_BASE_URL } from '../../utils/config';
@@ -46,7 +46,7 @@ const Hero = () => {
                      <Title>{randomMovie.title}</Title>
                      <Meta>
                         <SubMeta>
-                           <StarRating {...starConfig} />
+                           <StarRatings {...starConfig} />
                            <Text style={{ marginLeft: '1em' }}>
                               {randomMovie.popularity} Reviews
                            </Text>

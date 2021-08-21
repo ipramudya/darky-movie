@@ -14,7 +14,7 @@ const List = ({ list_header, contents }) => {
             <h3>{list_header}</h3>
          </ListHeader>
          <Carousel>
-            <Swiper slidesPerView={5} spaceBetween={10}>
+            <Swiper slidesPerView={'8'} spaceBetween={10}>
                {contents?.map((content) => (
                   <SwiperSlide key={content.id}>
                      <Card item={content} />
