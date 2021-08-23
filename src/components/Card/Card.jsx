@@ -19,41 +19,28 @@ const Card = ({ item }) => {
    const starConfig = {
       rating,
       numberOfStars: 5,
-      starDimension: '10px',
+      starDimension: '15px',
       starRatedColor: '#3F72AF',
    };
 
    return (
       <CardContainer>
-         {item?.name ? (
-            // TVs
-            <Link to='/'>
-               <CardImage>
-                  <ImageItem
-                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
-                  />
-               </CardImage>
+         <Link to='/'>
+            <CardImage>
+               <ImageItem
+                  src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
+               />
+            </CardImage>
+            {item?.name ? (
                <CardTitle>{item.name}</CardTitle>
-               <Star>
-                  <StarRatings {...starConfig} />
-                  <Rating>{item.vote_average}</Rating>
-               </Star>
-            </Link>
-         ) : (
-            // Movies
-            <Link to='/'>
-               <CardImage>
-                  <ImageItem
-                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
-                  />
-               </CardImage>
+            ) : (
                <CardTitle>{item.title}</CardTitle>
-               <Star>
-                  <StarRatings {...starConfig} />
-                  <Rating>{item.vote_average}</Rating>
-               </Star>
-            </Link>
-         )}
+            )}
+            <Star>
+               <StarRatings {...starConfig} />
+               <Rating>{item.vote_average}</Rating>
+            </Star>
+         </Link>
       </CardContainer>
    );
 };

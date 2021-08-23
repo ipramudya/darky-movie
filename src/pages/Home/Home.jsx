@@ -13,7 +13,7 @@ const Home = () => {
          ) : (
             <>
                <List list_header={'Trending Movies'} contents={movies} />
-               <List list_header={'Trending Tv'} contents={TVs} />
+               <List list_header={'Trending TVs'} contents={TVs} />
             </>
          )}
       </>

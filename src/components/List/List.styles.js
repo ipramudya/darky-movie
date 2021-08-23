@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ListContainer = styled.div`
-   margin: 3rem 0 3rem 3rem;
+   margin: 3rem 0;
 `;
 
 export const ListHeader = styled.div`
@@ -11,4 +11,5 @@ export const ListHeader = styled.div`
 
 export const Carousel = styled.div`
    width: 100%;
+   padding: 0 2em;
 `;

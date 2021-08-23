@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: #141414;
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
 
         h1 {
             font-size: 2rem;
