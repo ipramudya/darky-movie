@@ -9,6 +9,7 @@ import {
    BackdropImg,
    HeroDescWrapper,
    Title,
+   Subtitle,
    Text,
    Text2,
    Meta,
@@ -47,20 +48,18 @@ const Hero = () => {
                      <Meta>
                         <SubMeta>
                            <StarRatings {...starConfig} />
-                           <Text style={{ marginLeft: '1em' }}>
-                              {randomMovie.popularity} Reviews
-                           </Text>
-                           <Text style={{ marginLeft: '1em' }}>
+                           <Text>{randomMovie.popularity} Reviews</Text>
+                           <Text year>
                               {randomMovie.release_date?.split('-', 1)}
                            </Text>
                         </SubMeta>
-                        <SubMeta>
+                        <SubMeta genre>
                            {randomMovie.genres?.map((genre) => (
                               <Text2 key={genre.id}>{genre.name}</Text2>
                            ))}
                         </SubMeta>
                         <SubMeta>
-                           <Text>{randomMovie.overview}</Text>
+                           <Subtitle>{randomMovie.overview}</Subtitle>
                         </SubMeta>
                      </Meta>
                   </div>

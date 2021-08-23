@@ -13,6 +13,10 @@ export const HeroContainer = styled.div`
       display: flex;
       flex-direction: column;
    }
+
+   @media screen and (max-width: 515px) {
+      height: 30rem;
+   }
 `;
 
 export const HeroBackdrop = styled.div`
@@ -83,6 +87,10 @@ export const HeroDescWrapper = styled.div`
       width: 100%;
       height: 50%;
    }
+
+   @media screen and (max-width: 515px) {
+      padding-left: 2em;
+   }
 `;
 
 export const Title = styled.h1`
@@ -96,6 +104,12 @@ export const Title = styled.h1`
 export const Text = styled.p`
    font-size: var(--fontSM);
    color: var(--white);
+   margin-left: 1em;
+
+   @media screen and (max-width: 515px) {
+      display: ${(props) => (props.year ? 'none' : 'block')};
+      margin-left: 0;
+   }
 `;
 
 export const Text2 = styled.p`
@@ -103,6 +117,20 @@ export const Text2 = styled.p`
    font-style: italic;
    color: #999999;
    margin-right: 1em;
+`;
+
+export const Subtitle = styled.p`
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+   font-size: var(--fontSM);
+   color: var(--white);
+
+   @media screen and (max-width: 765px) {
+      display: none;
+   }
 `;
 
 export const Meta = styled.div`
@@ -114,4 +142,9 @@ export const SubMeta = styled.div`
    display: flex;
    align-items: center;
    margin-top: 0.8em;
+
+   @media screen and (max-width: 515px) {
+      flex-direction: ${(props) => (props.genre ? 'row' : 'column')};
+      align-items: ${(props) => (props.genre ? 'center' : 'unset')};
+   }
 `;
