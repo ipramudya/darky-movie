@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Card from '../Card/Card';
 
 // Styles
-import { Carousel, ListContainer, ListHeader } from './List.styles';
+import { Carousel, ListContainer, ListHeader, Text } from './List.styles';
 
 const List = ({ list_header, contents }) => {
    const sliderConfig = {
@@ -38,7 +38,7 @@ const List = ({ list_header, contents }) => {
    return (
       <ListContainer>
          <ListHeader>
-            <h3>{list_header}</h3>
+            <Text>{list_header}</Text>
          </ListHeader>
          <Carousel>
             <Slider {...sliderConfig}>

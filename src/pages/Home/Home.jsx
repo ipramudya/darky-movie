@@ -1,13 +1,18 @@
+import { useEffect, useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { Hero, List } from '../../components';
 import useMoviesTVs from '../../context/MoviesTVsContext';
 
 const Home = () => {
    const { movies, TVs, loading } = useMoviesTVs();
-   console.log(TVs, movies);
+
+   let contents = [...movies, ...TVs];
+
+   const randomIndex = Math.floor(Math.random() * contents.length);
+
    return (
       <>
-         <Hero />
+         {contents && <Hero contents={contents[randomIndex]} />}
          {loading ? (
             <CircleLoader color={'#112D4E'} loading={loading} size={50} />
          ) : (

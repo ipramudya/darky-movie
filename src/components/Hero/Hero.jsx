@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 
-import ApiRequest from '../../api/request';
 import { IMAGE_BASE_URL } from '../../utils/config';
 import {
    HeroContainer,
@@ -16,19 +14,10 @@ import {
    SubMeta,
 } from './Hero.styles';
 
-const Hero = () => {
-   const [randomMovie, setRandomMovie] = useState(null);
-
-   useEffect(() => {
-      ApiRequest.fetchRandomPopularMovie().then((response) => {
-         const id = response.id;
-         ApiRequest.fetchMovie(id).then((movie) => setRandomMovie(movie));
-      });
-   }, []);
-
+const Hero = ({ contents }) => {
    let rating;
-   if (randomMovie) {
-      rating = Math.floor(randomMovie.vote_average / 2);
+   if (contents) {
+      rating = Math.floor(contents.vote_average / 2);
    }
 
    const starConfig = {
@@ -40,33 +29,37 @@ const Hero = () => {
 
    return (
       <>
-         {randomMovie && (
+         {contents && (
             <HeroContainer>
                <HeroDescWrapper>
                   <div>
-                     <Title>{randomMovie.title}</Title>
+                     {contents?.name ? (
+                        <Title>{contents.name}</Title>
+                     ) : (
+                        <Title>{contents.title}</Title>
+                     )}
                      <Meta>
                         <SubMeta>
                            <StarRatings {...starConfig} />
-                           <Text>{randomMovie.popularity} Reviews</Text>
+                           <Text>{contents.popularity} Reviews</Text>
                            <Text year>
-                              {randomMovie.release_date?.split('-', 1)}
+                              {contents.release_date?.split('-', 1)}
                            </Text>
                         </SubMeta>
                         <SubMeta genre>
-                           {randomMovie.genres?.map((genre) => (
+                           {contents.genres?.map((genre) => (
                               <Text2 key={genre.id}>{genre.name}</Text2>
                            ))}
                         </SubMeta>
                         <SubMeta>
-                           <Subtitle>{randomMovie.overview}</Subtitle>
+                           <Subtitle>{contents.overview}</Subtitle>
                         </SubMeta>
                      </Meta>
                   </div>
                </HeroDescWrapper>
                <HeroBackdrop>
                   <BackdropImg
-                     src={`${IMAGE_BASE_URL}original${randomMovie.backdrop_path}`}
+                     src={`${IMAGE_BASE_URL}original${contents.backdrop_path}`}
                   />
                </HeroBackdrop>
             </HeroContainer>
