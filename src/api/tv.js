@@ -6,6 +6,10 @@ const ApiTv = {
       const { data } = await axios.get(CONTENT_URL('tv', 'popular'));
       return data;
    },
+   async fetchDetails(id) {
+      const { data } = await axios.get(CONTENT_URL('tv', id));
+      return data;
+   },
 };
 
 export default ApiTv;

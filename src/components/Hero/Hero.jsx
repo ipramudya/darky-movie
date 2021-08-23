@@ -14,18 +14,20 @@ import {
    SubMeta,
 } from './Hero.styles';
 
+import NoImage from '../../images/no-image.png';
+
 const Hero = ({ contents }) => {
    let rating;
-   if (contents) {
+   let starConfig;
+   if (contents && contents.vote_average) {
       rating = Math.floor(contents.vote_average / 2);
+      starConfig = {
+         rating,
+         numberOfStars: 5,
+         starDimension: '15px',
+         starRatedColor: '#3F72AF',
+      };
    }
-
-   const starConfig = {
-      rating,
-      numberOfStars: 5,
-      starDimension: '15px',
-      starRatedColor: '#3F72AF',
-   };
 
    return (
       <>
@@ -59,8 +61,14 @@ const Hero = ({ contents }) => {
                </HeroDescWrapper>
                <HeroBackdrop>
                   <BackdropImg
-                     src={`${IMAGE_BASE_URL}original${contents.backdrop_path}`}
+                     // src={`${IMAGE_BASE_URL}original${contents.backdrop_path}`}
+                     src={
+                        contents.backdrop_path
+                           ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
+                           : NoImage
+                     }
                   />
+                  {/* {contents.backdrop_path ? } */}
                </HeroBackdrop>
             </HeroContainer>
          )}
