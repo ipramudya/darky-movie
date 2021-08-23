@@ -23,26 +23,41 @@ const Card = ({ item }) => {
       starRatedColor: '#3F72AF',
    };
 
-   return (
-      <CardContainer>
-         <Link to='/'>
-            <CardImage>
-               <ImageItem
-                  src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
-               />
-            </CardImage>
-            {item?.name ? (
-               <CardTitle>{item.name}</CardTitle>
-            ) : (
+   const checkingContents = () => {
+      if (item.title) {
+         return (
+            <Link to={`/movie/${item.id}`}>
+               <CardImage>
+                  <ImageItem
+                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
+                  />
+               </CardImage>
                <CardTitle>{item.title}</CardTitle>
-            )}
-            <Star>
-               <StarRatings {...starConfig} />
-               <Rating>{item.vote_average}</Rating>
-            </Star>
-         </Link>
-      </CardContainer>
-   );
+               <Star>
+                  <StarRatings {...starConfig} />
+                  <Rating>{item.vote_average}</Rating>
+               </Star>
+            </Link>
+         );
+      } else {
+         return (
+            <Link to={`/tv/${item.id}`}>
+               <CardImage>
+                  <ImageItem
+                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
+                  />
+               </CardImage>
+               <CardTitle>{item.name}</CardTitle>
+               <Star>
+                  <StarRatings {...starConfig} />
+                  <Rating>{item.vote_average}</Rating>
+               </Star>
+            </Link>
+         );
+      }
+   };
+
+   return <CardContainer>{checkingContents()}</CardContainer>;
 };
 
 export default Card;

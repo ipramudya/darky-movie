@@ -14,7 +14,14 @@ const App = () => {
          <Router>
             <GlobalStyle />
             <MoviesTVsProvider>
-               <Home />
+               <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route
+                     exact
+                     path={['/movie/:id', '/tv/:id']}
+                     component={DetailPage}
+                  />
+               </Switch>
             </MoviesTVsProvider>
          </Router>
       </>

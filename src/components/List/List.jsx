@@ -5,7 +5,13 @@ import 'slick-carousel/slick/slick-theme.css';
 import Card from '../Card/Card';
 
 // Styles
-import { Carousel, ListContainer, ListHeader, Text } from './List.styles';
+import {
+   Carousel,
+   ListContainer,
+   ListHeader,
+   Text,
+   StyledLink,
+} from './List.styles';
 
 const List = ({ list_header, contents }) => {
    const sliderConfig = {
@@ -35,10 +41,13 @@ const List = ({ list_header, contents }) => {
       ],
    };
 
+   const removeSpaceOnTextHeader = list_header.replace(/\s/g, '');
+
    return (
       <ListContainer>
          <ListHeader>
             <Text>{list_header}</Text>
+            <StyledLink to={removeSpaceOnTextHeader}>Explore more</StyledLink>
          </ListHeader>
          <Carousel>
             <Slider {...sliderConfig}>

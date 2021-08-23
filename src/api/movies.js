@@ -6,6 +6,10 @@ const ApiMovies = {
       const { data } = await axios.get(CONTENT_URL('movie', 'popular'));
       return data;
    },
+   async fetchDetails(id) {
+      const { data } = await axios.get(CONTENT_URL('movie', id));
+      return data;
+   },
 };
 
 export default ApiMovies;
