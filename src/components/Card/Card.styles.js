@@ -15,11 +15,19 @@ export const ImageItem = styled.img`
 export const CardTitle = styled.h3`
    font-size: 0.8em;
    margin: 1em 0;
+
+   @media screen and (max-width: 515px) {
+      display: none;
+   }
 `;
 
 export const Star = styled.div`
    display: flex;
    align-items: center;
+
+   @media screen and (max-width: 765px) {
+      display: none;
+   }
 `;
 
 export const Rating = styled.span`

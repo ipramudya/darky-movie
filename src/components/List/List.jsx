@@ -23,6 +23,15 @@ const List = ({ list_header, contents }) => {
                dots: false,
             },
          },
+         {
+            breakpoint: 515,
+            settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite: false,
+               dots: false,
+            },
+         },
       ],
    };
 
