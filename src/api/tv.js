@@ -10,6 +10,10 @@ const ApiTv = {
       const { data } = await axios.get(CONTENT_URL('tv', id));
       return data;
    },
+   async fetchWithCategories(categories) {
+      const { data } = await axios.get(CONTENT_URL('tv', categories));
+      return data;
+   },
 };
 
 export default ApiTv;

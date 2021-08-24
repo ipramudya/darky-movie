@@ -3,9 +3,15 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
    width: 100%;
    padding: 0 0.3em;
+
+   &:hover .animated {
+      transform: translateY(-0.3em);
+   }
 `;
 
-export const CardImage = styled.div``;
+export const CardImage = styled.div`
+   transition: all 0.8s;
+`;
 
 export const ImageItem = styled.img`
    object-fit: cover;

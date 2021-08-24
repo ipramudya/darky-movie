@@ -1,12 +1,12 @@
-import { Hero, List } from '../../components';
-import Spinner from '../../components/Spinner/Spinner';
-import useMoviesTVs from '../../context/MoviesTVsContext';
+import { Hero, List, Spinner } from '../../components';
+import { usePopular } from '../../context/PopularContext';
+import { randomNumber } from '../../utils/helpers';
 
 const Home = () => {
-   const { movies, TVs, loading } = useMoviesTVs();
+   const { movies, TVs, loading } = usePopular();
 
-   let contents = [...movies, ...TVs];
-   const randomIndex = Math.floor(Math.random() * contents.length);
+   const contents = [...movies, ...TVs];
+   const randomIndex = randomNumber(contents.length);
 
    return (
       <>
@@ -15,8 +15,16 @@ const Home = () => {
             <Spinner loading={loading} />
          ) : (
             <>
-               <List list_header={'Trending Movies'} contents={movies} />
-               <List list_header={'Trending TVs'} contents={TVs} />
+               <List
+                  list_header='Trending Movies'
+                  direct_to='popular'
+                  contents={movies}
+               />
+               <List
+                  list_header='Trending TVs'
+                  direct_to='popular'
+                  contents={TVs}
+               />
             </>
          )}
       </>

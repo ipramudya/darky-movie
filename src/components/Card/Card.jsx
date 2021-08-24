@@ -27,7 +27,7 @@ const Card = ({ item }) => {
       if (item.title) {
          return (
             <Link to={`/movie/${item.id}`}>
-               <CardImage>
+               <CardImage className='animated'>
                   <ImageItem
                      src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
                   />
@@ -42,7 +42,7 @@ const Card = ({ item }) => {
       } else {
          return (
             <Link to={`/tv/${item.id}`}>
-               <CardImage>
+               <CardImage className='animated'>
                   <ImageItem
                      src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
                   />

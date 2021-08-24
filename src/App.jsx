@@ -1,29 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { MoviesTVsProvider } from './context/MoviesTVsContext';
+import { Route } from 'react-router-dom';
 
-// Global Styles
+import { PopularProvider, MoviesProvider, TVsProvider } from './context';
+import { Home, DetailPage, MoviePage, TVPage } from './pages';
 import { GlobalStyle } from './GlobalStyles';
-
-// Pages
-import { Home, DetailPage } from './pages';
 
 const App = () => {
    return (
       <>
-         <Router>
-            <GlobalStyle />
-            <MoviesTVsProvider>
-               <Switch>
-                  <Route exact path='/' component={Home} />
-                  <Route
-                     exact
-                     path={['/movie/:id', '/tv/:id']}
-                     component={DetailPage}
-                  />
-               </Switch>
-            </MoviesTVsProvider>
-         </Router>
+         <GlobalStyle />
+         <PopularProvider>
+            <Route exact path='/' component={Home} />
+            <Route path={['/movie/:id', '/tv/:id']}>
+               <DetailPage />
+            </Route>
+            <MoviesProvider>
+               <Route exact path='/movie' component={MoviePage} />
+            </MoviesProvider>
+            <TVsProvider>
+               <Route exact path='/tv' component={TVPage} />
+            </TVsProvider>
+         </PopularProvider>
       </>
    );
 };

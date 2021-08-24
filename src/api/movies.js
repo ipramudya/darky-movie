@@ -10,6 +10,10 @@ const ApiMovies = {
       const { data } = await axios.get(CONTENT_URL('movie', id));
       return data;
    },
+   async fetchWithCategories(categories) {
+      const { data } = await axios.get(CONTENT_URL('movie', categories));
+      return data;
+   },
 };
 
 export default ApiMovies;

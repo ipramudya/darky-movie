@@ -13,7 +13,7 @@ import {
    StyledLink,
 } from './List.styles';
 
-const List = ({ list_header, contents }) => {
+const List = ({ list_header, direct_to, contents }) => {
    const sliderConfig = {
       dots: false,
       slidesToShow: 7,
@@ -41,13 +41,19 @@ const List = ({ list_header, contents }) => {
       ],
    };
 
-   const removeSpaceOnTextHeader = list_header.replace(/\s/g, '');
-
    return (
       <ListContainer>
          <ListHeader>
             <Text>{list_header}</Text>
-            <StyledLink to={removeSpaceOnTextHeader}>Explore more</StyledLink>
+            <StyledLink
+               to={
+                  contents[0]?.title
+                     ? `movie/category/${direct_to}`
+                     : `tv/category/${direct_to}`
+               }
+            >
+               Explore more
+            </StyledLink>
          </ListHeader>
          <Carousel>
             <Slider {...sliderConfig}>

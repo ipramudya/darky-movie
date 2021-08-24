@@ -2,11 +2,11 @@ import { useState, useEffect, useContext, createContext } from 'react';
 import ApiMovies from '../api/movies';
 import ApiTv from '../api/tv';
 
-const MoviesTVsContext = createContext();
+const PopularContext = createContext();
 
-export const useMoviesTVs = () => useContext(MoviesTVsContext);
+export const usePopular = () => useContext(PopularContext);
 
-export const MoviesTVsProvider = ({ children }) => {
+export const PopularProvider = ({ children }) => {
    const [loading, setLoading] = useState(false);
    const [movies, setMovies] = useState([]);
    const [TVs, setTVs] = useState([]);
@@ -34,10 +34,8 @@ export const MoviesTVsProvider = ({ children }) => {
    };
 
    return (
-      <MoviesTVsContext.Provider value={value}>
+      <PopularContext.Provider value={value}>
          {children}
-      </MoviesTVsContext.Provider>
+      </PopularContext.Provider>
    );
 };
-
-export default useMoviesTVs;

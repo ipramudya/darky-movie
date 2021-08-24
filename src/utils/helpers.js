@@ -13,3 +13,7 @@ export const convertMoney = (money) => {
    });
    return formatter.format(money);
 };
+
+export const randomNumber = (range) => {
+   return Math.floor(Math.random() * range);
+};
