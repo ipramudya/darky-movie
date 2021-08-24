@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: #141414;
+        padding-left: 5em;
         /* overflow-x: hidden; */
 
         h1 {
@@ -49,6 +50,15 @@ export const GlobalStyle = createGlobalStyle`
 
         a {
             text-decoration: none;
+        }
+
+        ul {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        li {
+            list-style: none;
         }
     }
 
@@ -116,5 +126,4 @@ export const GlobalStyle = createGlobalStyle`
             transform: none;
         }
     } 
-
 `;

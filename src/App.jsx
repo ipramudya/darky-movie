@@ -2,12 +2,14 @@ import { Route } from 'react-router-dom';
 
 import { PopularProvider, MoviesProvider, TVsProvider } from './context';
 import { Home, DetailPage, MoviePage, TVPage } from './pages';
+import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
 
 const App = () => {
    return (
       <>
          <GlobalStyle />
+         <Sidebar />
          <PopularProvider>
             <Route exact path='/' component={Home} />
             <Route path={['/movie/:id', '/tv/:id']}>

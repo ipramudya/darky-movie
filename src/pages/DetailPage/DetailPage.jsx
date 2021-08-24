@@ -4,8 +4,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import ApiMovies from '../../api/movies';
 import ApiTv from '../../api/tv';
 
-import { Hero } from '../../components';
-import Spinner from '../../components/Spinner/Spinner';
+import { Hero, Spinner } from '../../components';
 
 const DetailPage = () => {
    const { id } = useParams();
@@ -33,7 +32,7 @@ const DetailPage = () => {
 
    return (
       <>
-         {loading && <Spinner loading={loading} />}
+         {!loading && <Spinner loading={loading} />}
          {detailsContent && <Hero contents={detailsContent} />}
          <h1>
             DetailPage of {id} on {type}
