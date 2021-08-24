@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background-color: #141414;
         padding-left: 5em;
-        /* overflow-x: hidden; */
+        overflow-x: hidden;
 
         h1 {
             font-size: 2rem;
@@ -126,4 +126,21 @@ export const GlobalStyle = createGlobalStyle`
             transform: none;
         }
     } 
+
+    .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+    @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
 `;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
    width: 100%;
    padding: 0 0.3em;
+   animation: fadeIn 1s;
 
    &:hover .animated {
       transform: translateY(-0.3em);
