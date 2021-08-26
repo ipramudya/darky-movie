@@ -22,6 +22,11 @@ export const ImageItem = styled.img`
 export const CardTitle = styled.h3`
    font-size: 0.8em;
    margin: 1em 0;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1;
+   -webkit-box-orient: vertical;
 
    @media screen and (max-width: 515px) {
       display: none;

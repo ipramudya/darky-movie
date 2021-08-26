@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 
 import { PopularProvider, MoviesProvider, TVsProvider } from './context';
-import { Home, DetailPage, MoviePage, TVPage } from './pages';
+import { Home, DetailPage, MoviePage, TVPage, LoadMore } from './pages';
 import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
 
@@ -21,6 +21,11 @@ const App = () => {
             <TVsProvider>
                <Route exact path='/tv' component={TVPage} />
             </TVsProvider>
+            <Route
+               exact
+               path={['/movie/category/:ctg', '/tv/category/:ctg']}
+               component={LoadMore}
+            />
          </PopularProvider>
       </>
    );

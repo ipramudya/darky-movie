@@ -21,6 +21,15 @@ const List = ({ list_header, direct_to, contents }) => {
       infinite: false,
       responsive: [
          {
+            breakpoint: 1350,
+            settings: {
+               slidesToShow: 5,
+               slidesToScroll: 5,
+               infinite: false,
+               dots: false,
+            },
+         },
+         {
             breakpoint: 1080,
             settings: {
                slidesToShow: 4,
@@ -46,11 +55,14 @@ const List = ({ list_header, direct_to, contents }) => {
          <ListHeader>
             <Text>{list_header}</Text>
             <StyledLink
-               to={
-                  contents[0]?.title
+               to={{
+                  pathname: contents[0]?.title
                      ? `movie/category/${direct_to}`
-                     : `tv/category/${direct_to}`
-               }
+                     : `tv/category/${direct_to}`,
+                  state: {
+                     list_header,
+                  },
+               }}
             >
                Explore more
             </StyledLink>

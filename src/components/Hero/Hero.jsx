@@ -63,14 +63,12 @@ const Hero = ({ contents }) => {
                </HeroDescWrapper>
                <HeroBackdrop>
                   <BackdropImg
-                     // src={`${IMAGE_BASE_URL}original${contents.backdrop_path}`}
                      src={
                         contents.backdrop_path
                            ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
                            : NoImage
                      }
                   />
-                  {/* {contents.backdrop_path ? } */}
                </HeroBackdrop>
             </HeroContainer>
          )}

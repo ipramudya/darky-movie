@@ -20,13 +20,6 @@ const ApiRequest = {
       ).data;
    },
 
-   async fetchRandomPopularMovie() {
-      const randomNumber = Math.floor(Math.random() * 20);
-      return await (
-         await axios.get(POPULAR_BASE_URL)
-      ).data.results[randomNumber];
-   },
-
    async fetchMovie(movieId) {
       const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
       return await (
