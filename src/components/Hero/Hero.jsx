@@ -42,7 +42,9 @@ const Hero = ({ contents }) => {
                      )}
                      <Meta>
                         <SubMeta>
-                           <StarRatings {...starConfig} />
+                           {contents?.vote_average && (
+                              <StarRatings {...starConfig} />
+                           )}
                            <Text>{contents.popularity} Reviews</Text>
                            <Text year>
                               {contents.release_date?.split('-', 1)}

@@ -12,7 +12,7 @@ const App = () => {
          <Sidebar />
          <PopularProvider>
             <Route exact path='/' component={Home} />
-            <Route path={['/movie/:id', '/tv/:id']}>
+            <Route exact path={['/movie/:id', '/tv/:id']}>
                <DetailPage />
             </Route>
             <MoviesProvider>

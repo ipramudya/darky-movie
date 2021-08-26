@@ -4,7 +4,7 @@ import ApiTv from '../api/tv';
 
 const PopularContext = createContext();
 
-export const usePopular = () => useContext(PopularContext);
+export const usePopularContext = () => useContext(PopularContext);
 
 export const PopularProvider = ({ children }) => {
    const [loading, setLoading] = useState(false);

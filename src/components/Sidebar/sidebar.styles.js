@@ -41,6 +41,9 @@ export const NavDirection = styled(NavLink)`
       > * {
          color: var(--darksky);
       }
+      &::after {
+         display: block;
+      }
    }
 
    &:visited {
@@ -79,5 +82,6 @@ export const NavDirection = styled(NavLink)`
    &:hover:after {
       display: ${(props) => (props.content ? 'block' : 'none')};
       animation: fadeInLeft 0.5s;
+      color: var(--greysky);
    }
 `;

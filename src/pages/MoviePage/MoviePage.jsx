@@ -1,11 +1,11 @@
 import { Hero, List, Spinner } from '../../components';
-import { useMovies } from '../../context/MoviesContext';
-import { usePopular } from '../../context/PopularContext';
+import { useMoviesContext } from '../../context/MoviesContext';
+import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
 const MoviePage = () => {
-   const { movies } = usePopular();
-   const { nowPlaying, topRated, upcoming, loading } = useMovies();
+   const { movies } = usePopularContext();
+   const { nowPlaying, topRated, upcoming, loading } = useMoviesContext();
 
    const randomIndex = randomNumber(nowPlaying.length);
 

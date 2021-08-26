@@ -3,7 +3,7 @@ import ApiTVs from '../api/tv';
 
 const TVsContext = createContext();
 
-export const useTVs = () => useContext(TVsContext);
+export const useTVsContext = () => useContext(TVsContext);
 
 export const TVsProvider = ({ children }) => {
    const [airing, setAiring] = useState([]);

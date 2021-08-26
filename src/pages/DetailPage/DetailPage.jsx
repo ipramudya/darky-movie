@@ -33,7 +33,11 @@ const DetailPage = () => {
    return (
       <>
          {!loading && <Spinner loading={loading} />}
-         {detailsContent && <Hero contents={detailsContent} />}
+         {loading ? (
+            <Spinner loading={loading} />
+         ) : (
+            <Hero contents={detailsContent} />
+         )}
          <h1>
             DetailPage of {id} on {type}
          </h1>

@@ -1,11 +1,11 @@
 import { Hero, List, Spinner } from '../../components';
-import { useTVs } from '../../context/TVsContext';
-import { usePopular } from '../../context/PopularContext';
+import { useTVsContext } from '../../context/TVsContext';
+import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
 const TVPage = () => {
-   const { TVs } = usePopular();
-   const { airing, onAir, topRated, loading } = useTVs();
+   const { TVs } = usePopularContext();
+   const { airing, onAir, topRated, loading } = useTVsContext();
 
    const randomIndex = randomNumber(airing.length);
 

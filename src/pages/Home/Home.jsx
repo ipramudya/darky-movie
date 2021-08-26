@@ -1,9 +1,9 @@
 import { Hero, List, Spinner } from '../../components';
-import { usePopular } from '../../context/PopularContext';
+import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
 const Home = () => {
-   const { movies, TVs, loading } = usePopular();
+   const { movies, TVs, loading } = usePopularContext();
 
    const contents = [...movies, ...TVs];
    const randomIndex = randomNumber(contents.length);

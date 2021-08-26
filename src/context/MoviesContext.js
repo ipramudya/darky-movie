@@ -3,7 +3,7 @@ import ApiMovies from '../api/movies';
 
 const MoviesContext = createContext();
 
-export const useMovies = () => useContext(MoviesContext);
+export const useMoviesContext = () => useContext(MoviesContext);
 
 export const MoviesProvider = ({ children }) => {
    const [nowPlaying, setNowPlaying] = useState([]);
