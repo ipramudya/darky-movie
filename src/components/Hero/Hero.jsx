@@ -18,16 +18,18 @@ import NoImage from '../../images/no-image.png';
 
 const Hero = ({ contents }) => {
    let rating;
-   let starConfig;
-   if (contents && contents.vote_average) {
+   if (contents?.vote_average) {
       rating = Math.floor(contents.vote_average / 2);
-      starConfig = {
-         rating,
-         numberOfStars: 5,
-         starDimension: '15px',
-         starRatedColor: '#3F72AF',
-      };
+   } else {
+      rating = 0;
    }
+
+   const starConfig = {
+      rating,
+      numberOfStars: 5,
+      starDimension: '15px',
+      starRatedColor: '#3F72AF',
+   };
 
    return (
       <>

@@ -11,12 +11,20 @@ export const CardContainer = styled.div`
 `;
 
 export const CardImage = styled.div`
+   position: relative;
+   height: 0;
+   padding-top: 150%;
+   overflow: hidden;
+   background-color: #202124;
    transition: all 0.8s;
 `;
 
 export const ImageItem = styled.img`
-   object-fit: cover;
+   position: absolute;
+   top: 0;
+   left: 0;
    width: 100%;
+   height: 100%;
 `;
 
 export const CardTitle = styled.h3`

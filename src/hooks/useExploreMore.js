@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import ApiExploreMore from '../api/exploreMore';
 
-const useExploreMore = ({ providers, categories }) => {
+const useExploreMore = (providers, categories, page) => {
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
-   const [page, setPage] = useState(1);
    const [data, setData] = useState([]);
 
    useEffect(() => {
@@ -15,7 +14,9 @@ const useExploreMore = ({ providers, categories }) => {
                categories,
                page
             );
-            setData(response.results);
+            setData((prevData) => {
+               return [...prevData, ...response.results];
+            });
             setLoading(false);
          } catch (err) {
             setError(err);

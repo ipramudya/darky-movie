@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import {
@@ -9,11 +10,14 @@ import {
    Rating,
 } from './Card.styles';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../utils/config';
+import NoImage from '../../images/no-image.png';
 
-const Card = ({ item }) => {
+const Card = forwardRef(({ item }, ref) => {
    let rating;
-   if (item) {
+   if (item.vote_average) {
       rating = Math.floor(item.vote_average / 2);
+   } else {
+      rating = 0;
    }
 
    const starConfig = {
@@ -24,12 +28,16 @@ const Card = ({ item }) => {
    };
 
    const checkingContents = () => {
-      if (item.title) {
+      if (item?.title) {
          return (
             <Link to={`/movie/${item.id}`}>
                <CardImage className='animated'>
                   <ImageItem
-                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
+                     src={
+                        item?.poster_path
+                           ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
+                           : NoImage
+                     }
                   />
                </CardImage>
                <CardTitle>{item.title}</CardTitle>
@@ -44,7 +52,11 @@ const Card = ({ item }) => {
             <Link to={`/tv/${item.id}`}>
                <CardImage className='animated'>
                   <ImageItem
-                     src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`}
+                     src={
+                        item?.poster_path
+                           ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
+                           : NoImage
+                     }
                   />
                </CardImage>
                <CardTitle>{item.name}</CardTitle>
@@ -57,7 +69,7 @@ const Card = ({ item }) => {
       }
    };
 
-   return <CardContainer>{checkingContents()}</CardContainer>;
-};
+   return <CardContainer ref={ref}>{checkingContents()}</CardContainer>;
+});
 
 export default Card;
