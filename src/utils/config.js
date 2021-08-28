@@ -3,8 +3,13 @@ export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 export const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
+
+// Mine
 export const CONTENT_URL = (content, keyword, page = 1) =>
    `${API_URL}${content}/${keyword}?api_key=${API_KEY}&language=en-US&page=${page}`;
+
+export const SEARCH_URL = (content, query, page = 1) =>
+   `${API_URL}search/${content}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
 
 // For login and voting
 export const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;

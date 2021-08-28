@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import ApiExploreMore from '../api/exploreMore';
 
-const useExploreMore = (providers, categories, page) => {
+const useExploreMore = (providers, categories) => {
+   const [page, setPage] = useState(1);
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
    const [data, setData] = useState([]);
@@ -26,7 +27,7 @@ const useExploreMore = (providers, categories, page) => {
       fetchExploreMore();
    }, [page]);
 
-   return { loading, error, data };
+   return { loading, error, data, setPage };
 };
 
 export default useExploreMore;

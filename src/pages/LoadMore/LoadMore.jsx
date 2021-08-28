@@ -1,12 +1,10 @@
-import { useState, useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Grid, Spinner } from '../../components';
 import Card from '../../components/Card/Card';
 import useExploreMore from '../../hooks/useExploreMore';
 
 const LoadMore = () => {
-   const [page, setPage] = useState(1);
-
    const {
       pathname,
       state: { list_header },
@@ -14,10 +12,9 @@ const LoadMore = () => {
    const typeOfProvider = pathname.split('/')[1];
    const category = pathname.split('/')[3];
 
-   const { loading, error, data } = useExploreMore(
+   const { loading, error, data, setPage } = useExploreMore(
       typeOfProvider,
-      category,
-      page
+      category
    );
 
    const observer = useRef();
