@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 const Spinner = ({ loading }) => {
    const spinnerStyle = css`
-      position: absolute;
+      position: fixed;
       margin: auto;
       top: 50%;
       left: 0;
@@ -13,7 +13,7 @@ const Spinner = ({ loading }) => {
    `;
    return (
       <ScaleLoader
-         color={'#112D4E'}
+         color={'#3F72AF'}
          loading={loading}
          size={30}
          css={spinnerStyle}

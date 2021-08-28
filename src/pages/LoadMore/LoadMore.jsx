@@ -1,7 +1,6 @@
 import { useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Grid, Spinner } from '../../components';
-import Card from '../../components/Card/Card';
+import { Grid, Spinner, Card } from '../../components';
 import useExploreMore from '../../hooks/useExploreMore';
 
 const LoadMore = () => {

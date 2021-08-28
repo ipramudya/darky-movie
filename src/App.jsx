@@ -1,7 +1,14 @@
 import { Route } from 'react-router-dom';
 
 import { PopularProvider, MoviesProvider, TVsProvider } from './context';
-import { Home, DetailPage, MoviePage, TVPage, LoadMore } from './pages';
+import {
+   Home,
+   DetailPage,
+   MoviePage,
+   TVPage,
+   LoadMore,
+   SearchPage,
+} from './pages';
 import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
 
@@ -26,6 +33,7 @@ const App = () => {
                path={['/movie/category/:ctg', '/tv/category/:ctg']}
                component={LoadMore}
             />
+            <Route exact path='/search' component={SearchPage} />
          </PopularProvider>
       </>
    );
