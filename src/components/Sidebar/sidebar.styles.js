@@ -85,3 +85,27 @@ export const NavDirection = styled(NavLink)`
       color: var(--greysky);
    }
 `;
+
+export const SearchButton = styled.button`
+   background-color: transparent;
+   border: none;
+   color: white;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   transition: all 1s;
+
+   > * {
+      color: var(--greysky);
+      vertical-align: middle;
+      width: 25px;
+      height: 25px;
+   }
+
+   &:hover > * {
+      opacity: 0.5;
+   }
+`;

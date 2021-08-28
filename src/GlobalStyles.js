@@ -94,6 +94,7 @@ export const GlobalStyle = createGlobalStyle`
             transform: none;
         }
     } 
+
     .fadeInLeft {
         -webkit-animation-name: fadeInLeft;
         animation-name: fadeInLeft;

@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import ApiExploreMore from '../api/exploreMore';
 
 const useExploreMore = (providers, categories, page) => {
-   const [loading, setLoading] = useState(true);
+   const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
    const [data, setData] = useState([]);
 
    useEffect(() => {
       const fetchExploreMore = async () => {
+         setLoading(true);
          try {
             const response = await ApiExploreMore.fetchExploreMore(
                providers,

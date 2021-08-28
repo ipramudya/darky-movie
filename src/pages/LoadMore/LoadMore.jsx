@@ -37,21 +37,18 @@ const LoadMore = () => {
 
    return (
       <>
-         {loading ? (
-            <Spinner loading={loading} />
-         ) : (
-            <Grid header={list_header}>
-               {data?.map((singleData, idx) => {
-                  if (data?.length === idx + 1) {
-                     return (
-                        <Card item={singleData} key={idx} ref={lastMoviesRef} />
-                     );
-                  } else {
-                     return <Card item={singleData} key={idx} />;
-                  }
-               })}
-            </Grid>
-         )}
+         <Grid header={list_header}>
+            {data?.map((singleData, idx) => {
+               if (data?.length === idx + 1) {
+                  return (
+                     <Card item={singleData} key={idx} ref={lastMoviesRef} />
+                  );
+               } else {
+                  return <Card item={singleData} key={idx} />;
+               }
+            })}
+         </Grid>
+         {loading && <Spinner loading={loading} />}
       </>
    );
 };
