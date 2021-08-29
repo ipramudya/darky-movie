@@ -24,9 +24,8 @@ const useSearch = () => {
                url: SEARCH_URL(provider[1], searchTerm),
             });
 
-            setFoundContent(movies.data.results.concat(tvs.data.results));
+            setFoundContent([...movies.data.results, ...tvs.data.results]);
             setLoading(false);
-            console.log(foundContent);
          } catch (err) {
             setError(err);
          }
