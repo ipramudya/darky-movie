@@ -6,6 +6,7 @@ const useExploreMore = (providers, categories) => {
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
    const [data, setData] = useState([]);
+   const [totalPages, setTotalPages] = useState(null);
 
    useEffect(() => {
       const fetchExploreMore = async () => {
@@ -19,6 +20,7 @@ const useExploreMore = (providers, categories) => {
             setData((prevData) => {
                return [...prevData, ...response.results];
             });
+            setTotalPages(response.total_pages);
             setLoading(false);
          } catch (err) {
             setError(err);
@@ -27,7 +29,7 @@ const useExploreMore = (providers, categories) => {
       fetchExploreMore();
    }, [page]);
 
-   return { loading, error, data, setPage };
+   return { loading, error, data, setPage, totalPages };
 };
 
 export default useExploreMore;

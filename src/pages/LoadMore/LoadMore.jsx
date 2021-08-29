@@ -11,24 +11,28 @@ const LoadMore = () => {
    const typeOfProvider = pathname.split('/')[1];
    const category = pathname.split('/')[3];
 
-   const { loading, error, data, setPage } = useExploreMore(
+   const { loading, error, data, setPage, totalPages } = useExploreMore(
       typeOfProvider,
       category
    );
 
+   let pages;
    const observer = useRef();
    const lastMoviesRef = useCallback(
       (node) => {
          if (loading) return;
          if (observer.current) observer.current.disconnect();
          observer.current = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-               setPage((prevPageNumber) => prevPageNumber + 1);
+            if (entries[0].isIntersecting && pages < totalPages) {
+               setPage((prevPageNumber) => {
+                  pages = prevPageNumber;
+                  return prevPageNumber + 1;
+               });
             }
          });
          if (node) observer.current.observe(node);
       },
-      [loading]
+      [loading, totalPages, pages]
    );
 
    return (
