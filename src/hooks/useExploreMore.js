@@ -27,9 +27,9 @@ const useExploreMore = (providers, categories) => {
          }
       };
       fetchExploreMore();
-   }, [page]);
+   }, [page, providers, categories]);
 
-   return { loading, error, data, setPage, totalPages };
+   return { loading, error, data, page, setPage, totalPages };
 };
 
 export default useExploreMore;

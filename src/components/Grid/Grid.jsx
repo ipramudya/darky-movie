@@ -1,4 +1,3 @@
-import Card from '../Card/Card';
 import { GridContainer, GridContent, Header } from './Grid.styles';
 
 const Grid = ({ children, header }) => {

@@ -18,7 +18,6 @@ const SearchPage = () => {
       setPage,
       totalResults,
    } = useSearch();
-   console.log(foundContent);
    const initial = useRef(true);
 
    useEffect(() => {
@@ -50,9 +49,6 @@ const SearchPage = () => {
       },
       [loading, foundContent, totalResults]
    );
-
-   console.log(foundContent.length);
-   console.log(totalResults);
 
    return (
       <>

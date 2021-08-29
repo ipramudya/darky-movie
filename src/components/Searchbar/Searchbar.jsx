@@ -1,6 +1,5 @@
 import { useState, forwardRef } from 'react';
 import { Redirect } from 'react-router-dom';
-import useSearch from '../../hooks/useSearch';
 import { SearchContainer, InputField } from './searchbar.styles';
 
 const Searchbar = forwardRef(({ active, setActive }, ref) => {
