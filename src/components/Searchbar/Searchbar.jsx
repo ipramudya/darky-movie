@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import useSearch from '../../hooks/useSearch';
 import { SearchContainer, InputField } from './searchbar.styles';
 
-const Searchbar = ({ active }) => {
+const Searchbar = forwardRef(({ active, setActive }, ref) => {
    const [query, setQuery] = useState('');
 
    const handleSearch = (event) => {
       setQuery(event.target.value);
+   };
+
+   const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+         setActive((prevState) => !prevState);
+         setQuery('');
+      }
    };
 
    return (
@@ -18,6 +25,8 @@ const Searchbar = ({ active }) => {
                placeholder='Search Movies or TVs...'
                onChange={handleSearch}
                value={query}
+               ref={ref}
+               onKeyDown={handleEscapeKey}
             />
          </SearchContainer>
          {query.length > 0 ? (
@@ -32,6 +41,6 @@ const Searchbar = ({ active }) => {
          )}
       </>
    );
-};
+});
 
 export default Searchbar;

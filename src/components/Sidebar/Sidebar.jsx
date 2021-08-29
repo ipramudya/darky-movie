@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { MdLiveTv, MdMovieFilter, MdSearch, MdClose } from 'react-icons/md';
 import Searchbar from '../Searchbar/Searchbar';
 import {
@@ -13,8 +13,11 @@ import Logo from '../../images/movie-ticket-icon.png';
 const Sidebar = () => {
    const [isActive, setIsActive] = useState(false);
 
+   const inputRef = useRef();
+
    const handleSearchToggle = () => {
       setIsActive((prevState) => !prevState);
+      inputRef.current.focus();
    };
 
    return (
@@ -43,7 +46,7 @@ const Sidebar = () => {
                </NavItem>
             </NavWrapper>
          </SidebarContainer>
-         <Searchbar active={isActive} />
+         <Searchbar active={isActive} ref={inputRef} setActive={setIsActive} />
       </>
    );
 };
