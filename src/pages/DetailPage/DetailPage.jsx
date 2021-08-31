@@ -12,15 +12,24 @@ const DetailPage = () => {
    const [error, setError] = useState(null);
    const [detailsContent, setDetailsContent] = useState({});
    const [similarContent, setSimilarContent] = useState([]);
+   const [crew, setCrew] = useState([]);
+   const [images, setImages] = useState([]);
 
    // check whether TV or Movie
    const type = useLocation().pathname.split('/')[1];
 
-   const fetchForDetails = async (detailsEndpoint, similarEndpoint) => {
+   const fetchForDetails = async (
+      detailsEndpoint,
+      similarEndpoint,
+      crewEndpoint,
+      imagesEndpoint
+   ) => {
       setLoading(true);
       try {
          setDetailsContent(await detailsEndpoint);
          setSimilarContent(await similarEndpoint);
+         setCrew(await crewEndpoint);
+         setImages(await imagesEndpoint);
          setLoading(false);
       } catch (err) {
          setError(err);
@@ -33,10 +42,17 @@ const DetailPage = () => {
       if (type === 'movie') {
          fetchForDetails(
             ApiMovies.fetchDetails(id),
-            ApiMovies.fetchSimilar(id)
+            ApiMovies.fetchSimilar(id),
+            ApiMovies.fetchCrew(id),
+            ApiMovies.fetchImages(id)
          );
       } else if (type === 'tv') {
-         fetchForDetails(ApiTv.fetchDetails(id), ApiTv.fetchSimilar(id));
+         fetchForDetails(
+            ApiTv.fetchDetails(id),
+            ApiTv.fetchSimilar(id),
+            ApiTv.fetchCrew(id),
+            ApiTv.fetchImages(id)
+         );
       }
    }, [id, type]);
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CONTENT_URL, SIMILAR_CONTENT_URL } from '../utils/config';
+import { CONTENT_URL, DETAILS_CONTENT_URL } from '../utils/config';
 
 const ApiMovies = {
    async fetchPopular() {
@@ -15,7 +15,21 @@ const ApiMovies = {
       return data;
    },
    async fetchSimilar(id) {
-      const { data } = await axios.get(SIMILAR_CONTENT_URL('movie', id));
+      const { data } = await axios.get(
+         DETAILS_CONTENT_URL('movie', id, 'similar')
+      );
+      return data;
+   },
+   async fetchCrew(id) {
+      const { data } = await axios.get(
+         DETAILS_CONTENT_URL('movie', id, 'credits')
+      );
+      return data;
+   },
+   async fetchImages(id) {
+      const { data } = await axios.get(
+         DETAILS_CONTENT_URL('movie', id, 'images')
+      );
       return data;
    },
 };

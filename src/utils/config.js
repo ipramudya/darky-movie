@@ -6,13 +6,16 @@ export const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&lang
 
 // Mine
 
-/* Keyword berisikan id ataupun kategori yang akan di fetching */
+/* 
+Keyword berisikan id ataupun kategori yang akan di fetching (upcoming, now airing, popular, dsb)
+Details berisikan detail yang akan di fetching (fetch similar, crew dsb)
+*/
 
 export const CONTENT_URL = (content, keyword, page = 1) =>
    `${API_URL}${content}/${keyword}?api_key=${API_KEY}&language=en-US&page=${page}`;
 
-export const SIMILAR_CONTENT_URL = (content, keyword) =>
-   `${API_URL}${content}/${keyword}/similar?api_key=${API_KEY}&language=en-US&page=1`;
+export const DETAILS_CONTENT_URL = (content, keyword, details) =>
+   `${API_URL}${content}/${keyword}/${details}?api_key=${API_KEY}&language=en-US&page=1`;
 
 export const SEARCH_URL = (content, query, page = 1) =>
    `${API_URL}search/${content}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
