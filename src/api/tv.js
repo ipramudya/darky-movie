@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { CONTENT_URL, DETAILS_CONTENT_URL } from '../utils/config';
+import {
+   CONTENT_URL,
+   DETAILS_CONTENT_URL,
+   IMAGES_CONTENT_URL,
+} from '../utils/config';
 
 const ApiTv = {
    async fetchPopular() {
@@ -20,14 +24,14 @@ const ApiTv = {
       );
       return data;
    },
-   async fetchCrew(id) {
+   async fetchCaster(id) {
       const { data } = await axios.get(
          DETAILS_CONTENT_URL('tv', id, 'credits')
       );
       return data;
    },
    async fetchImages(id) {
-      const { data } = await axios.get(DETAILS_CONTENT_URL('tv', id, 'images'));
+      const { data } = await axios.get(IMAGES_CONTENT_URL('tv', id));
       return data;
    },
 };

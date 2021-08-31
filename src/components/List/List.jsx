@@ -54,18 +54,20 @@ const List = ({ list_header, direct_to, contents }) => {
       <ListContainer>
          <ListHeader>
             <Text>{list_header}</Text>
-            <StyledLink
-               to={{
-                  pathname: contents[0]?.title
-                     ? `movie/category/${direct_to}`
-                     : `tv/category/${direct_to}`,
-                  state: {
-                     list_header,
-                  },
-               }}
-            >
-               Explore more
-            </StyledLink>
+            {direct_to && (
+               <StyledLink
+                  to={{
+                     pathname: contents[0]?.title
+                        ? `movie/category/${direct_to}`
+                        : `tv/category/${direct_to}`,
+                     state: {
+                        list_header,
+                     },
+                  }}
+               >
+                  Explore more
+               </StyledLink>
+            )}
          </ListHeader>
          <Carousel>
             <Slider {...sliderConfig}>

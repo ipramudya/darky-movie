@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const ListHeader = styled.div`
+   margin: 0 2.3em;
+   margin-bottom: 1em;
+   display: flex;
+   align-items: flex-end;
+`;
+
 export const Text = styled.h3`
    font-size: 1.5em;
 
@@ -14,7 +21,7 @@ export const Text = styled.h3`
 `;
 
 export const ListContainer = styled.div`
-   margin: 3rem 0;
+   margin: 3em 0;
 `;
 
 export const StyledLink = styled(Link)`
@@ -26,13 +33,6 @@ export const StyledLink = styled(Link)`
    &:hover {
       color: var(--greysky);
    }
-`;
-
-export const ListHeader = styled.div`
-   margin: 0 2rem;
-   margin-bottom: 1rem;
-   display: flex;
-   align-items: flex-end;
 `;
 
 export const Carousel = styled.div`

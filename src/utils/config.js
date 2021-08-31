@@ -17,6 +17,9 @@ export const CONTENT_URL = (content, keyword, page = 1) =>
 export const DETAILS_CONTENT_URL = (content, keyword, details) =>
    `${API_URL}${content}/${keyword}/${details}?api_key=${API_KEY}&language=en-US&page=1`;
 
+export const IMAGES_CONTENT_URL = (content, id) =>
+   `${API_URL}${content}/${id}/images?api_key=${API_KEY}`;
+
 export const SEARCH_URL = (content, query, page = 1) =>
    `${API_URL}search/${content}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
 

@@ -4,7 +4,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import ApiMovies from '../../api/movies';
 import ApiTv from '../../api/tv';
 
-import { Hero, Spinner } from '../../components';
+import { Hero, List, Spinner } from '../../components';
+import Caster from '../../components/Caster/Caster';
 
 const DetailPage = () => {
    const { id } = useParams();
@@ -12,7 +13,7 @@ const DetailPage = () => {
    const [error, setError] = useState(null);
    const [detailsContent, setDetailsContent] = useState({});
    const [similarContent, setSimilarContent] = useState([]);
-   const [crew, setCrew] = useState([]);
+   const [caster, setCaster] = useState([]);
    const [images, setImages] = useState([]);
 
    // check whether TV or Movie
@@ -28,7 +29,7 @@ const DetailPage = () => {
       try {
          setDetailsContent(await detailsEndpoint);
          setSimilarContent(await similarEndpoint);
-         setCrew(await crewEndpoint);
+         setCaster(await crewEndpoint);
          setImages(await imagesEndpoint);
          setLoading(false);
       } catch (err) {
@@ -43,14 +44,14 @@ const DetailPage = () => {
          fetchForDetails(
             ApiMovies.fetchDetails(id),
             ApiMovies.fetchSimilar(id),
-            ApiMovies.fetchCrew(id),
+            ApiMovies.fetchCaster(id),
             ApiMovies.fetchImages(id)
          );
       } else if (type === 'tv') {
          fetchForDetails(
             ApiTv.fetchDetails(id),
             ApiTv.fetchSimilar(id),
-            ApiTv.fetchCrew(id),
+            ApiTv.fetchCaster(id),
             ApiTv.fetchImages(id)
          );
       }
@@ -61,11 +62,15 @@ const DetailPage = () => {
          {loading ? (
             <Spinner loading={loading} />
          ) : (
-            <Hero contents={detailsContent} />
+            <>
+               <Hero contents={detailsContent} />
+               <Caster casters={caster.cast} />
+               <List
+                  contents={similarContent.results}
+                  list_header='Similar Film'
+               />
+            </>
          )}
-         <h1>
-            DetailPage of {id} on {type}
-         </h1>
       </>
    );
 };
