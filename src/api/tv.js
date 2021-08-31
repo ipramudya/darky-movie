@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CONTENT_URL } from '../utils/config';
+import { CONTENT_URL, SIMILAR_CONTENT_URL } from '../utils/config';
 
 const ApiTv = {
    async fetchPopular() {
@@ -12,6 +12,10 @@ const ApiTv = {
    },
    async fetchWithCategories(categories) {
       const { data } = await axios.get(CONTENT_URL('tv', categories));
+      return data;
+   },
+   async fetchSimilar(id) {
+      const { data } = await axios.get(SIMILAR_CONTENT_URL('tv', id));
       return data;
    },
 };
