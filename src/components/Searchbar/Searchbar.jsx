@@ -12,7 +12,6 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
    const handleEscapeKey = (event) => {
       if (event.key === 'Escape') {
          setActive((prevState) => !prevState);
-         setQuery('');
       }
    };
 
