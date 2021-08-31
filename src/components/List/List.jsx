@@ -2,8 +2,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import Card from '../Card/Card';
-
 // Styles
 import {
    Carousel,
@@ -13,7 +11,7 @@ import {
    StyledLink,
 } from './List.styles';
 
-const List = ({ list_header, direct_to, contents }) => {
+const List = ({ list_header, direct_to, isMovie, children }) => {
    const sliderConfig = {
       dots: false,
       slidesToShow: 7,
@@ -57,7 +55,7 @@ const List = ({ list_header, direct_to, contents }) => {
             {direct_to && (
                <StyledLink
                   to={{
-                     pathname: contents[0]?.title
+                     pathname: isMovie
                         ? `movie/category/${direct_to}`
                         : `tv/category/${direct_to}`,
                      state: {
@@ -70,11 +68,7 @@ const List = ({ list_header, direct_to, contents }) => {
             )}
          </ListHeader>
          <Carousel>
-            <Slider {...sliderConfig}>
-               {contents?.map((content, idx) => (
-                  <Card item={content} key={idx} />
-               ))}
-            </Slider>
+            <Slider {...sliderConfig}>{children}</Slider>
          </Carousel>
       </ListContainer>
    );

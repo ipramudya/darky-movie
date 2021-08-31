@@ -4,8 +4,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import ApiMovies from '../../api/movies';
 import ApiTv from '../../api/tv';
 
-import { Hero, List, Spinner } from '../../components';
-import Caster from '../../components/Caster/Caster';
+import { Card, Hero, List, PersonCard, Spinner } from '../../components';
 
 const DetailPage = () => {
    const { id } = useParams();
@@ -15,6 +14,7 @@ const DetailPage = () => {
    const [similarContent, setSimilarContent] = useState([]);
    const [caster, setCaster] = useState([]);
    const [images, setImages] = useState([]);
+   const [buttons, setButtons] = useState('overview');
 
    // check whether TV or Movie
    const type = useLocation().pathname.split('/')[1];
@@ -57,6 +57,15 @@ const DetailPage = () => {
       }
    }, [id, type]);
 
+   // console.log(detailsContent, similarContent, caster, images);
+   console.log(similarContent);
+
+   // const Buttons = () => {
+   //    return (
+
+   //    )
+   // }
+
    return (
       <>
          {loading ? (
@@ -64,11 +73,17 @@ const DetailPage = () => {
          ) : (
             <>
                <Hero contents={detailsContent} />
-               <Caster casters={caster.cast} />
-               <List
-                  contents={similarContent.results}
-                  list_header='Similar Film'
-               />
+               <List list_header='Cast'>
+                  {caster.cast?.map((content, idx) => (
+                     <PersonCard person={content} key={idx} />
+                  ))}
+               </List>
+
+               <List list_header='Similar Film'>
+                  {similarContent.results?.map((content, idx) => (
+                     <Card item={content} key={idx} />
+                  ))}
+               </List>
             </>
          )}
       </>

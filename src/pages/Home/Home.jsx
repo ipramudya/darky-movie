@@ -1,4 +1,4 @@
-import { Hero, List, Spinner } from '../../components';
+import { Card, Hero, List, Spinner } from '../../components';
 import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
@@ -15,16 +15,16 @@ const Home = () => {
             <Spinner loading={loading} />
          ) : (
             <>
-               <List
-                  list_header='Trending Movies'
-                  direct_to='popular'
-                  contents={movies}
-               />
-               <List
-                  list_header='Trending TVs'
-                  direct_to='popular'
-                  contents={TVs}
-               />
+               <List list_header='Trending Movies' direct_to='popular' isMovie>
+                  {movies?.map((content, idx) => (
+                     <Card item={content} key={idx} />
+                  ))}
+               </List>
+               <List list_header='Trending TVs' direct_to='popular'>
+                  {TVs?.map((content, idx) => (
+                     <Card item={content} key={idx} />
+                  ))}
+               </List>
             </>
          )}
       </>

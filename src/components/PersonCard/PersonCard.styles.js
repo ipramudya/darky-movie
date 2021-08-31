@@ -1,29 +1,6 @@
 import styled from 'styled-components';
 
-export const CasterContainer = styled.div`
-   margin: 3em 0;
-`;
-
-export const Text = styled.h3`
-   font-size: 1.5em;
-   margin: 0 2em;
-   margin-bottom: 1em;
-
-   @media screen and (max-width: 765px) {
-      font-size: 1.2em;
-   }
-
-   @media screen and (max-width: 515px) {
-      font-size: 1em;
-   }
-`;
-
-export const Carousel = styled.div`
-   width: 100%;
-   padding: 0 2em;
-`;
-
-export const CasterCardContainer = styled.div`
+export const PersonCardContainer = styled.div`
    width: 100%;
    padding: 0 0.3em;
    animation: fadeIn 1s;
