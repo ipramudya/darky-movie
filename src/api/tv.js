@@ -30,6 +30,12 @@ const ApiTv = {
       );
       return data;
    },
+   async fetchAggregateCaster(id) {
+      const { data } = await axios.get(
+         DETAILS_CONTENT_URL('tv', id, 'aggregate_credits')
+      );
+      return data;
+   },
    async fetchExternalId(id) {
       const { data } = await axios.get(
          DETAILS_CONTENT_URL('tv', id, 'external_ids')

@@ -23,6 +23,7 @@ const DetailPage = () => {
    const [detailsContent, setDetailsContent] = useState({});
    const [similarContent, setSimilarContent] = useState([]);
    const [caster, setCaster] = useState([]);
+   const [aggregateCaster, setAggregateCaster] = useState([]);
    const [images, setImages] = useState([]);
    const [externalID, setExternalID] = useState([]);
 
@@ -33,6 +34,7 @@ const DetailPage = () => {
       detailsEndpoint,
       similarEndpoint,
       crewEndpoint,
+      aggregateEndpoint,
       externalIDEndpoints,
       imagesEndpoint
    ) => {
@@ -42,6 +44,7 @@ const DetailPage = () => {
          setSimilarContent(await similarEndpoint);
          setExternalID(await externalIDEndpoints);
          setCaster(await crewEndpoint);
+         setAggregateCaster(await aggregateEndpoint);
          setImages(await imagesEndpoint);
          setLoading(false);
       } catch (err) {
@@ -65,6 +68,7 @@ const DetailPage = () => {
             ApiTv.fetchDetails(id),
             ApiTv.fetchSimilar(id),
             ApiTv.fetchCaster(id),
+            ApiTv.fetchAggregateCaster(id),
             ApiTv.fetchExternalId(id),
             ApiTv.fetchImages(id)
          );
@@ -99,20 +103,34 @@ const DetailPage = () => {
                <Buttons />
                {activeButton === buttonTypes[0] && (
                   <>
-                     <Overview
-                        content={detailsContent}
-                        director={caster.crew}
-                        externalID={externalID}
-                     />
+                     {type === 'movie' && (
+                        <Overview
+                           content={detailsContent}
+                           caster={caster.crew}
+                           externalID={externalID}
+                           isMovie
+                        />
+                     )}
+                     {type === 'tv' && (
+                        <Overview
+                           content={detailsContent}
+                           caster={aggregateCaster}
+                           externalID={externalID}
+                        />
+                     )}
                      <List list_header='Cast'>
-                        {caster.cast?.map((content, idx) => (
-                           <PersonCard person={content} key={idx} />
-                        ))}
+                        {type === 'movie' &&
+                           caster.cast?.map((content, idx) => (
+                              <PersonCard person={content} key={idx} />
+                           ))}
+                        {type === 'tv' &&
+                           aggregateCaster.cast?.map((content, idx) => (
+                              <PersonCard person={content} key={idx} tv />
+                           ))}
                      </List>
                   </>
                )}
                {activeButton === buttonTypes[1] && <h3>Photos</h3>}
-
                <List list_header='Similar Film'>
                   {similarContent.results?.map((content, idx) => (
                      <Card item={content} key={idx} />

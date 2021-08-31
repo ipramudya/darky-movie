@@ -62,7 +62,7 @@ const Card = forwardRef(({ item }, ref) => {
                <CardTitle>{item.name}</CardTitle>
                <Star>
                   <StarRatings {...starConfig} />
-                  <Rating>{item.vote_average}</Rating>
+                  <Rating>{item.vote_average.toFixed(1)}</Rating>
                </Star>
             </Link>
          );

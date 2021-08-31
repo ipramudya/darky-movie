@@ -69,9 +69,15 @@ export const Text = styled.p`
 
    ${(props) =>
       props.underline &&
-      `text-decoration: underline;
-       color: var(--darksky);
-       &:hover {color: var(--blacksky);}
+      `  > span {
+            text-decoration: underline;
+            color: var(--darksky);
+            transition: all 0.5s;
+            cursor: pointer;
+         }
+         > span:hover {
+            color: var(--blacksky);
+         }
       `}
 `;
 
