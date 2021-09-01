@@ -7,8 +7,10 @@ export const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&lang
 // Mine
 
 /* 
+Content berisikan antara tv, person, maupun movie
 Keyword berisikan id ataupun kategori yang akan di fetching (upcoming, now airing, popular, dsb)
 Details berisikan detail yang akan di fetching (fetch similar, crew dsb)
+gid = genre id
 */
 
 export const CONTENT_URL = (content, keyword, page = 1) =>
@@ -22,6 +24,9 @@ export const IMAGES_CONTENT_URL = (content, id) =>
 
 export const SEARCH_URL = (content, query, page = 1) =>
    `${API_URL}search/${content}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
+
+export const DISCOVER_URL = (content, gid, page = 1) =>
+   `${API_URL}discover/${content}?api_key=${API_KEY}&with_genres=${gid}&page=${page}`;
 
 // For login and voting
 export const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;

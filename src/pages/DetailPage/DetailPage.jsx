@@ -95,6 +95,7 @@ const DetailPage = () => {
 
    return (
       <>
+         {error && <h3>{error}</h3>}
          {loading ? (
             <Spinner loading={loading} />
          ) : (

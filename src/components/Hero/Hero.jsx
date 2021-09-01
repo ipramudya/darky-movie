@@ -50,7 +50,19 @@ const Hero = ({ contents, disabled }) => {
                      </SubMeta>
                      <SubMeta genre>
                         {contents.genres?.map((genre) => (
-                           <Text2 key={genre.id}>{genre.name}</Text2>
+                           <Text2
+                              key={genre.id}
+                              to={{
+                                 pathname: contents?.title
+                                    ? `/discover/movie/${genre?.id}`
+                                    : `/discover/tv/${genre?.id}`,
+                                 state: {
+                                    genres: `#${genre.name?.replace(/ /g, '')}`,
+                                 },
+                              }}
+                           >
+                              #{genre.name?.replace(/ /g, '')}
+                           </Text2>
                         ))}
                      </SubMeta>
                      <SubMeta>

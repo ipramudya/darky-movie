@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const BackdropImg = styled.img`
@@ -105,6 +106,7 @@ export const HeroDescWrapper = styled.div`
 
 export const Title = styled.h1`
    margin-bottom: 0.5em;
+   cursor: default;
 
    @media screen and (max-width: 970px) {
       font-size: 1.5em;
@@ -115,6 +117,7 @@ export const Text = styled.p`
    font-size: var(--fontSM);
    color: var(--white);
    margin-left: 1em;
+   cursor: default;
 
    @media screen and (max-width: 515px) {
       display: ${(props) => (props.year ? 'none' : 'block')};
@@ -122,11 +125,16 @@ export const Text = styled.p`
    }
 `;
 
-export const Text2 = styled.p`
+export const Text2 = styled(Link)`
    font-size: var(--fontSM);
    font-style: italic;
-   color: #999999;
+   color: var(--darksky);
    margin-right: 1em;
+   transition: all 0.5s;
+
+   &:hover {
+      opacity: 0.8;
+   }
 `;
 
 export const Subtitle = styled.p`
@@ -137,6 +145,7 @@ export const Subtitle = styled.p`
    -webkit-box-orient: vertical;
    font-size: var(--fontSM);
    color: var(--white);
+   cursor: default;
 
    @media screen and (max-width: 765px) {
       display: none;

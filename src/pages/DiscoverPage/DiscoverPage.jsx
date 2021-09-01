@@ -1,19 +1,19 @@
 import { useCallback, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Grid, Spinner, Card } from '../../components';
-import useExploreMore from '../../hooks/useExploreMore';
+import { useLocation, useParams } from 'react-router';
+import { Card, Grid } from '../../components';
+import useDiscover from '../../hooks/useDiscover';
 
-const LoadMore = () => {
+const DiscoverPage = () => {
    const {
       pathname,
-      state: { list_header },
+      state: { genres },
    } = useLocation();
-   const typeOfProvider = pathname.split('/')[1];
-   const category = pathname.split('/')[3];
+   const { gid } = useParams();
+   const typeOfProvider = pathname.split('/')[2];
 
-   const { loading, data, page, setPage, totalPages } = useExploreMore(
+   const { data, loading, page, setPage, totalPages } = useDiscover(
       typeOfProvider,
-      category
+      gid
    );
 
    const observer = useRef();
@@ -35,7 +35,7 @@ const LoadMore = () => {
 
    return (
       <>
-         <Grid header={list_header}>
+         <Grid header={genres}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {
                   return (
@@ -46,9 +46,8 @@ const LoadMore = () => {
                }
             })}
          </Grid>
-         {loading && <Spinner loading={loading} />}
       </>
    );
 };
 
-export default LoadMore;
+export default DiscoverPage;

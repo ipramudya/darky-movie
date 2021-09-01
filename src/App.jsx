@@ -8,6 +8,7 @@ import {
    TVPage,
    LoadMore,
    SearchPage,
+   DiscoverPage,
 } from './pages';
 import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
@@ -22,6 +23,11 @@ const App = () => {
             <Route exact path={['/movie/:id', '/tv/:id']}>
                <DetailPage />
             </Route>
+            <Route
+               exact
+               path={['/discover/movie/:gid', '/discover/tv/:gid']}
+               component={DiscoverPage}
+            />
             <MoviesProvider>
                <Route exact path='/movie' component={MoviePage} />
             </MoviesProvider>
