@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const BackdropImg = styled.img`
+   height: 100%;
+   display: inline-block;
+   transition: all 0.5s;
+
+   @media screen and (max-width: 970px) {
+      width: 100%;
+      object-fit: cover;
+   }
+`;
+
 export const HeroContainer = styled.div`
    width: 100%;
    padding-bottom: 40%;
@@ -17,6 +28,10 @@ export const HeroContainer = styled.div`
    @media screen and (max-width: 515px) {
       height: 30rem;
    }
+
+   &:hover ${BackdropImg} {
+      transform: scale(1.02);
+   }
 `;
 
 export const HeroBackdrop = styled.div`
@@ -26,6 +41,7 @@ export const HeroBackdrop = styled.div`
    width: 70%;
    height: 100%;
    animation: fadeInRight 1s ease;
+   overflow: hidden;
 
    &::after {
       position: absolute;
@@ -55,16 +71,6 @@ export const HeroBackdrop = styled.div`
             rgba(0, 0, 0, 0.1)
          );
       }
-   }
-`;
-
-export const BackdropImg = styled.img`
-   height: 100%;
-   display: inline-block;
-
-   @media screen and (max-width: 970px) {
-      width: 100%;
-      object-fit: cover;
    }
 `;
 

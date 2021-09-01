@@ -1,4 +1,5 @@
 import StarRatings from 'react-star-ratings';
+import { Link } from 'react-router-dom';
 
 import { IMAGE_BASE_URL } from '../../utils/config';
 import {
@@ -34,45 +35,51 @@ const Hero = ({ contents }) => {
    return (
       <>
          {contents && (
-            <HeroContainer>
-               <HeroDescWrapper>
-                  <div>
-                     {contents?.name ? (
-                        <Title>{contents.name}</Title>
-                     ) : (
-                        <Title>{contents.title}</Title>
-                     )}
-                     <Meta>
-                        <SubMeta>
-                           {contents?.vote_average && (
-                              <StarRatings {...starConfig} />
-                           )}
-                           <Text>{contents.popularity} Reviews</Text>
-                           <Text year>
-                              {contents.release_date?.split('-', 1)}
-                           </Text>
-                        </SubMeta>
-                        <SubMeta genre>
-                           {contents.genres?.map((genre) => (
-                              <Text2 key={genre.id}>{genre.name}</Text2>
-                           ))}
-                        </SubMeta>
-                        <SubMeta>
-                           <Subtitle>{contents.overview}</Subtitle>
-                        </SubMeta>
-                     </Meta>
-                  </div>
-               </HeroDescWrapper>
-               <HeroBackdrop>
-                  <BackdropImg
-                     src={
-                        contents.backdrop_path
-                           ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
-                           : NoImage
-                     }
-                  />
-               </HeroBackdrop>
-            </HeroContainer>
+            <Link
+               to={
+                  contents.title
+                     ? `/movie/${contents.id}`
+                     : `/tv/${contents.id}`
+               }
+            >
+               <HeroContainer>
+                  <HeroDescWrapper>
+                     <div>
+                        <Title>
+                           {contents?.title ? contents.title : contents.name}
+                        </Title>
+                        <Meta>
+                           <SubMeta>
+                              {contents?.vote_average && (
+                                 <StarRatings {...starConfig} />
+                              )}
+                              <Text>{contents.popularity} Reviews</Text>
+                              <Text year>
+                                 {contents.release_date?.split('-', 1)}
+                              </Text>
+                           </SubMeta>
+                           <SubMeta genre>
+                              {contents.genres?.map((genre) => (
+                                 <Text2 key={genre.id}>{genre.name}</Text2>
+                              ))}
+                           </SubMeta>
+                           <SubMeta>
+                              <Subtitle>{contents.overview}</Subtitle>
+                           </SubMeta>
+                        </Meta>
+                     </div>
+                  </HeroDescWrapper>
+                  <HeroBackdrop>
+                     <BackdropImg
+                        src={
+                           contents.backdrop_path
+                              ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
+                              : NoImage
+                        }
+                     />
+                  </HeroBackdrop>
+               </HeroContainer>
+            </Link>
          )}
       </>
    );

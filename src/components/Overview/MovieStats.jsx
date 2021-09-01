@@ -24,19 +24,21 @@ const MovieStats = ({ content, caster }) => {
                </StatsLi>
                <StatsLi>
                   <Text main>Director</Text>
-                  <Text underline>{foundDirector?.name}</Text>
+                  <Text underline movie>
+                     {foundDirector?.name}
+                  </Text>
                </StatsLi>
                <StatsLi>
                   <Text main>Status</Text>
                   <Text>{content?.status}</Text>
                </StatsLi>
-               {content?.budget && (
+               {content?.budget > 0 && (
                   <StatsLi>
                      <Text main>Budgets</Text>
                      <Text>$ {content.budget?.toLocaleString()}</Text>
                   </StatsLi>
                )}
-               {content?.revenue && (
+               {content?.revenue > 0 && (
                   <StatsLi>
                      <Text main>Revenue</Text>
                      <Text>$ {content.revenue?.toLocaleString()}</Text>

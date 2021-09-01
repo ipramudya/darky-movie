@@ -69,6 +69,7 @@ export const Text = styled.p`
 
    ${(props) =>
       props.underline &&
+      !props.movie &&
       `  > span {
             text-decoration: underline;
             color: var(--darksky);
@@ -76,6 +77,20 @@ export const Text = styled.p`
             cursor: pointer;
          }
          > span:hover {
+            color: var(--blacksky);
+         }
+      `}
+
+      ${(props) =>
+      props.underline &&
+      props.movie &&
+      `  {
+            text-decoration: underline;
+            color: var(--darksky);
+            transition: all 0.5s;
+            cursor: pointer;
+         }
+         &:hover {
             color: var(--blacksky);
          }
       `}

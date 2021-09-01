@@ -27,49 +27,26 @@ const Card = forwardRef(({ item }, ref) => {
       starRatedColor: '#3F72AF',
    };
 
-   const checkingContents = () => {
-      if (item?.title) {
-         return (
-            <Link to={`/movie/${item.id}`}>
-               <CardImage className='animated'>
-                  <ImageItem
-                     src={
-                        item?.poster_path
-                           ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
-                           : NoImage
-                     }
-                  />
-               </CardImage>
-               <CardTitle>{item.title}</CardTitle>
-               <Star>
-                  <StarRatings {...starConfig} />
-                  <Rating>{item.vote_average}</Rating>
-               </Star>
-            </Link>
-         );
-      } else {
-         return (
-            <Link to={`/tv/${item.id}`}>
-               <CardImage className='animated'>
-                  <ImageItem
-                     src={
-                        item?.poster_path
-                           ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
-                           : NoImage
-                     }
-                  />
-               </CardImage>
-               <CardTitle>{item.name}</CardTitle>
-               <Star>
-                  <StarRatings {...starConfig} />
-                  <Rating>{item.vote_average.toFixed(1)}</Rating>
-               </Star>
-            </Link>
-         );
-      }
-   };
-
-   return <CardContainer ref={ref}>{checkingContents()}</CardContainer>;
+   return (
+      <CardContainer ref={ref}>
+         <Link to={item?.title ? `/movie/${item.id}` : `/tv/${item.id}`}>
+            <CardImage className='animated'>
+               <ImageItem
+                  src={
+                     item?.poster_path
+                        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
+                        : NoImage
+                  }
+               />
+            </CardImage>
+            <CardTitle>{item?.title ? item.title : item.name}</CardTitle>
+            <Star>
+               <StarRatings {...starConfig} />
+               <Rating>{item.vote_average?.toFixed(1)}</Rating>
+            </Star>
+         </Link>
+      </CardContainer>
+   );
 });
 
 export default Card;

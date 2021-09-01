@@ -30,14 +30,14 @@ const DetailPage = () => {
    // check whether TV or Movie
    const type = useLocation().pathname.split('/')[1];
 
-   const fetchForDetails = async (
+   const fetchForDetails = async ({
       detailsEndpoint,
       similarEndpoint,
       crewEndpoint,
       aggregateEndpoint,
       externalIDEndpoints,
-      imagesEndpoint
-   ) => {
+      imagesEndpoint,
+   }) => {
       setLoading(true);
       try {
          setDetailsContent(await detailsEndpoint);
@@ -56,22 +56,22 @@ const DetailPage = () => {
    useEffect(() => {
       setLoading(true);
       if (type === 'movie') {
-         fetchForDetails(
-            ApiMovies.fetchDetails(id),
-            ApiMovies.fetchSimilar(id),
-            ApiMovies.fetchCaster(id),
-            ApiMovies.fetchExternalId(id),
-            ApiMovies.fetchImages(id)
-         );
+         fetchForDetails({
+            detailsEndpoint: ApiMovies.fetchDetails(id),
+            similarEndpoint: ApiMovies.fetchSimilar(id),
+            crewEndpoint: ApiMovies.fetchCaster(id),
+            externalIDEndpoints: ApiMovies.fetchExternalId(id),
+            imagesEndpoint: ApiMovies.fetchImages(id),
+         });
       } else if (type === 'tv') {
-         fetchForDetails(
-            ApiTv.fetchDetails(id),
-            ApiTv.fetchSimilar(id),
-            ApiTv.fetchCaster(id),
-            ApiTv.fetchAggregateCaster(id),
-            ApiTv.fetchExternalId(id),
-            ApiTv.fetchImages(id)
-         );
+         fetchForDetails({
+            detailsEndpoint: ApiTv.fetchDetails(id),
+            similarEndpoint: ApiTv.fetchSimilar(id),
+            crewEndpoint: ApiTv.fetchCaster(id),
+            aggregateEndpoint: ApiTv.fetchAggregateCaster(id),
+            externalIDEndpoints: ApiTv.fetchExternalId(id),
+            imagesEndpoint: ApiTv.fetchImages(id),
+         });
       }
    }, [id, type]);
 
