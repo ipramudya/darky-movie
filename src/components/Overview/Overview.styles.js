@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const OverviewContainer = styled.div`
    margin: 5em 2.3em;
    display: flex;
+   animation: fadeIn 1s;
 `;
 
 export const LeftBox = styled.div`

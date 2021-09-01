@@ -15,8 +15,6 @@ import MovieStats from './MovieStats';
 import TvStats from './TvStats';
 
 const Overview = ({ content, caster, externalID, isMovie }) => {
-   console.log(content);
-
    return (
       <>
          <OverviewContainer>

@@ -44,10 +44,12 @@ const MovieStats = ({ content, caster }) => {
                      <Text>$ {content.revenue?.toLocaleString()}</Text>
                   </StatsLi>
                )}
-               <StatsLi>
-                  <Text main>Production</Text>
-                  <Text>{productionCompanies}</Text>
-               </StatsLi>
+               {content.production_companies && (
+                  <StatsLi>
+                     <Text main>Production</Text>
+                     <Text>{productionCompanies}</Text>
+                  </StatsLi>
+               )}
             </StatsUl>
          </Stats>
       </>

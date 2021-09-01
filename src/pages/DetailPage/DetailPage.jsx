@@ -130,7 +130,7 @@ const DetailPage = () => {
                      </List>
                   </>
                )}
-               {activeButton === buttonTypes[1] && <h3>Photos</h3>}
+               {activeButton === buttonTypes[1] && <Photos content={images} />}
                <List list_header='Similar Film'>
                   {similarContent.results?.map((content, idx) => (
                      <Card item={content} key={idx} />
