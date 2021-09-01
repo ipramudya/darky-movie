@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const BackdropImg = styled.img`
    height: 100%;
@@ -29,9 +29,13 @@ export const HeroContainer = styled.div`
       height: 30rem;
    }
 
-   &:hover ${BackdropImg} {
-      transform: scale(1.02);
-   }
+   ${(props) =>
+      !props.disable &&
+      css`
+         &:hover ${BackdropImg} {
+            transform: scale(1.02);
+         }
+      `}
 `;
 
 export const HeroBackdrop = styled.div`

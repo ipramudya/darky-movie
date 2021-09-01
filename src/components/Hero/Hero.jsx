@@ -17,7 +17,7 @@ import {
 
 import NoImage from '../../images/no-image.png';
 
-const Hero = ({ contents }) => {
+const Hero = ({ contents, disabled }) => {
    let rating;
    if (contents?.vote_average) {
       rating = Math.floor(contents.vote_average / 2);
@@ -32,55 +32,62 @@ const Hero = ({ contents }) => {
       starRatedColor: '#3F72AF',
    };
 
+   const HeroChildren = () => {
+      return (
+         <HeroContainer disable={disabled}>
+            <HeroDescWrapper>
+               <div>
+                  <Title>
+                     {contents?.title ? contents.title : contents.name}
+                  </Title>
+                  <Meta>
+                     <SubMeta>
+                        {contents?.vote_average && (
+                           <StarRatings {...starConfig} />
+                        )}
+                        <Text>{contents.popularity} Reviews</Text>
+                        <Text year>{contents.release_date?.split('-', 1)}</Text>
+                     </SubMeta>
+                     <SubMeta genre>
+                        {contents.genres?.map((genre) => (
+                           <Text2 key={genre.id}>{genre.name}</Text2>
+                        ))}
+                     </SubMeta>
+                     <SubMeta>
+                        <Subtitle>{contents.overview}</Subtitle>
+                     </SubMeta>
+                  </Meta>
+               </div>
+            </HeroDescWrapper>
+            <HeroBackdrop>
+               <BackdropImg
+                  src={
+                     contents.backdrop_path
+                        ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
+                        : NoImage
+                  }
+               />
+            </HeroBackdrop>
+         </HeroContainer>
+      );
+   };
+
    return (
       <>
-         {contents && (
-            <Link
-               to={
-                  contents.title
-                     ? `/movie/${contents.id}`
-                     : `/tv/${contents.id}`
-               }
-            >
-               <HeroContainer>
-                  <HeroDescWrapper>
-                     <div>
-                        <Title>
-                           {contents?.title ? contents.title : contents.name}
-                        </Title>
-                        <Meta>
-                           <SubMeta>
-                              {contents?.vote_average && (
-                                 <StarRatings {...starConfig} />
-                              )}
-                              <Text>{contents.popularity} Reviews</Text>
-                              <Text year>
-                                 {contents.release_date?.split('-', 1)}
-                              </Text>
-                           </SubMeta>
-                           <SubMeta genre>
-                              {contents.genres?.map((genre) => (
-                                 <Text2 key={genre.id}>{genre.name}</Text2>
-                              ))}
-                           </SubMeta>
-                           <SubMeta>
-                              <Subtitle>{contents.overview}</Subtitle>
-                           </SubMeta>
-                        </Meta>
-                     </div>
-                  </HeroDescWrapper>
-                  <HeroBackdrop>
-                     <BackdropImg
-                        src={
-                           contents.backdrop_path
-                              ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
-                              : NoImage
-                        }
-                     />
-                  </HeroBackdrop>
-               </HeroContainer>
-            </Link>
-         )}
+         {contents &&
+            (!disabled ? (
+               <Link
+                  to={
+                     contents.title
+                        ? `/movie/${contents.id}`
+                        : `/tv/${contents.id}`
+                  }
+               >
+                  <HeroChildren />
+               </Link>
+            ) : (
+               <HeroChildren />
+            ))}
       </>
    );
 };

@@ -99,7 +99,7 @@ const DetailPage = () => {
             <Spinner loading={loading} />
          ) : (
             <>
-               <Hero contents={detailsContent} />
+               <Hero contents={detailsContent} disabled />
                <Buttons />
                {activeButton === buttonTypes[0] && (
                   <>
