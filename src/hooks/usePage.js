@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
-import ApiExploreMore from '../api/exploreMore';
 
-const useExploreMore = (providers, categories) => {
+/*
+    typeOfProvider = tv ,movie, atau person
+    queryString = string yang diperlukan (id ataupun categories)
+*/
+
+const usePage = ({ typeOfProvider, queryString, cbFunction }) => {
    const [page, setPage] = useState(1);
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
@@ -9,12 +13,12 @@ const useExploreMore = (providers, categories) => {
    const [totalPages, setTotalPages] = useState(null);
 
    useEffect(() => {
-      const fetchExploreMore = async () => {
+      const fetchNextPage = async () => {
          setLoading(true);
          try {
-            const response = await ApiExploreMore.fetchExploreMore(
-               providers,
-               categories,
+            const response = await cbFunction(
+               typeOfProvider,
+               queryString,
                page
             );
             setData((prevData) => {
@@ -26,10 +30,10 @@ const useExploreMore = (providers, categories) => {
             setError(err);
          }
       };
-      fetchExploreMore();
-   }, [page, providers, categories]);
+      fetchNextPage();
+   }, [page, typeOfProvider, queryString, cbFunction]);
 
    return { loading, error, data, page, setPage, totalPages };
 };
 
-export default useExploreMore;
+export default usePage;

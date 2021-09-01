@@ -1,7 +1,8 @@
-import { useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Grid, Spinner, Card } from '../../components';
-import useExploreMore from '../../hooks/useExploreMore';
+import usePage from '../../hooks/usePage';
+import useLastItemRef from '../../hooks/useLastItemRef';
+import ApiExploreMore from '../../api/exploreMore';
 
 const LoadMore = () => {
    const {
@@ -11,42 +12,31 @@ const LoadMore = () => {
    const typeOfProvider = pathname.split('/')[1];
    const category = pathname.split('/')[3];
 
-   const { loading, data, page, setPage, totalPages } = useExploreMore(
+   const { loading, data, page, setPage, totalPages } = usePage({
       typeOfProvider,
-      category
-   );
+      queryString: category,
+      cbFunction: ApiExploreMore.fetchExploreMore,
+   });
 
-   const observer = useRef();
-   const lastMoviesRef = useCallback(
-      (node) => {
-         if (loading) return;
-         if (observer.current) observer.current.disconnect();
-         observer.current = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && page < totalPages) {
-               setPage((prevPageNumber) => {
-                  return prevPageNumber + 1;
-               });
-            }
-         });
-         if (node) observer.current.observe(node);
-      },
-      [loading, totalPages, page]
-   );
+   const lastItemRef = useLastItemRef({
+      page,
+      setPage,
+      totalPages,
+      loading,
+   });
 
    return (
       <>
+         {loading && <Spinner loading={loading} />}
          <Grid header={list_header}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {
-                  return (
-                     <Card item={singleData} key={idx} ref={lastMoviesRef} />
-                  );
+                  return <Card item={singleData} key={idx} ref={lastItemRef} />;
                } else {
                   return <Card item={singleData} key={idx} />;
                }
             })}
          </Grid>
-         {loading && <Spinner loading={loading} />}
       </>
    );
 };

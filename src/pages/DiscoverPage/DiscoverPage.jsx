@@ -1,7 +1,8 @@
-import { useCallback, useRef } from 'react';
 import { useLocation, useParams } from 'react-router';
-import { Card, Grid } from '../../components';
-import useDiscover from '../../hooks/useDiscover';
+import ApiDiscover from '../../api/discover';
+import { Card, Grid, Spinner } from '../../components';
+import useLastItemRef from '../../hooks/useLastItemRef';
+import usePage from '../../hooks/usePage';
 
 const DiscoverPage = () => {
    const {
@@ -11,36 +12,26 @@ const DiscoverPage = () => {
    const { gid } = useParams();
    const typeOfProvider = pathname.split('/')[2];
 
-   const { data, loading, page, setPage, totalPages } = useDiscover(
+   const { data, loading, page, setPage, totalPages } = usePage({
       typeOfProvider,
-      gid
-   );
+      queryString: gid,
+      cbFunction: ApiDiscover.fetchByGenreID,
+   });
 
-   const observer = useRef();
-   const lastMoviesRef = useCallback(
-      (node) => {
-         if (loading) return;
-         if (observer.current) observer.current.disconnect();
-         observer.current = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && page < totalPages) {
-               setPage((prevPageNumber) => {
-                  return prevPageNumber + 1;
-               });
-            }
-         });
-         if (node) observer.current.observe(node);
-      },
-      [loading, totalPages, page]
-   );
+   const lastItemRef = useLastItemRef({
+      page,
+      setPage,
+      totalPages,
+      loading,
+   });
 
    return (
       <>
+         {loading && <Spinner loading={loading} />}
          <Grid header={genres}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {
-                  return (
-                     <Card item={singleData} key={idx} ref={lastMoviesRef} />
-                  );
+                  return <Card item={singleData} key={idx} ref={lastItemRef} />;
                } else {
                   return <Card item={singleData} key={idx} />;
                }
