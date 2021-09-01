@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
 import { Grid, Spinner, Card } from '../../components';
+import useLastItemRef from '../../hooks/useLastItemRef';
 import useSearch from '../../hooks/useSearch';
 
 const SearchPage = () => {
@@ -10,14 +11,8 @@ const SearchPage = () => {
    };
    const query = useQuery().get('query');
 
-   const {
-      foundContent,
-      loading,
-      error,
-      setSearchTerm,
-      setPage,
-      totalResults,
-   } = useSearch();
+   const { foundContent, loading, setSearchTerm, setPage, totalResults } =
+      useSearch();
    const initial = useRef(true);
 
    useEffect(() => {
@@ -32,23 +27,12 @@ const SearchPage = () => {
       return () => clearTimeout(delay);
    }, [setSearchTerm, query]);
 
-   const observer = useRef();
-   const lastMoviesRef = useCallback(
-      (node) => {
-         if (loading) return;
-         if (observer.current) observer.current.disconnect();
-         observer.current = new IntersectionObserver((entries) => {
-            if (
-               entries[0].isIntersecting &&
-               foundContent.length < totalResults
-            ) {
-               setPage((prevPageNumber) => prevPageNumber + 1);
-            }
-         });
-         if (node) observer.current.observe(node);
-      },
-      [loading, foundContent, totalResults]
-   );
+   const lastItemRef = useLastItemRef({
+      page: foundContent.length,
+      setPage,
+      totalPages: totalResults,
+      loading,
+   });
 
    return (
       <>
@@ -58,7 +42,7 @@ const SearchPage = () => {
          <Grid header={`Results for: ${query}`}>
             {foundContent?.map((content, idx) => {
                if (foundContent?.length === idx + 1) {
-                  return <Card item={content} key={idx} ref={lastMoviesRef} />;
+                  return <Card item={content} key={idx} ref={lastItemRef} />;
                } else {
                   return <Card item={content} key={idx} />;
                }
