@@ -1,4 +1,3 @@
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -9,6 +8,7 @@ import {
    ListHeader,
    Text,
    StyledLink,
+   StyledSlider,
 } from './List.styles';
 
 const List = ({ list_header, direct_to, isMovie, children }) => {
@@ -16,14 +16,23 @@ const List = ({ list_header, direct_to, isMovie, children }) => {
       dots: false,
       slidesToShow: 7,
       slidesToScroll: 7,
-      infinite: false,
+      infinite: true,
       responsive: [
+         {
+            breakpoint: 1490,
+            settings: {
+               slidesToShow: 6,
+               slidesToScroll: 6,
+               infinite: true,
+               dots: false,
+            },
+         },
          {
             breakpoint: 1350,
             settings: {
                slidesToShow: 5,
                slidesToScroll: 5,
-               infinite: false,
+               infinite: true,
                dots: false,
             },
          },
@@ -32,7 +41,7 @@ const List = ({ list_header, direct_to, isMovie, children }) => {
             settings: {
                slidesToShow: 4,
                slidesToScroll: 4,
-               infinite: false,
+               infinite: true,
                dots: false,
             },
          },
@@ -41,7 +50,7 @@ const List = ({ list_header, direct_to, isMovie, children }) => {
             settings: {
                slidesToShow: 3,
                slidesToScroll: 3,
-               infinite: false,
+               infinite: true,
                dots: false,
             },
          },
@@ -68,7 +77,7 @@ const List = ({ list_header, direct_to, isMovie, children }) => {
             )}
          </ListHeader>
          <Carousel>
-            <Slider {...sliderConfig}>{children}</Slider>
+            <StyledSlider {...sliderConfig}>{children}</StyledSlider>
          </Carousel>
       </ListContainer>
    );

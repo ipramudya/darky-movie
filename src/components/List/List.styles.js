@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 export const ListHeader = styled.div`
    margin: 0 2.3em;
@@ -38,4 +39,39 @@ export const StyledLink = styled(Link)`
 export const Carousel = styled.div`
    width: 100%;
    padding: 0 2em;
+`;
+
+export const StyledSlider = styled(Slider)`
+   .slick-prev,
+   .slick-next {
+      width: 50px;
+      height: 100%;
+      transition: all 0.5s;
+   }
+   .slick-prev:hover,
+   .slick-next:hover {
+      color: transparent;
+      outline: none;
+      background: rgba(73, 73, 73, 0.3);
+   }
+   .slick-list {
+      margin: 30px;
+   }
+   .slick-prev:before,
+   .slick-next:before {
+      font-size: 30px;
+      font-family: inherit;
+      color: var(--greysky);
+      transition: all 0.5s;
+   }
+   .slick-prev:before {
+      content: '<';
+   }
+   .slick-next:before {
+      content: '>';
+   }
+   .slick-prev:hover:before,
+   .slick-next:hover:before {
+      color: var(--darksky);
+   }
 `;
