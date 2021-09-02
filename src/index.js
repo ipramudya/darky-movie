@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { render } from 'react-dom';
+import './scrollbar.css';
 
 import App from './App';
 
