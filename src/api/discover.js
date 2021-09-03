@@ -3,8 +3,9 @@ import { DISCOVER_URL } from '../utils/config';
 
 const ApiDiscover = {
    async fetchByGenreID(content, gid, page) {
-      const { data } = await axios.get(DISCOVER_URL(content, gid, page));
-      return data;
+      return await (
+         await axios.get(DISCOVER_URL(content, gid, page))
+      ).data;
    },
 };
 

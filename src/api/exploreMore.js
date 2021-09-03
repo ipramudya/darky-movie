@@ -3,10 +3,9 @@ import { CONTENT_URL } from '../utils/config';
 
 const ApiExploreMore = {
    async fetchExploreMore(providers, categories, page) {
-      const { data } = await axios.get(
-         CONTENT_URL(providers, categories, page)
-      );
-      return data;
+      return await (
+         await axios.get(CONTENT_URL(providers, categories, page))
+      ).data;
    },
 };
 

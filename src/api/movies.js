@@ -7,38 +7,39 @@ import {
 
 const ApiMovies = {
    async fetchPopular() {
-      const { data } = await axios.get(CONTENT_URL('movie', 'popular'));
-      return data;
+      return await (
+         await axios.get(CONTENT_URL('movie', 'popular'))
+      ).data;
    },
    async fetchDetails(id) {
-      const { data } = await axios.get(CONTENT_URL('movie', id));
-      return data;
+      return await (
+         await axios.get(CONTENT_URL('movie', id))
+      ).data;
    },
    async fetchWithCategories(categories) {
-      const { data } = await axios.get(CONTENT_URL('movie', categories));
-      return data;
+      return await (
+         await axios.get(CONTENT_URL('movie', categories))
+      ).data;
    },
    async fetchSimilar(id) {
-      const { data } = await axios.get(
-         DETAILS_CONTENT_URL('movie', id, 'similar')
-      );
-      return data;
+      return await (
+         await axios.get(DETAILS_CONTENT_URL('movie', id, 'similar'))
+      ).data;
    },
    async fetchCaster(id) {
-      const { data } = await axios.get(
-         DETAILS_CONTENT_URL('movie', id, 'credits')
-      );
-      return data;
+      return await (
+         await axios.get(DETAILS_CONTENT_URL('movie', id, 'credits'))
+      ).data;
    },
    async fetchExternalId(id) {
-      const { data } = await axios.get(
-         DETAILS_CONTENT_URL('movie', id, 'external_ids')
-      );
-      return data;
+      return await (
+         await axios.get(DETAILS_CONTENT_URL('movie', id, 'external_ids'))
+      ).data;
    },
    async fetchImages(id) {
-      const { data } = await axios.get(IMAGES_CONTENT_URL('movie', id));
-      return data;
+      return await (
+         await axios.get(IMAGES_CONTENT_URL('movie', id))
+      ).data;
    },
 };
 
