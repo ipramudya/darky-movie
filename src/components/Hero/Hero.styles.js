@@ -35,6 +35,7 @@ export const HeroContainer = styled.div`
       css`
          &:hover ${BackdropImg} {
             transform: scale(1.02);
+            opacity: 0.8;
          }
       `}
 `;

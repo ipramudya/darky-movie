@@ -9,6 +9,7 @@ import {
    LoadMore,
    SearchPage,
    DiscoverPage,
+   PersonPage,
 } from './pages';
 import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
@@ -20,14 +21,17 @@ const App = () => {
          <Sidebar />
          <PopularProvider>
             <Route exact path='/' component={Home} />
-            <Route exact path={['/movie/:id', '/tv/:id']}>
-               <DetailPage />
-            </Route>
+            <Route
+               exact
+               path={['/movie/:id', '/tv/:id']}
+               component={DetailPage}
+            />
             <Route
                exact
                path={['/discover/movie/:gid', '/discover/tv/:gid']}
                component={DiscoverPage}
             />
+            <Route exact path='/person/:id' component={PersonPage} />
             <MoviesProvider>
                <Route exact path='/movie' component={MoviePage} />
             </MoviesProvider>

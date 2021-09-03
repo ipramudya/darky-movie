@@ -1,4 +1,4 @@
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../../utils/config';
+import { IMAGE_URL } from '../../utils/config';
 import IconLink from './IconLink';
 import {
    OverviewContainer,
@@ -14,7 +14,7 @@ import NoImage from '../../images/no-image.png';
 import MovieStats from './MovieStats';
 import TvStats from './TvStats';
 
-const Overview = ({ content, caster, externalID, isMovie }) => {
+const Overview = ({ content, caster, externalID, type }) => {
    return (
       <>
          <OverviewContainer>
@@ -23,7 +23,9 @@ const Overview = ({ content, caster, externalID, isMovie }) => {
                   <Image
                      src={
                         content.poster_path
-                           ? `${IMAGE_BASE_URL}${POSTER_SIZE}${content?.poster_path}`
+                           ? `${IMAGE_URL(content.poster_path)}`
+                           : content?.profile_path
+                           ? `${IMAGE_URL(content.profile_path)}`
                            : NoImage
                      }
                   />
@@ -31,14 +33,17 @@ const Overview = ({ content, caster, externalID, isMovie }) => {
             </LeftBox>
             <RightBox>
                <OverviewContent>
-                  <Title>Storyline</Title>
-                  <p>{content.overview}</p>
+                  <Title>
+                     {content.hasOwnProperty('also_known_as')
+                        ? content.name
+                        : 'Story Line'}
+                  </Title>
+                  <p>{content.overview || content.biography}</p>
                </OverviewContent>
-               {isMovie ? (
+               {type === 'movie' && (
                   <MovieStats content={content} caster={caster} />
-               ) : (
-                  <TvStats content={content} caster={caster} />
                )}
+               {type === 'tv' && <TvStats content={content} caster={caster} />}
                <IconLink content={content} externalID={externalID} />
             </RightBox>
          </OverviewContainer>

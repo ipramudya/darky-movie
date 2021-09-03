@@ -1,16 +1,16 @@
-import { Stats, StatsUl, StatsLi, Text } from './Overview.styles';
+import { Stats, StatsUl, StatsLi, Text, TextLink } from './Overview.styles';
 
 const TvStats = ({ content, caster }) => {
-   const job = caster.crew
+   const foundDirector = caster.crew
       ?.map((person) => {
-         return [person.name, person.jobs[0].job];
+         return { name: person.name, id: person.id, job: person.jobs[0].job };
       })
       .find((person) => {
          return (
-            person[1] === 'Comic Book' ||
-            person[1] === 'Creator' ||
-            person[1] === 'Director' ||
-            person[1] === 'Executive Producer'
+            person.job === 'Comic Book' ||
+            person.job === 'Creator' ||
+            person.job === 'Director' ||
+            person.job === 'Executive Producer'
          );
       });
 
@@ -48,12 +48,12 @@ const TvStats = ({ content, caster }) => {
                      </Text>
                   </StatsLi>
                )}
-               {job && (
+               {foundDirector && (
                   <StatsLi>
-                     <Text main>{job[1]}</Text>
-                     <Text underline>
-                        <span>{job[0]}</span>
-                     </Text>
+                     <Text main>{foundDirector.job}</Text>
+                     <TextLink underline to={`/person/${foundDirector.id}`}>
+                        <span>{foundDirector.name}</span>
+                     </TextLink>
                   </StatsLi>
                )}
                {content?.status && (

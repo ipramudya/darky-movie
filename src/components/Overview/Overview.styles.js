@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const OverviewContainer = styled.div`
    margin: 5em 2.3em;
@@ -65,33 +66,31 @@ export const Text = styled.p`
    color: var(--greysky);
    flex: 2;
    transition: all 0.5s;
+   letter-spacing: 1px;
 
    ${(props) => props.main && `flex: 1; max-width: 200px;`}
+`;
+
+export const TextLink = styled(Link)`
+   text-decoration: underline;
+   color: var(--darksky);
+   transition: all 0.5s;
+   cursor: pointer;
+
+   &:hover {
+      color: var(--blacksky);
+   }
 
    ${(props) =>
-      props.underline &&
       !props.movie &&
-      `  > span {
+      css`
+         > span {
             text-decoration: underline;
             color: var(--darksky);
             transition: all 0.5s;
             cursor: pointer;
          }
          > span:hover {
-            color: var(--blacksky);
-         }
-      `}
-
-      ${(props) =>
-      props.underline &&
-      props.movie &&
-      `  {
-            text-decoration: underline;
-            color: var(--darksky);
-            transition: all 0.5s;
-            cursor: pointer;
-         }
-         &:hover {
             color: var(--blacksky);
          }
       `}

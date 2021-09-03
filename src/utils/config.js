@@ -4,6 +4,12 @@ export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 export const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 export const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
+export const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
+// Sizes: w300, w780, w1280, original
+export const BACKDROP_SIZE = 'w1280';
+// w92, w154, w185, w342, w500, w780, original
+export const POSTER_SIZE = 'w780';
+
 // Mine
 
 /* 
@@ -28,13 +34,15 @@ export const SEARCH_URL = (content, query, page = 1) =>
 export const DISCOVER_URL = (content, gid, page = 1) =>
    `${API_URL}discover/${content}?api_key=${API_KEY}&with_genres=${gid}&page=${page}`;
 
+export const PEOPLE_URL = (id, details = null) =>
+   `${API_URL}person/${id}${
+      details ? '/' + details : ''
+   }?api_key=${API_KEY}&language=en-US`;
+
+export const IMAGE_URL = (path, backdrops = null) =>
+   `${IMAGE_BASE_URL}${backdrops ? BACKDROP_SIZE : POSTER_SIZE}${path}`;
+
 // For login and voting
 export const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;
 export const LOGIN_URL = `${API_URL}authentication/token/validate_with_login?api_key=${API_KEY}`;
 export const SESSION_ID_URL = `${API_URL}authentication/session/new?api_key=${API_KEY}`;
-
-export const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
-// Sizes: w300, w780, w1280, original
-export const BACKDROP_SIZE = 'w1280';
-// w92, w154, w185, w342, w500, w780, original
-export const POSTER_SIZE = 'w780';

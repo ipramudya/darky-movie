@@ -1,8 +1,12 @@
-import { Stats, StatsUl, StatsLi, Text } from './Overview.styles';
+import { Stats, StatsUl, StatsLi, Text, TextLink } from './Overview.styles';
 const MovieStats = ({ content, caster }) => {
-   const foundDirector = caster?.find((dr) => {
-      return dr.job === 'Director';
-   });
+   const foundDirector = caster
+      ?.map((person) => {
+         return { name: person.name, id: person.id, job: person.job };
+      })
+      .find((dr) => {
+         return dr.job === 'Director';
+      });
 
    const productionCompanies = content.production_companies
       ?.map((company) => company.name)
@@ -24,9 +28,9 @@ const MovieStats = ({ content, caster }) => {
                </StatsLi>
                <StatsLi>
                   <Text main>Director</Text>
-                  <Text underline movie>
+                  <TextLink movie to={`/person/${foundDirector?.id}`}>
                      {foundDirector?.name}
-                  </Text>
+                  </TextLink>
                </StatsLi>
                <StatsLi>
                   <Text main>Status</Text>

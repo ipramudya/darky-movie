@@ -109,7 +109,7 @@ const DetailPage = () => {
                            content={detailsContent}
                            caster={caster.crew}
                            externalID={externalID}
-                           isMovie
+                           type='movie'
                         />
                      )}
                      {type === 'tv' && (
@@ -117,6 +117,7 @@ const DetailPage = () => {
                            content={detailsContent}
                            caster={aggregateCaster}
                            externalID={externalID}
+                           type='tv'
                         />
                      )}
                      <List list_header='Cast'>
