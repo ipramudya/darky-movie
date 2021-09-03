@@ -35,6 +35,7 @@ const Card = forwardRef(({ item }, ref) => {
                   src={
                      item?.poster_path ? IMAGE_URL(item.poster_path) : NoImage
                   }
+                  alt='Poster Image'
                />
             </CardImage>
             <CardTitle>{item?.title ? item.title : item.name}</CardTitle>

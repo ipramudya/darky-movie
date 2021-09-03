@@ -19,6 +19,7 @@ const PersonCard = ({ person, tv }) => {
                         ? IMAGE_URL(person.profile_path)
                         : NoImage
                   }
+                  alt='Photo Profile'
                />
             </ImageWrapper>
             <Subtitle main>{person?.original_name}</Subtitle>

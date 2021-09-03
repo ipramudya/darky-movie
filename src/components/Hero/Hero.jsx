@@ -78,6 +78,7 @@ const Hero = ({ contents, disabled }) => {
                         ? IMAGE_URL(contents.backdrop_path, true)
                         : NoImage
                   }
+                  alt='Backdrops Hero Image'
                />
             </HeroBackdrop>
          </HeroContainer>

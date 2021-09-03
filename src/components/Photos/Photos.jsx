@@ -5,7 +5,7 @@ import {
    HeaderWrapper,
    PhotosContainer,
    PosterGrid,
-   PosterImage,
+   LazyImage,
    GridItem,
    BackdropGrid,
 } from './Photos.styles';
@@ -35,7 +35,7 @@ const Photos = ({ content }) => {
             {content.posters.length > 0
                ? content.posters?.map((item, idx) => (
                     <GridItem key={idx} poster>
-                       <PosterImage
+                       <LazyImage
                           key={idx}
                           src={IMAGE_URL(item.file_path)}
                           scrollPosition={scroll}
@@ -56,11 +56,11 @@ const Photos = ({ content }) => {
             {content.backdrops.length > 0
                ? content.backdrops?.map((item, idx) => (
                     <GridItem key={idx}>
-                       <PosterImage
+                       <LazyImage
                           key={idx}
                           src={IMAGE_URL(item.file_path, true)}
                           scrollPosition={scroll}
-                          alt='Poster Image'
+                          alt='Backdrops Image'
                           width='100%'
                           height='100%'
                           effect='blur'

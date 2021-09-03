@@ -22,12 +22,13 @@ const Overview = ({ content, caster, externalID, type }) => {
                <ImageWrapper>
                   <Image
                      src={
-                        content.poster_path
+                        content?.poster_path
                            ? `${IMAGE_URL(content.poster_path)}`
                            : content?.profile_path
                            ? `${IMAGE_URL(content.profile_path)}`
                            : NoImage
                      }
+                     alt='Poster Image'
                   />
                </ImageWrapper>
             </LeftBox>

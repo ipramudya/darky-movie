@@ -43,7 +43,7 @@ export const GridItem = styled.div`
    ${(props) => !props.poster && 'padding-top: 60%;'}
 `;
 
-export const PosterImage = styled(LazyLoadImage)`
+export const LazyImage = styled(LazyLoadImage)`
    position: absolute;
    top: 0;
    left: 0;
