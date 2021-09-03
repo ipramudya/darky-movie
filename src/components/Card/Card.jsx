@@ -9,7 +9,7 @@ import {
    Star,
    Rating,
 } from './Card.styles';
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../../utils/config';
+import { IMAGE_URL } from '../../utils/config';
 import NoImage from '../../images/no-image.png';
 
 const Card = forwardRef(({ item }, ref) => {
@@ -33,9 +33,7 @@ const Card = forwardRef(({ item }, ref) => {
             <CardImage className='animated'>
                <ImageItem
                   src={
-                     item?.poster_path
-                        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${item.poster_path}`
-                        : NoImage
+                     item?.poster_path ? IMAGE_URL(item.poster_path) : NoImage
                   }
                />
             </CardImage>

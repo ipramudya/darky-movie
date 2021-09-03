@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import NoImage from '../../images/no-image.png';
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../../utils/config';
+import { IMAGE_URL } from '../../utils/config';
 import {
    Image,
    ImageWrapper,
@@ -16,7 +16,7 @@ const PersonCard = ({ person, tv }) => {
                <Image
                   src={
                      person?.profile_path
-                        ? `${IMAGE_BASE_URL}${POSTER_SIZE}${person.profile_path}`
+                        ? IMAGE_URL(person.profile_path)
                         : NoImage
                   }
                />

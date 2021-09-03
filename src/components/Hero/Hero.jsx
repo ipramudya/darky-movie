@@ -1,7 +1,7 @@
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 
-import { IMAGE_BASE_URL } from '../../utils/config';
+import { IMAGE_URL } from '../../utils/config';
 import {
    HeroContainer,
    HeroBackdrop,
@@ -75,7 +75,7 @@ const Hero = ({ contents, disabled }) => {
                <BackdropImg
                   src={
                      contents.backdrop_path
-                        ? `${IMAGE_BASE_URL}original${contents.backdrop_path}`
+                        ? IMAGE_URL(contents.backdrop_path, true)
                         : NoImage
                   }
                />

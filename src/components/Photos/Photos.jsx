@@ -1,5 +1,5 @@
 // import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../../utils/config';
+import { IMAGE_BASE_URL, IMAGE_URL, POSTER_SIZE } from '../../utils/config';
 import {
    Header,
    HeaderWrapper,
@@ -37,7 +37,7 @@ const Photos = ({ content }) => {
                     <GridItem key={idx} poster>
                        <PosterImage
                           key={idx}
-                          src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.file_path}`}
+                          src={IMAGE_URL(item.file_path)}
                           scrollPosition={scroll}
                           alt='Poster Image'
                           width='100%'
@@ -58,7 +58,7 @@ const Photos = ({ content }) => {
                     <GridItem key={idx}>
                        <PosterImage
                           key={idx}
-                          src={`${IMAGE_BASE_URL}${POSTER_SIZE}${item.file_path}`}
+                          src={IMAGE_URL(item.file_path, true)}
                           scrollPosition={scroll}
                           alt='Poster Image'
                           width='100%'
