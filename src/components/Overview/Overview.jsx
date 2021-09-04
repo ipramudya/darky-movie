@@ -8,11 +8,13 @@ import {
    RightBox,
    OverviewContent,
    Title,
+   Subtitle,
 } from './Overview.styles';
 
 import NoImage from '../../images/no-image.png';
 import MovieStats from './MovieStats';
 import TvStats from './TvStats';
+import PersonStats from './PersonStats';
 
 const Overview = ({ content, caster, externalID, type }) => {
    return (
@@ -36,15 +38,22 @@ const Overview = ({ content, caster, externalID, type }) => {
                <OverviewContent>
                   <Title>
                      {content.hasOwnProperty('also_known_as')
-                        ? content.name
+                        ? `${content.name}'s Biography`
                         : 'Story Line'}
                   </Title>
-                  <p>{content.overview || content.biography}</p>
+                  {content.overview && <p>{content.overview}</p>}
+                  {content.biography &&
+                     content.biography
+                        .split('\n\n')
+                        .map((paragraph, idx) => (
+                           <Subtitle key={idx}>{paragraph}</Subtitle>
+                        ))}
                </OverviewContent>
                {type === 'movie' && (
                   <MovieStats content={content} caster={caster} />
                )}
                {type === 'tv' && <TvStats content={content} caster={caster} />}
+               {type === 'person' && <PersonStats content={content} />}
                <IconLink content={content} externalID={externalID} />
             </RightBox>
          </OverviewContainer>

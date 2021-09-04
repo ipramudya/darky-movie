@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const OverviewContainer = styled.div`
-   margin: 5em 2.3em;
+   margin: 5em 4.3em;
    display: flex;
    animation: fadeIn 1s;
 `;
@@ -42,6 +42,10 @@ export const Title = styled.h3`
    font-size: 1.5em;
    letter-spacing: 1.5px;
    margin-bottom: 0.5em;
+`;
+
+export const Subtitle = styled.p`
+   margin-bottom: 0.8em;
 `;
 
 export const Stats = styled.div`

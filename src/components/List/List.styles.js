@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 
 export const ListHeader = styled.div`
-   margin: 0 2.3em;
+   margin: 0 4.3em;
    margin-bottom: 1em;
    display: flex;
    align-items: flex-end;
@@ -55,7 +55,7 @@ export const StyledSlider = styled(Slider)`
       background: rgba(73, 73, 73, 0.3);
    }
    .slick-list {
-      margin: 30px;
+      margin: 2em;
    }
    .slick-prev:before,
    .slick-next:before {

@@ -1,22 +1,32 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const PhotosContainer = styled.div`
-   margin: 5em 2.3em;
+   margin: 5em 4.3em;
    animation: fadeIn 0.5s;
 `;
 
-export const PosterGrid = styled.div`
+export const Grid = styled.div`
    display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
    gap: 0.5em;
-   margin-bottom: 3em;
-`;
 
-export const BackdropGrid = styled.div`
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-   gap: 0.5em;
+   ${(props) =>
+      props.landscape &&
+      css`
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      `}
+
+   ${(props) =>
+      !props.landscape &&
+      css`
+         grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+      `}
+
+   ${(props) =>
+      props.gutterBottom &&
+      css`
+         margin-bottom: 3em;
+      `}
 `;
 
 export const HeaderWrapper = styled.div`

@@ -7,3 +7,4 @@ export { default as Card } from './Card/Card';
 export { default as PersonCard } from './PersonCard/PersonCard';
 export { default as Overview } from './Overview/Overview';
 export { default as Photos } from './Photos/Photos';
+export { default as Button } from './Button/Button';

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GridContainer = styled.div`
-   margin: 3rem 2rem;
+   margin: 3rem 4.3rem;
 `;
 
 export const GridContent = styled.div`

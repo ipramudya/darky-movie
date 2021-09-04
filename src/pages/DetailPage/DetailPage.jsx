@@ -12,9 +12,8 @@ import {
    Spinner,
    Overview,
    Photos,
+   Button,
 } from '../../components';
-
-import { Button, ButtonContainer } from './styles';
 
 const DetailPage = () => {
    const { id } = useParams();
@@ -77,21 +76,6 @@ const DetailPage = () => {
 
    const buttonTypes = ['overview', 'photos'];
    const [activeButton, setActiveButton] = useState(buttonTypes[0]);
-   const Buttons = () => {
-      return (
-         <ButtonContainer>
-            {buttonTypes.map((type, idx) => (
-               <Button
-                  key={idx}
-                  active={activeButton === type}
-                  onClick={() => setActiveButton(type)}
-               >
-                  {type}
-               </Button>
-            ))}
-         </ButtonContainer>
-      );
-   };
 
    return (
       <>
@@ -101,7 +85,11 @@ const DetailPage = () => {
          ) : (
             <>
                <Hero contents={detailsContent} disabled />
-               <Buttons />
+               <Button
+                  buttonTypes={buttonTypes}
+                  activeButton={activeButton}
+                  setActiveButton={setActiveButton}
+               />
                {activeButton === buttonTypes[0] && (
                   <>
                      {type === 'movie' && (
@@ -132,7 +120,16 @@ const DetailPage = () => {
                      </List>
                   </>
                )}
-               {activeButton === buttonTypes[1] && <Photos content={images} />}
+               {activeButton === buttonTypes[1] && (
+                  <>
+                     <Photos contents={images.posters} title='Posters' />
+                     <Photos
+                        contents={images.backdrops}
+                        landscape={true}
+                        title='Backdrops'
+                     />
+                  </>
+               )}
                <List list_header='Similar Film'>
                   {similarContent.results?.map((content, idx) => (
                      <Card item={content} key={idx} />

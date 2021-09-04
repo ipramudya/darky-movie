@@ -9,7 +9,7 @@ export const ButtonContainer = styled.div`
    align-items: center;
 `;
 
-export const Button = styled.button`
+export const ButtonItem = styled.button`
    width: auto;
    margin: 1em;
    padding: 0.8em;
