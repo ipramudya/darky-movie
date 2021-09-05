@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
-import { TiStarFullOutline } from 'react-icons/ti';
 import {
    CardContainer,
    CardImage,
