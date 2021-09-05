@@ -15,7 +15,8 @@ import {
    SubMeta,
 } from './Hero.styles';
 
-import NoImage from '../../images/no-image.png';
+import NoImage from '../../assets/no-image.png';
+import { StarIconPath, StarViewBox } from '../../assets/star-icon';
 
 const Hero = ({ contents, disabled }) => {
    let rating;
@@ -28,8 +29,11 @@ const Hero = ({ contents, disabled }) => {
    const starConfig = {
       rating,
       numberOfStars: 5,
-      starDimension: '15px',
+      starDimension: '1.3em',
+      starSpacing: '0.1em',
       starRatedColor: '#3F72AF',
+      svgIconPath: StarIconPath,
+      svgIconViewBox: StarViewBox,
    };
 
    const HeroChildren = () => {

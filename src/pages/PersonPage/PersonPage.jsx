@@ -5,7 +5,9 @@ import {
    Button,
    Card,
    Grid,
+   IconLink,
    Overview,
+   PersonStats,
    Photos,
    Spinner,
 } from '../../components';
@@ -47,11 +49,13 @@ const PersonPage = () => {
             <Spinner loading={loading} />
          ) : (
             <>
-               <Overview
-                  content={details}
-                  externalID={externalID}
-                  type='person'
-               />
+               <Overview content={details} externalID={externalID}>
+                  <PersonStats content={details} />
+                  <IconLink
+                     homepage={details.homepage}
+                     externalID={externalID}
+                  />
+               </Overview>
                <Button
                   buttonTypes={buttonTypes}
                   activeButton={activeButton}

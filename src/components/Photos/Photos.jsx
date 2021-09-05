@@ -8,7 +8,7 @@ import {
    Grid,
 } from './Photos.styles';
 
-import NoImage from '../../images/no-image.png';
+import NoImage from '../../assets/no-image.png';
 import { useEffect, useState } from 'react';
 
 const Photos = ({ contents, title, landscape = false }) => {

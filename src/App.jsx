@@ -3,13 +3,14 @@ import { Route } from 'react-router-dom';
 import { PopularProvider, MoviesProvider, TVsProvider } from './context';
 import {
    Home,
-   DetailPage,
    MoviePage,
    TVPage,
    LoadMore,
    SearchPage,
    DiscoverPage,
    PersonPage,
+   DetailMoviePage,
+   DetailTvPage,
 } from './pages';
 import { Sidebar } from './components';
 import { GlobalStyle } from './GlobalStyles';
@@ -21,11 +22,8 @@ const App = () => {
          <Sidebar />
          <PopularProvider>
             <Route exact path='/' component={Home} />
-            <Route
-               exact
-               path={['/movie/:id', '/tv/:id']}
-               component={DetailPage}
-            />
+            <Route exact path='/movie/:id' component={DetailMoviePage} />
+            <Route exact path='/tv/:id' component={DetailTvPage} />
             <Route
                exact
                path={['/discover/movie/:gid', '/discover/tv/:gid']}

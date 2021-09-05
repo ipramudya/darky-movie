@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
+import { TiStarFullOutline } from 'react-icons/ti';
 import {
    CardContainer,
    CardImage,
@@ -10,7 +11,8 @@ import {
    Rating,
 } from './Card.styles';
 import { IMAGE_URL } from '../../utils/config';
-import NoImage from '../../images/no-image.png';
+import NoImage from '../../assets/no-image.png';
+import { StarIconPath, StarViewBox } from '../../assets/star-icon';
 
 const Card = forwardRef(({ item }, ref) => {
    let rating;
@@ -23,8 +25,11 @@ const Card = forwardRef(({ item }, ref) => {
    const starConfig = {
       rating,
       numberOfStars: 5,
-      starDimension: '15px',
+      starDimension: '1em',
+      starSpacing: '0',
       starRatedColor: '#3F72AF',
+      svgIconPath: StarIconPath,
+      svgIconViewBox: StarViewBox,
    };
 
    return (

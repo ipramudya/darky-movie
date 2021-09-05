@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const OverviewContainer = styled.div`
    margin: 5em 4.3em;
@@ -46,69 +45,4 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.p`
    margin-bottom: 0.8em;
-`;
-
-export const Stats = styled.div`
-   margin-bottom: 1.5em;
-`;
-
-export const StatsUl = styled.ul`
-   display: flex;
-   flex-wrap: wrap;
-`;
-
-export const StatsLi = styled.li`
-   width: 100%;
-   display: flex;
-   padding: 0.5em 0;
-
-   ${(props) => props.icon && `width: fit-content; margin-right:1em;`}
-`;
-
-export const Text = styled.p`
-   font-size: 0.9em;
-   color: var(--greysky);
-   flex: 2;
-   transition: all 0.5s;
-   letter-spacing: 1px;
-
-   ${(props) => props.main && `flex: 1; max-width: 200px;`}
-`;
-
-export const TextLink = styled(Link)`
-   text-decoration: underline;
-   color: var(--darksky);
-   transition: all 0.5s;
-   cursor: pointer;
-
-   &:hover {
-      color: var(--blacksky);
-   }
-
-   ${(props) =>
-      !props.movie &&
-      css`
-         > span {
-            text-decoration: underline;
-            color: var(--darksky);
-            transition: all 0.5s;
-            cursor: pointer;
-         }
-         > span:hover {
-            color: var(--blacksky);
-         }
-      `}
-`;
-
-export const LinkIcon = styled.a`
-   color: var(--greysky);
-   transition: all 0.5s;
-
-   &:hover {
-      color: var(--darksky);
-   }
-
-   > * {
-      font-size: 1.8em;
-   }
 `;

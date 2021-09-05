@@ -1,4 +1,4 @@
-import { Stats, StatsLi, StatsUl, Text } from './Overview.styles';
+import { Stats, StatsLi, StatsUl, Text } from './Stats.style';
 
 const PersonStats = ({ content }) => {
    const bornDate = new Date(content?.birthday)

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import NoImage from '../../images/no-image.png';
+import NoImage from '../../assets/no-image.png';
 import { IMAGE_URL } from '../../utils/config';
 import {
    Image,

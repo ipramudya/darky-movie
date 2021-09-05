@@ -1,5 +1,5 @@
 import { ScaleLoader } from 'react-spinners';
-import { css } from '@emotion/react';
+import { css } from 'styled-components';
 
 const Spinner = ({ loading }) => {
    const spinnerStyle = css`

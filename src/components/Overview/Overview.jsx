@@ -1,5 +1,4 @@
 import { IMAGE_URL } from '../../utils/config';
-import IconLink from './IconLink';
 import {
    OverviewContainer,
    LeftBox,
@@ -11,12 +10,9 @@ import {
    Subtitle,
 } from './Overview.styles';
 
-import NoImage from '../../images/no-image.png';
-import MovieStats from './MovieStats';
-import TvStats from './TvStats';
-import PersonStats from './PersonStats';
+import NoImage from '../../assets/no-image.png';
 
-const Overview = ({ content, caster, externalID, type }) => {
+const Overview = ({ content, children }) => {
    return (
       <>
          <OverviewContainer>
@@ -49,12 +45,7 @@ const Overview = ({ content, caster, externalID, type }) => {
                            <Subtitle key={idx}>{paragraph}</Subtitle>
                         ))}
                </OverviewContent>
-               {type === 'movie' && (
-                  <MovieStats content={content} caster={caster} />
-               )}
-               {type === 'tv' && <TvStats content={content} caster={caster} />}
-               {type === 'person' && <PersonStats content={content} />}
-               <IconLink content={content} externalID={externalID} />
+               {children}
             </RightBox>
          </OverviewContainer>
       </>

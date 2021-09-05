@@ -8,7 +8,7 @@ import {
    NavDirection,
    SearchButton,
 } from './sidebar.styles';
-import Logo from '../../images/movie-ticket-icon.png';
+import Logo from '../../assets/movie-ticket-icon.png';
 
 const Sidebar = () => {
    const [isActive, setIsActive] = useState(false);

@@ -1,4 +1,4 @@
-import { Stats, StatsUl, StatsLi, Text, TextLink } from './Overview.styles';
+import { Stats, StatsUl, StatsLi, Text, TextLink } from './Stats.style';
 
 const TvStats = ({ content, caster }) => {
    const foundDirector = caster.crew
