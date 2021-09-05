@@ -61,7 +61,7 @@ const DetailMoviePage = () => {
                {activeButton === buttonTypes[0] && (
                   <>
                      <Overview content={details}>
-                        <MovieStats caster={caster.cast} content={details} />
+                        <MovieStats caster={caster.crew} content={details} />
                         <IconLink
                            homepage={details.homepage}
                            externalID={externalId}
