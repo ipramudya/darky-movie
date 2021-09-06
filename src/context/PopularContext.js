@@ -10,27 +10,28 @@ export const PopularProvider = ({ children }) => {
    const [loading, setLoading] = useState(false);
    const [movies, setMovies] = useState([]);
    const [TVs, setTVs] = useState([]);
+   const [popularContents, setPopularContents] = useState([]);
 
    useEffect(() => {
       setLoading(true);
-      ApiMovies.fetchPopular().then((data) => {
-         setMovies(data.results);
+      const fetchPopular = async () => {
+         const getMovies = await ApiMovies.fetchPopular();
+         const getTvs = await ApiTv.fetchPopular();
+         setMovies(getMovies.results);
+         setTVs(getTvs.results);
+         setPopularContents((prev) => {
+            return prev.concat(getMovies.results, getTvs.results);
+         });
          setLoading(false);
-      });
-   }, []);
-
-   useEffect(() => {
-      setLoading(true);
-      ApiTv.fetchPopular().then((data) => {
-         setTVs(data.results);
-         setLoading(false);
-      });
+      };
+      fetchPopular();
    }, []);
 
    const value = {
       loading,
       movies,
       TVs,
+      popularContents,
    };
 
    return (

@@ -1,10 +1,10 @@
 import { GridContainer, GridContent, Header } from './Grid.styles';
 
-const Grid = ({ children, header }) => {
+const Grid = ({ children, header, long }) => {
    return (
       <GridContainer>
          <Header>{header}</Header>
-         <GridContent>{children}</GridContent>
+         <GridContent long={long}>{children}</GridContent>
       </GridContainer>
    );
 };

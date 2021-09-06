@@ -8,7 +8,7 @@ import {
    Subtitle,
 } from './PersonCard.styles';
 
-const PersonCard = ({ person, tv }) => {
+const PersonCard = ({ person }) => {
    return (
       <PersonCardContainer>
          <Link to={`/person/${person?.id}`}>
@@ -23,10 +23,10 @@ const PersonCard = ({ person, tv }) => {
                />
             </ImageWrapper>
             <Subtitle main>{person?.original_name}</Subtitle>
-            {!tv ? (
+            {person.character ? (
                <Subtitle>{person?.character}</Subtitle>
             ) : (
-               <Subtitle>{person.roles[0]?.character}</Subtitle>
+               <Subtitle>{person.roles?.[0].character}</Subtitle>
             )}
          </Link>
       </PersonCardContainer>

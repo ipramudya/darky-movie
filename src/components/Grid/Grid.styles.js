@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const GridContainer = styled.div`
    margin: 3rem 4.3rem;
@@ -8,6 +8,12 @@ export const GridContent = styled.div`
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
    gap: 2em 0.5em;
+
+   ${(props) =>
+      props.long &&
+      css`
+         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      `}
 `;
 
 export const Header = styled.h3`

@@ -3,14 +3,13 @@ import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
 const Home = () => {
-   const { movies, TVs, loading } = usePopularContext();
+   const { movies, TVs, loading, popularContents } = usePopularContext();
 
-   const contents = [...movies, ...TVs];
-   const randomIndex = randomNumber(contents.length);
+   const randomIndex = randomNumber(popularContents?.length);
 
    return (
       <>
-         {contents && <Hero contents={contents[randomIndex]} />}
+         {popularContents && <Hero contents={popularContents[randomIndex]} />}
          {loading ? (
             <Spinner loading={loading} />
          ) : (

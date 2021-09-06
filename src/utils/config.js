@@ -26,7 +26,7 @@ export const DETAILS_CONTENT_URL = (content, keyword, details) =>
    `${API_URL}${content}/${keyword}/${details}?api_key=${API_KEY}&language=en-US&page=1`;
 
 export const IMAGES_CONTENT_URL = (content, id) =>
-   `${API_URL}${content}/${id}/images?api_key=${API_KEY}`;
+   `${API_URL}${content}/${id}/images?api_key=${API_KEY}&include_image_language=en`;
 
 export const SEARCH_URL = (content, query, page = 1) =>
    `${API_URL}search/${content}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
@@ -41,6 +41,9 @@ export const PEOPLE_URL = (id, details = null) =>
 
 export const IMAGE_URL = (path, backdrops = null) =>
    `${IMAGE_BASE_URL}${backdrops ? BACKDROP_SIZE : POSTER_SIZE}${path}`;
+
+export const SEASON_URL = (id, season_num) =>
+   `${API_URL}tv/${id}/season/${season_num}?api_key=${API_KEY}&language=en-US`;
 
 // For login and voting
 export const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}`;

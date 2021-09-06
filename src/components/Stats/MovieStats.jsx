@@ -1,7 +1,6 @@
 import { Stats, StatsLi, StatsUl, Text, TextLink } from './Stats.style';
 
 const MovieStats = ({ content, caster }) => {
-   console.log(caster);
    const foundDirector = caster
       ?.map((person) => {
          return { name: person.name, id: person.id, job: person.job };

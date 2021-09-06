@@ -12,34 +12,6 @@ export const BackdropImg = styled.img`
    }
 `;
 
-export const HeroContainer = styled.div`
-   width: 100%;
-   padding-bottom: 40%;
-   background-color: black;
-   position: relative;
-
-   @media screen and (max-width: 970px) {
-      position: unset;
-      padding: 0;
-      height: 50rem;
-      display: flex;
-      flex-direction: column;
-   }
-
-   @media screen and (max-width: 515px) {
-      height: 30rem;
-   }
-
-   ${(props) =>
-      !props.disable &&
-      css`
-         &:hover ${BackdropImg} {
-            transform: scale(1.02);
-            opacity: 0.8;
-         }
-      `}
-`;
-
 export const HeroBackdrop = styled.div`
    position: absolute;
    top: 0;
@@ -103,6 +75,42 @@ export const HeroDescWrapper = styled.div`
    @media screen and (max-width: 515px) {
       padding-left: 2em;
    }
+`;
+
+export const HeroContainer = styled.div`
+   width: 100%;
+   padding-bottom: 40%;
+   background-color: black;
+   position: relative;
+
+   @media screen and (max-width: 970px) {
+      position: unset;
+      padding: 0;
+      height: 50rem;
+      display: flex;
+      flex-direction: column;
+   }
+
+   @media screen and (max-width: 515px) {
+      height: 30rem;
+   }
+
+   ${(props) =>
+      !props.disable &&
+      css`
+         &:hover ${BackdropImg} {
+            transform: scale(1.02);
+            opacity: 0.8;
+         }
+      `}
+
+   ${(props) =>
+      props.disable &&
+      css`
+         ${HeroBackdrop}, ${HeroDescWrapper} {
+            animation: none;
+         }
+      `}
 `;
 
 export const Title = styled.h1`

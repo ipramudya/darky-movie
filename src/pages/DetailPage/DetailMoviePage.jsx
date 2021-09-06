@@ -78,7 +78,7 @@ const DetailMoviePage = () => {
                   <>
                      <Photos contents={images.posters} title='Posters' />
                      <Photos
-                        contents={images.posters}
+                        contents={images.backdrops}
                         title='Backdrops'
                         landscape
                      />

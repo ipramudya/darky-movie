@@ -3,6 +3,7 @@ import {
    CONTENT_URL,
    DETAILS_CONTENT_URL,
    IMAGES_CONTENT_URL,
+   SEASON_URL,
 } from '../utils/config';
 
 const ApiTv = {
@@ -26,11 +27,6 @@ const ApiTv = {
          await axios.get(DETAILS_CONTENT_URL('tv', id, 'similar'))
       ).data;
    },
-   async fetchCaster(id) {
-      return await (
-         await axios.get(DETAILS_CONTENT_URL('tv', id, 'credits'))
-      ).data;
-   },
    async fetchAggregateCaster(id) {
       return await (
          await axios.get(DETAILS_CONTENT_URL('tv', id, 'aggregate_credits'))
@@ -44,6 +40,11 @@ const ApiTv = {
    async fetchImages(id) {
       return await (
          await axios.get(IMAGES_CONTENT_URL('tv', id))
+      ).data;
+   },
+   async fetchSeasonDetail(id, season_num) {
+      return await (
+         await axios.get(SEASON_URL(id, season_num))
       ).data;
    },
 };
