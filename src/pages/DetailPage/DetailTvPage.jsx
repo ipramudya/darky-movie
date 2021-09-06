@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiTv from '../../api/tv';
@@ -21,35 +22,58 @@ const DetailTvPage = () => {
    const { id } = useParams();
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
-   const [details, setDetails] = useState([]);
-   const [similar, setSimilar] = useState([]);
-   const [aggregateCaster, setAggregateCaster] = useState([]);
-   const [images, setImages] = useState([]);
-   const [externalId, setExternalId] = useState([]);
+   const [detailTv, setDetailTv] = useState({
+      details: [],
+      similar: [],
+      aggregateCaster: [],
+      images: [],
+      externalId: [],
+      seasonDetails: [],
+   });
    const [optionValue, setOptionValue] = useState(1);
-   const [seasonDetails, setSeasonDetails] = useState([]);
+
+   const {
+      details,
+      similar,
+      aggregateCaster,
+      images,
+      externalId,
+      seasonDetails,
+   } = detailTv;
+
+   useEffect(() => {
+      setLoading(true);
+      axios
+         .all([
+            ApiTv.fetchDetails(id),
+            ApiTv.fetchSimilar(id),
+            ApiTv.fetchAggregateCaster(id),
+            ApiTv.fetchImages(id),
+            ApiTv.fetchExternalId(id),
+            ApiTv.fetchSeasonDetail(id, 1),
+         ])
+         .then(
+            axios.spread((...data) => {
+               setDetailTv({
+                  details: data[0],
+                  similar: data[1],
+                  aggregateCaster: data[2],
+                  images: data[3],
+                  externalId: data[4],
+                  seasonDetails: data[5],
+               });
+               setLoading(false);
+            })
+         )
+         .catch((err) => {
+            setError(err);
+            setLoading(false);
+         });
+   }, [id]);
+
    const seasons = details.seasons?.filter(
       (detail) => detail.name !== 'Specials'
    );
-
-   useEffect(() => {
-      const fetchDetailTv = async () => {
-         setLoading(true);
-         try {
-            setDetails(await ApiTv.fetchDetails(id));
-            setSimilar(await ApiTv.fetchSimilar(id));
-            setAggregateCaster(await ApiTv.fetchAggregateCaster(id));
-            setImages(await ApiTv.fetchImages(id));
-            setExternalId(await ApiTv.fetchExternalId(id));
-            setSeasonDetails(await ApiTv.fetchSeasonDetail(id, optionValue));
-            setLoading(false);
-         } catch (err) {
-            setError(err);
-            setLoading(false);
-         }
-      };
-      fetchDetailTv();
-   }, [id]);
 
    /* Prevent First Run */
    const initial = useRef(true);
@@ -60,7 +84,9 @@ const DetailTvPage = () => {
       }
 
       ApiTv.fetchSeasonDetail(id, optionValue).then((res) => {
-         setSeasonDetails(res);
+         setDetailTv((prev) => {
+            return { ...prev, seasonDetails: res };
+         });
       });
    }, [optionValue, id]);
 

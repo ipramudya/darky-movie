@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import ApiMovies from '../../api/movies';
 import {
    Button,
@@ -18,28 +19,40 @@ const DetailMoviePage = () => {
    const { id } = useParams();
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
-   const [details, setDetails] = useState([]);
-   const [similar, setSimilar] = useState([]);
-   const [caster, setCaster] = useState([]);
-   const [images, setImages] = useState([]);
-   const [externalId, setExternalId] = useState([]);
-
+   const [detailMovie, setDetailMovie] = useState({
+      details: [],
+      similar: [],
+      caster: [],
+      images: [],
+      externalId: [],
+   });
+   const { details, similar, caster, images, externalId } = detailMovie;
    useEffect(() => {
-      const fetchDetailMovie = async () => {
-         setLoading(true);
-         try {
-            setDetails(await ApiMovies.fetchDetails(id));
-            setSimilar(await ApiMovies.fetchSimilar(id));
-            setCaster(await ApiMovies.fetchCaster(id));
-            setImages(await ApiMovies.fetchImages(id));
-            setExternalId(await ApiMovies.fetchExternalId(id));
-            setLoading(false);
-         } catch (err) {
+      setLoading(true);
+      axios
+         .all([
+            ApiMovies.fetchDetails(id),
+            ApiMovies.fetchSimilar(id),
+            ApiMovies.fetchCaster(id),
+            ApiMovies.fetchImages(id),
+            ApiMovies.fetchExternalId(id),
+         ])
+         .then(
+            axios.spread((...data) => {
+               setDetailMovie({
+                  details: data[0],
+                  similar: data[1],
+                  caster: data[2],
+                  images: data[3],
+                  externalId: data[4],
+               });
+               setLoading(false);
+            })
+         )
+         .catch((err) => {
             setError(err);
             setLoading(false);
-         }
-      };
-      fetchDetailMovie();
+         });
    }, [id]);
 
    const buttonTypes = ['overview', 'photos'];
@@ -68,8 +81,8 @@ const DetailMoviePage = () => {
                         />
                      </Overview>
                      <List>
-                        {caster.cast?.map((content, idx) => (
-                           <PersonCard person={content} key={idx} />
+                        {caster.cast?.map((content) => (
+                           <PersonCard person={content} key={content.id} />
                         ))}
                      </List>
                   </>
@@ -85,8 +98,8 @@ const DetailMoviePage = () => {
                   </>
                )}
                <List list_header='More Like This'>
-                  {similar.results?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {similar.results?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
             </>
