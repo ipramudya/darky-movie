@@ -1,3 +1,4 @@
+import { convertDate } from '../../utils/helpers';
 import { Stats, StatsLi, StatsUl, Text, TextLink } from './Stats.style';
 
 const MovieStats = ({ content, caster }) => {
@@ -13,11 +14,7 @@ const MovieStats = ({ content, caster }) => {
       ?.map((company) => company.name)
       .join(', ');
 
-   const releasedDate = new Date(content?.release_date)
-      .toUTCString()
-      .split(' ')
-      .splice(0, 4)
-      .join(' ');
+   const releasedDate = convertDate(content?.release_date);
 
    return (
       <Stats>

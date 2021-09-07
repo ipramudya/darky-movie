@@ -1,3 +1,4 @@
+import { convertDate } from '../../utils/helpers';
 import {
    SelectHeaderContainer,
    SelectWrapper,
@@ -6,11 +7,8 @@ import {
 } from './Select.styles';
 
 const Select = ({ options, contents, setOptionValue }) => {
-   const airDate = new Date(contents?.air_date)
-      .toUTCString()
-      .split(' ')
-      .splice(0, 4)
-      .join(' ');
+   const airDate = convertDate(contents?.air_date);
+
    const selectChangeHandler = (event) => {
       setOptionValue(event.target.value);
    };
@@ -26,7 +24,7 @@ const Select = ({ options, contents, setOptionValue }) => {
             </SelectContent>
             <Text>{contents.episodes?.length} episodes</Text>
          </SelectWrapper>
-         <Text>Air date - {airDate}</Text>
+         <Text>Air date on {airDate}</Text>
       </SelectHeaderContainer>
    );
 };

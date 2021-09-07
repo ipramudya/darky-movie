@@ -18,7 +18,7 @@ export const HeroBackdrop = styled.div`
    right: 0;
    width: 70%;
    height: 100%;
-   animation: fadeInRight 1s ease;
+   animation: fadeIn 2s;
    overflow: hidden;
 
    &::after {
@@ -63,7 +63,7 @@ export const HeroDescWrapper = styled.div`
    height: 100%;
    display: flex;
    align-items: center;
-   animation: fadeInLeft 1s;
+   animation: fadeInUp 2s;
 
    @media screen and (max-width: 970px) {
       order: 2;

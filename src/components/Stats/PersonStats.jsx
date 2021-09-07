@@ -1,11 +1,8 @@
+import { convertDate } from '../../utils/helpers';
 import { Stats, StatsLi, StatsUl, Text } from './Stats.style';
 
 const PersonStats = ({ content }) => {
-   const bornDate = new Date(content?.birthday)
-      .toUTCString()
-      .split(' ')
-      .splice(0, 4)
-      .join(' ');
+   const bornDate = convertDate(content?.birthday);
    const age = new Date().getFullYear() - bornDate.split(' ')[3];
 
    return (

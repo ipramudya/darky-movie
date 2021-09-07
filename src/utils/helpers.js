@@ -17,3 +17,7 @@ export const convertMoney = (money) => {
 export const randomNumber = (range) => {
    return Math.floor(Math.random() * range);
 };
+
+export const convertDate = (date) => {
+   return new Date(date).toUTCString().split(' ').splice(0, 4).join(' ');
+};

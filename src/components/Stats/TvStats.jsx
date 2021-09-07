@@ -1,3 +1,4 @@
+import { convertDate } from '../../utils/helpers';
 import { Stats, StatsUl, StatsLi, Text, TextLink } from './Stats.style';
 
 const TvStats = ({ content, caster }) => {
@@ -14,9 +15,8 @@ const TvStats = ({ content, caster }) => {
          );
       });
 
-   const configureDate = (content) => {
-      return new Date(content).toUTCString().split(' ').splice(0, 4).join(' ');
-   };
+   const firstAirDate = convertDate(content?.first_air_date);
+   const lastAirDate = convertDate(content?.last_air_date);
 
    const productionCompanies = content.production_companies
       ?.map((company) => company.name)
@@ -29,13 +29,13 @@ const TvStats = ({ content, caster }) => {
                {content?.first_air_date && (
                   <StatsLi>
                      <Text main>First Aired</Text>
-                     <Text>{configureDate(content?.first_air_date)}</Text>
+                     <Text>{firstAirDate}</Text>
                   </StatsLi>
                )}
                {content?.last_air_date && (
                   <StatsLi>
                      <Text main>Last Aired</Text>
-                     <Text>{configureDate(content?.last_air_date)}</Text>
+                     <Text>{lastAirDate}</Text>
                   </StatsLi>
                )}
                {content?.episode_run_time && (

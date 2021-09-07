@@ -1,4 +1,5 @@
 import { IMAGE_URL } from '../../utils/config';
+import { convertDate } from '../../utils/helpers';
 import {
    EpisodeCardContainer,
    ImageWrapper,
@@ -7,11 +8,7 @@ import {
    Subtitle,
 } from './EpisodeCard.styles';
 const EpisodeCard = ({ episode, idx }) => {
-   const airDate = new Date(episode?.air_date)
-      .toUTCString()
-      .split(' ')
-      .splice(0, 4)
-      .join(' ');
+   const airDate = convertDate(episode?.air_date);
 
    return (
       <EpisodeCardContainer>
