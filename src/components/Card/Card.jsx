@@ -36,12 +36,16 @@ const Card = forwardRef(({ item }, ref) => {
          <Link to={item?.title ? `/movie/${item.id}` : `/tv/${item.id}`}>
             <CardImage className='animated'>
                <ImageItem
+                  key={item.id}
                   src={
                      !item?.poster_path
                         ? NoImagePotrait
                         : IMAGE_URL({ path: item.poster_path })
                   }
                   alt='Poster Image'
+                  width='100%'
+                  height='100%'
+                  effect='blur'
                />
             </CardImage>
             <CardTitle>{item?.title ? item.title : item.name}</CardTitle>

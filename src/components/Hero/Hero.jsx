@@ -49,7 +49,7 @@ const Hero = ({ contents, disabled }) => {
                         {contents?.vote_average && (
                            <StarRatings {...starConfig} />
                         )}
-                        <Text>{contents.popularity} Reviews</Text>
+                        <Text>{contents.popularity} Popularity</Text>
                         <Text year>{contents.release_date?.split('-', 1)}</Text>
                      </SubMeta>
                      <SubMeta genre>

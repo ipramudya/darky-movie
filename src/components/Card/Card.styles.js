@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const CardContainer = styled.div`
    width: 100%;
@@ -19,7 +20,7 @@ export const CardImage = styled.div`
    transition: all 0.8s;
 `;
 
-export const ImageItem = styled.img`
+export const ImageItem = styled(LazyLoadImage)`
    position: absolute;
    top: 0;
    left: 0;

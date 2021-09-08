@@ -37,7 +37,7 @@ export const TextLink = styled(Link)`
    }
 
    ${(props) =>
-      !props.movie &&
+      props.underline &&
       css`
          > span {
             text-decoration: underline;

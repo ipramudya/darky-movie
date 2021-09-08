@@ -124,7 +124,7 @@ export const Title = styled.h1`
 
 export const Text = styled.p`
    font-size: var(--fontSM);
-   color: var(--white);
+   color: #787a91;
    margin-left: 1em;
    cursor: default;
 

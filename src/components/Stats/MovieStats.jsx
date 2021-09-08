@@ -25,7 +25,7 @@ const MovieStats = ({ content, caster }) => {
             </StatsLi>
             <StatsLi>
                <Text main>Director</Text>
-               <TextLink movie to={`/person/${foundDirector?.id}`}>
+               <TextLink underline to={`/person/${foundDirector?.id}`}>
                   {foundDirector?.name}
                </TextLink>
             </StatsLi>

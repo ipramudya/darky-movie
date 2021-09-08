@@ -27,7 +27,7 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
                onKeyDown={handleEscapeKey}
             />
          </SearchContainer>
-         {query.length > 0 ? (
+         {query.length > 0 && Redirect ? (
             <Redirect
                to={{
                   pathname: '/search',
@@ -35,7 +35,7 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
                }}
             />
          ) : (
-            <Redirect push />
+            <Redirect push to='/' />
          )}
       </>
    );

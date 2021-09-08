@@ -14,12 +14,16 @@ const PersonCard = ({ person }) => {
          <Link to={`/person/${person?.id}`}>
             <ImageWrapper className='animated'>
                <Image
+                  key={person.id}
                   src={
                      !person?.profile_path
                         ? NoImagePotrait
                         : IMAGE_URL({ path: person.profile_path })
                   }
                   alt='Photo Profile'
+                  width='100%'
+                  height='100%'
+                  effect='blur'
                />
             </ImageWrapper>
             <Subtitle main>{person?.original_name}</Subtitle>
