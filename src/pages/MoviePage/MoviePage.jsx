@@ -9,6 +9,7 @@ const MoviePage = () => {
    const { nowPlaying, topRated, upcoming, loading } = useMoviesContext();
 
    const randomIndex = randomNumber(nowPlaying.length);
+   console.log(nowPlaying, topRated);
 
    return (
       <>
@@ -24,8 +25,8 @@ const MoviePage = () => {
                   contents={movies}
                   isMovie
                >
-                  {movies?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {movies?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List
@@ -33,8 +34,8 @@ const MoviePage = () => {
                   direct_to='top_rated'
                   isMovie
                >
-                  {topRated?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {topRated?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List
@@ -42,8 +43,8 @@ const MoviePage = () => {
                   direct_to='now_playing'
                   isMovie
                >
-                  {nowPlaying?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {nowPlaying?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List
@@ -52,8 +53,8 @@ const MoviePage = () => {
                   contents={upcoming}
                   isMovie
                >
-                  {upcoming?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {upcoming?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
             </>

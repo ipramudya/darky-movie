@@ -118,11 +118,9 @@ const DetailTvPage = () => {
                         />
                      </Overview>
                      <List list_header='Cast'>
-                        {aggregateCaster.cast
-                           ?.slice(0, 19)
-                           .map((content, idx) => (
-                              <PersonCard person={content} key={idx} />
-                           ))}
+                        {aggregateCaster.cast?.slice(0, 19).map((content) => (
+                           <PersonCard person={content} key={content.id} />
+                        ))}
                      </List>
                   </>
                )}
@@ -134,8 +132,12 @@ const DetailTvPage = () => {
                         setOptionValue={setOptionValue}
                      />
                      <Grid long>
-                        {seasonDetails.episodes?.map((episode, idx) => (
-                           <EpisodeCard episode={episode} key={idx} idx={idx} />
+                        {seasonDetails.episodes?.map((episode) => (
+                           <EpisodeCard
+                              episode={episode}
+                              key={episode.id}
+                              epNumber={episode.episode_number}
+                           />
                         ))}
                      </Grid>
                   </>
@@ -151,8 +153,8 @@ const DetailTvPage = () => {
                   </>
                )}
                <List list_header='More Like This'>
-                  {similar.results?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {similar.results?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
             </>

@@ -41,8 +41,8 @@ const Overview = ({ content, children }) => {
                   {content.biography &&
                      content.biography
                         .split('\n\n')
-                        .map((paragraph, idx) => (
-                           <Subtitle key={idx}>{paragraph}</Subtitle>
+                        .map((paragraph) => (
+                           <Subtitle key={paragraph}>{paragraph}</Subtitle>
                         ))}
                </OverviewContent>
                {children}

@@ -30,10 +30,10 @@ const Photos = ({ contents, title, landscape = false }) => {
             <Header>{contents?.length} images</Header>
          </HeaderWrapper>
          <Grid landscape={landscape}>
-            {contents?.map((item, idx) => (
-               <GridItem key={idx} poster={!landscape}>
+            {contents?.map((item) => (
+               <GridItem key={item.file_path} poster={!landscape}>
                   <LazyImage
-                     key={idx}
+                     key={item.file_path}
                      src={
                         landscape
                            ? IMAGE_URL({

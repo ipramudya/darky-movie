@@ -44,9 +44,11 @@ const SearchPage = () => {
          <Grid header={`Results for: ${query}`}>
             {foundContent?.map((content, idx) => {
                if (foundContent?.length === idx + 1) {
-                  return <Card item={content} key={idx} ref={lastItemRef} />;
+                  return (
+                     <Card item={content} key={content.id} ref={lastItemRef} />
+                  );
                } else {
-                  return <Card item={content} key={idx} />;
+                  return <Card item={content} key={content.id} />;
                }
             })}
          </Grid>

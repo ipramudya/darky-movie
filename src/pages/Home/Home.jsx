@@ -17,13 +17,13 @@ const Home = () => {
          ) : (
             <>
                <List list_header='Trending Movies' direct_to='popular' isMovie>
-                  {movies?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {movies?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List list_header='Trending TVs' direct_to='popular'>
-                  {TVs?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {TVs?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
             </>

@@ -3,9 +3,9 @@ import { ButtonContainer, ButtonItem } from './Button.style';
 const Button = ({ buttonTypes, activeButton, setActiveButton }) => {
    return (
       <ButtonContainer>
-         {buttonTypes.map((type, idx) => (
+         {buttonTypes.map((type) => (
             <ButtonItem
-               key={idx}
+               key={type}
                active={activeButton === type}
                onClick={() => setActiveButton(type)}
             >

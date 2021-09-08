@@ -9,7 +9,7 @@ import {
 } from './EpisodeCard.styles';
 import NoImageLandscape from '../../assets/no_image_landscape.jpg';
 
-const EpisodeCard = ({ episode, idx }) => {
+const EpisodeCard = ({ episode, epNumber }) => {
    const airDate = convertDate(episode?.air_date);
 
    return (
@@ -26,7 +26,7 @@ const EpisodeCard = ({ episode, idx }) => {
             />
          </ImageWrapper>
          <Text>
-            E{idx}
+            E{epNumber}
             <span>{episode.name}</span>
          </Text>
          <Subtitle>{episode.overview}</Subtitle>

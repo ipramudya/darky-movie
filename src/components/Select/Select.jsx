@@ -24,8 +24,8 @@ const Select = ({ options, contents, setOptionValue }) => {
       <SelectHeaderContainer>
          <SelectWrapper>
             <SelectContent onChange={selectChangeHandler}>
-               {options.map((content, idx) => (
-                  <option value={content.season_number} key={idx}>
+               {options.map((content) => (
+                  <option value={content.season_number} key={content.id}>
                      {content.name}
                   </option>
                ))}

@@ -33,9 +33,15 @@ const LoadMore = () => {
          <Grid header={list_header}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {
-                  return <Card item={singleData} key={idx} ref={lastItemRef} />;
+                  return (
+                     <Card
+                        item={singleData}
+                        key={singleData.id}
+                        ref={lastItemRef}
+                     />
+                  );
                } else {
-                  return <Card item={singleData} key={idx} />;
+                  return <Card item={singleData} key={singleData.id} />;
                }
             })}
          </Grid>

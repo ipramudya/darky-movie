@@ -23,29 +23,29 @@ const TVPage = () => {
                   direct_to='popular'
                   contents={TVs}
                >
-                  {TVs?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {TVs?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List list_header='Top Rated TV Shows' direct_to='top_rated'>
-                  {topRated?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {topRated?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List
                   list_header='TV Shows Airing Today'
                   direct_to='airing_today'
                >
-                  {airing?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {airing?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
                <List
                   list_header='Currently on the Air TV Shows'
                   direct_to='on_the_air'
                >
-                  {onAir?.map((content, idx) => (
-                     <Card item={content} key={idx} />
+                  {onAir?.map((content) => (
+                     <Card item={content} key={content.id} />
                   ))}
                </List>
             </>

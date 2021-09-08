@@ -79,8 +79,8 @@ const PersonPage = () => {
                {activeButton === buttonTypes[0] && (
                   <>
                      <Grid>
-                        {credits.cast?.map((credit, idx) => (
-                           <Card item={credit} key={idx} />
+                        {credits.cast?.map((credit) => (
+                           <Card item={credit} key={credit.id} />
                         ))}
                      </Grid>
                   </>
