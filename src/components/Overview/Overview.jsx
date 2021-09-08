@@ -10,7 +10,7 @@ import {
    Subtitle,
 } from './Overview.styles';
 
-import NoImage from '../../assets/no-image.png';
+import NoImagePotrait from '../../assets/no_image_potrait.jpg';
 
 const Overview = ({ content, children }) => {
    return (
@@ -20,11 +20,11 @@ const Overview = ({ content, children }) => {
                <ImageWrapper>
                   <Image
                      src={
-                        content?.poster_path
-                           ? `${IMAGE_URL(content.poster_path)}`
-                           : content?.profile_path
-                           ? `${IMAGE_URL(content.profile_path)}`
-                           : NoImage
+                        !content?.poster_path
+                           ? NoImagePotrait
+                           : content?.poster_path
+                           ? IMAGE_URL({ path: content?.poster_path })
+                           : IMAGE_URL({ path: content?.profile_path })
                      }
                      alt='Poster Image'
                   />

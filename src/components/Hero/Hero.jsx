@@ -15,7 +15,7 @@ import {
    SubMeta,
 } from './Hero.styles';
 
-import NoImage from '../../assets/no-image.png';
+import NoImageLandscape from '../../assets/no_image_landscape.jpg';
 import { StarIconPath, StarViewBox } from '../../assets/star-icon';
 
 const Hero = ({ contents, disabled }) => {
@@ -78,9 +78,12 @@ const Hero = ({ contents, disabled }) => {
             <HeroBackdrop>
                <BackdropImg
                   src={
-                     contents.backdrop_path
-                        ? IMAGE_URL(contents.backdrop_path, true)
-                        : NoImage
+                     !contents.backdrop_path
+                        ? NoImageLandscape
+                        : IMAGE_URL({
+                             path: contents.backdrop_path,
+                             original: true,
+                          })
                   }
                   alt='Backdrops Hero Image'
                />

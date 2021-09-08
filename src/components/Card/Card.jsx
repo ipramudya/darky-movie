@@ -10,7 +10,7 @@ import {
    Rating,
 } from './Card.styles';
 import { IMAGE_URL } from '../../utils/config';
-import NoImage from '../../assets/no-image.png';
+import NoImagePotrait from '../../assets/no_image_potrait.jpg';
 import { StarIconPath, StarViewBox } from '../../assets/star-icon';
 
 const Card = forwardRef(({ item }, ref) => {
@@ -37,7 +37,9 @@ const Card = forwardRef(({ item }, ref) => {
             <CardImage className='animated'>
                <ImageItem
                   src={
-                     item?.poster_path ? IMAGE_URL(item.poster_path) : NoImage
+                     !item?.poster_path
+                        ? NoImagePotrait
+                        : IMAGE_URL({ path: item.poster_path })
                   }
                   alt='Poster Image'
                />

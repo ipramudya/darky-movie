@@ -8,7 +8,7 @@ import {
    Grid,
 } from './Photos.styles';
 
-import NoImage from '../../assets/no-image.png';
+import NoImagePotrait from '../../assets/no_image_potrait.jpg';
 import { useEffect, useState } from 'react';
 
 const Photos = ({ contents, title, landscape = false }) => {
@@ -36,8 +36,11 @@ const Photos = ({ contents, title, landscape = false }) => {
                      key={idx}
                      src={
                         landscape
-                           ? IMAGE_URL(item.file_path, landscape)
-                           : IMAGE_URL(item.file_path)
+                           ? IMAGE_URL({
+                                path: item.file_path,
+                                backdrops: true,
+                             })
+                           : IMAGE_URL({ path: item.file_path })
                      }
                      scrollPosition={scroll}
                      alt='Image Collections'
@@ -47,7 +50,7 @@ const Photos = ({ contents, title, landscape = false }) => {
                   />
                </GridItem>
             ))}
-            {contents?.length < 0 && NoImage}
+            {contents?.length < 0 && NoImagePotrait}
          </Grid>
       </PhotosContainer>
    );

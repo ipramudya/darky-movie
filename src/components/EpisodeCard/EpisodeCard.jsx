@@ -7,6 +7,8 @@ import {
    Text,
    Subtitle,
 } from './EpisodeCard.styles';
+import NoImageLandscape from '../../assets/no_image_landscape.jpg';
+
 const EpisodeCard = ({ episode, idx }) => {
    const airDate = convertDate(episode?.air_date);
 
@@ -14,7 +16,11 @@ const EpisodeCard = ({ episode, idx }) => {
       <EpisodeCardContainer>
          <ImageWrapper>
             <LazyImage
-               src={IMAGE_URL(episode.still_path, true)}
+               src={
+                  !episode.still_path
+                     ? NoImageLandscape
+                     : IMAGE_URL({ path: episode.still_path, backdrops: true })
+               }
                alt='Images Episode'
                effect='blur'
             />

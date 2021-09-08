@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import NoImage from '../../assets/no-image.png';
-import { IMAGE_URL } from '../../utils/config';
 import {
    Image,
    ImageWrapper,
    PersonCardContainer,
    Subtitle,
 } from './PersonCard.styles';
+import { IMAGE_URL } from '../../utils/config';
+import NoImagePotrait from '../../assets/no_image_potrait.jpg';
 
 const PersonCard = ({ person }) => {
    return (
@@ -15,9 +15,9 @@ const PersonCard = ({ person }) => {
             <ImageWrapper className='animated'>
                <Image
                   src={
-                     person?.profile_path
-                        ? IMAGE_URL(person.profile_path)
-                        : NoImage
+                     !person?.profile_path
+                        ? NoImagePotrait
+                        : IMAGE_URL({ path: person.profile_path })
                   }
                   alt='Photo Profile'
                />
