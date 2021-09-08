@@ -1,6 +1,7 @@
 import { useState, forwardRef } from 'react';
 import { Redirect } from 'react-router-dom';
-import { SearchContainer, InputField } from './searchbar.styles';
+import { MdClose } from 'react-icons/md';
+import { SearchContainer, InputField, CloseButton } from './searchbar.styles';
 
 const Searchbar = forwardRef(({ active, setActive }, ref) => {
    const [query, setQuery] = useState('');
@@ -15,6 +16,10 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
       }
    };
 
+   const handleClose = () => {
+      setActive((prevState) => !prevState);
+   };
+
    return (
       <>
          <SearchContainer className={active ? 'active' : null}>
@@ -26,6 +31,9 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
                ref={ref}
                onKeyDown={handleEscapeKey}
             />
+            <CloseButton onClick={handleClose}>
+               <MdClose />
+            </CloseButton>
          </SearchContainer>
          {query.length > 0 && Redirect ? (
             <Redirect

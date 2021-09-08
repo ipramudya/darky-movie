@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { MdLiveTv, MdMovieFilter, MdSearch, MdClose } from 'react-icons/md';
+import { MdLiveTv, MdMovieFilter, MdSearch } from 'react-icons/md';
 import Searchbar from '../Searchbar/Searchbar';
 import {
    SidebarContainer,
@@ -41,7 +41,7 @@ const Sidebar = () => {
                </NavItem>
                <NavItem>
                   <SearchButton onClick={handleSearchToggle}>
-                     {!isActive ? <MdSearch /> : <MdClose />}
+                     <MdSearch />
                   </SearchButton>
                </NavItem>
             </NavWrapper>

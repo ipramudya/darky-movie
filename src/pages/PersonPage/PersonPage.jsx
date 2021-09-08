@@ -12,32 +12,45 @@ import {
    Photos,
    Spinner,
 } from '../../components';
+import axios from 'axios';
 
 const PersonPage = () => {
    const { id } = useParams();
 
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
-   const [details, setDetails] = useState([]);
-   const [externalID, setExternalID] = useState([]);
-   const [images, setImages] = useState([]);
-   const [credits, setCredits] = useState([]);
+   const [detailsPerson, setDetailsPerson] = useState({
+      details: [],
+      externalID: [],
+      images: [],
+      credits: [],
+   });
+   const { details, externalID, images, credits } = detailsPerson;
 
    useEffect(() => {
-      const fetchPerson = async () => {
-         setLoading(true);
-         try {
-            setDetails(await ApiPerson.fetchDetails(id));
-            setExternalID(await ApiPerson.fetchExternalId(id));
-            setCredits(await ApiPerson.fetchCredits(id));
-            setImages(await ApiPerson.fetchImages(id));
-            setLoading(false);
-         } catch (err) {
+      setLoading(true);
+      axios
+         .all([
+            ApiPerson.fetchDetails(id),
+            ApiPerson.fetchExternalId(id),
+            ApiPerson.fetchCredits(id),
+            ApiPerson.fetchImages(id),
+         ])
+         .then(
+            axios.spread((...data) => {
+               setDetailsPerson({
+                  details: data[0],
+                  externalID: data[1],
+                  credits: data[2],
+                  images: data[3],
+               });
+               setLoading(false);
+            })
+         )
+         .catch((err) => {
             setError(err);
             setLoading(false);
-         }
-      };
-      fetchPerson();
+         });
    }, [id]);
 
    const buttonTypes = ['known for', 'photos'];
