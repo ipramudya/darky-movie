@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import ApiTv from '../../api/tv';
 import {
    Button,
@@ -95,6 +96,7 @@ const DetailTvPage = () => {
 
    return (
       <>
+         <Helmet title={details.name} />
          {error && <h3>{error}</h3>}
          {loading ? (
             <Spinner loading={loading} />

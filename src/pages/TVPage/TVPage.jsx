@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Card, Hero, List, Spinner } from '../../components';
 import { useTVsContext } from '../../context/TVsContext';
 import { usePopularContext } from '../../context/PopularContext';
@@ -11,6 +12,7 @@ const TVPage = () => {
 
    return (
       <>
+         <Helmet title='Browse TVs' />
          {!loading && <Hero contents={airing[randomIndex]} />}
          {loading ? (
             <Spinner loading={loading} />

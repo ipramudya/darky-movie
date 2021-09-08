@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Card, Hero, List, Spinner } from '../../components';
 import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
@@ -9,6 +10,7 @@ const Home = () => {
 
    return (
       <>
+         <Helmet title='DarkyMovie - Browse Your Favorite' />
          {popularContents && <Hero contents={popularContents[randomIndex]} />}
          {loading ? (
             <Spinner loading={loading} />

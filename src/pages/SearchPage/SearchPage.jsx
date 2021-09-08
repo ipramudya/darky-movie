@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Grid, Spinner, Card } from '../../components';
 import useLastItemRef from '../../hooks/useLastItemRef';
 import useSearch from '../../hooks/useSearch';
@@ -36,6 +37,7 @@ const SearchPage = () => {
 
    return (
       <>
+         <Helmet title='Search...' />
          {loading && <Spinner loading={loading} />}
          {query.length <= 0 && <Redirect push />}
          <div style={{ marginBottom: '6%' }} />

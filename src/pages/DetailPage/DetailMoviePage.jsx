@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 import ApiMovies from '../../api/movies';
 import {
    Button,
@@ -60,6 +61,7 @@ const DetailMoviePage = () => {
 
    return (
       <>
+         <Helmet title={details.title} />
          {error && <h3>{error}</h3>}
          {loading ? (
             <Spinner loading={loading} />

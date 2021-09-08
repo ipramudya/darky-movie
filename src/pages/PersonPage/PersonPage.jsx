@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Helmet } from 'react-helmet';
 import ApiPerson from '../../api/person';
 import {
    Button,
@@ -44,6 +45,7 @@ const PersonPage = () => {
 
    return (
       <>
+         <Helmet title={details.name} />
          {error && <h3>{error}</h3>}
          {loading ? (
             <Spinner loading={loading} />

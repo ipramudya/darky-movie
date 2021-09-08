@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Card, Hero, List, Spinner } from '../../components';
 import { useMoviesContext } from '../../context/MoviesContext';
 import { usePopularContext } from '../../context/PopularContext';
@@ -11,6 +12,7 @@ const MoviePage = () => {
 
    return (
       <>
+         <Helmet title='Browse Movies' />
          {!loading && <Hero contents={nowPlaying[randomIndex]} />}
          {loading ? (
             <Spinner loading={loading} />

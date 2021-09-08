@@ -20,7 +20,7 @@ const Overview = ({ content, children }) => {
                <ImageWrapper>
                   <Image
                      src={
-                        !content?.poster_path
+                        !content?.poster_path && !content?.profile_path
                            ? NoImagePotrait
                            : content?.poster_path
                            ? IMAGE_URL({ path: content?.poster_path })

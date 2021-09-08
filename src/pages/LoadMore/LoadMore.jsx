@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Grid, Spinner, Card } from '../../components';
 import usePage from '../../hooks/usePage';
 import useLastItemRef from '../../hooks/useLastItemRef';
@@ -27,6 +28,7 @@ const LoadMore = () => {
 
    return (
       <>
+         <Helmet title={list_header} />
          {loading && <Spinner loading={loading} />}
          <Grid header={list_header}>
             {data?.map((singleData, idx) => {
