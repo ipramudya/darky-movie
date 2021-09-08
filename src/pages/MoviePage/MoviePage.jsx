@@ -9,7 +9,6 @@ const MoviePage = () => {
    const { nowPlaying, topRated, upcoming, loading } = useMoviesContext();
 
    const randomIndex = randomNumber(nowPlaying.length);
-   console.log(nowPlaying, topRated);
 
    return (
       <>
