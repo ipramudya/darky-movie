@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { convertDate } from '../../utils/helpers';
 import {
    SelectHeaderContainer,
@@ -12,6 +13,13 @@ const Select = ({ options, contents, setOptionValue }) => {
    const selectChangeHandler = (event) => {
       setOptionValue(event.target.value);
    };
+
+   useEffect(() => {
+      return () => {
+         setOptionValue(1);
+      };
+   }, []);
+
    return (
       <SelectHeaderContainer>
          <SelectWrapper>
