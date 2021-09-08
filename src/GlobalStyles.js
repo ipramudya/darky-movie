@@ -60,7 +60,17 @@ export const GlobalStyle = createGlobalStyle`
         li {
             list-style: none;
         }
+
+        @media screen and (max-width: 765px) {
+            padding: unset;
+        }
+        
+        @media screen and (max-width: 765px) {
+            padding-bottom: 3em;
+        }
     }
+
+
 
     .fadeIn {
         -webkit-animation-name: fadeIn;

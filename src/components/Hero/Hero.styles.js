@@ -10,6 +10,10 @@ export const BackdropImg = styled.img`
       width: 100%;
       object-fit: cover;
    }
+
+   @media screen and (max-width: 765px) {
+      object-position: top;
+   }
 `;
 
 export const HeroBackdrop = styled.div`
@@ -35,6 +39,10 @@ export const HeroBackdrop = styled.div`
          transparent 50%,
          transparent
       );
+   }
+
+   @media screen and (max-width: 765px) {
+      height: 70%;
    }
 
    @media screen and (max-width: 970px) {
@@ -72,6 +80,10 @@ export const HeroDescWrapper = styled.div`
       height: 50%;
    }
 
+   @media screen and (max-width: 765px) {
+      height: 30%;
+   }
+
    @media screen and (max-width: 515px) {
       padding-left: 2em;
    }
@@ -89,6 +101,10 @@ export const HeroContainer = styled.div`
       height: 50rem;
       display: flex;
       flex-direction: column;
+   }
+
+   @media screen and (max-width: 765px) {
+      height: 30rem;
    }
 
    @media screen and (max-width: 515px) {
@@ -120,6 +136,10 @@ export const Title = styled.h1`
    @media screen and (max-width: 970px) {
       font-size: 1.5em;
    }
+
+   @media screen and (max-width: 515px) {
+      font-size: 1.1em;
+   }
 `;
 
 export const Text = styled.p`
@@ -129,6 +149,7 @@ export const Text = styled.p`
    cursor: default;
 
    @media screen and (max-width: 515px) {
+      font-size: 0.8em;
       display: ${(props) => (props.year ? 'none' : 'block')};
       margin-left: 0;
    }

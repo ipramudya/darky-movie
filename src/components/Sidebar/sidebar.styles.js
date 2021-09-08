@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const SidebarContainer = styled.nav`
@@ -12,12 +12,25 @@ export const SidebarContainer = styled.nav`
    z-index: 10;
    background-color: black;
    border-right: 1px solid var(--blacksky);
+
+   @media screen and (max-width: 765px) {
+      width: 100%;
+      height: 3em;
+      left: unset;
+      top: unset;
+      border-top: 1px solid var(--blacksky);
+   }
 `;
 
 export const NavWrapper = styled.ul`
    display: flex;
    flex-direction: column;
    height: 100%;
+
+   @media screen and (max-width: 765px) {
+      flex-direction: row;
+      align-items: center;
+   }
 `;
 
 export const NavItem = styled.li`
@@ -26,6 +39,10 @@ export const NavItem = styled.li`
    display: flex;
    align-items: center;
    justify-content: center;
+
+   @media screen and (max-width: 765px) {
+      height: 100%;
+   }
 `;
 
 export const NavDirection = styled(NavLink)`
@@ -42,7 +59,7 @@ export const NavDirection = styled(NavLink)`
          color: var(--darksky);
       }
       &::after {
-         display: block;
+         display: ${(props) => props.content && 'block'};
       }
    }
 
@@ -83,6 +100,32 @@ export const NavDirection = styled(NavLink)`
       display: ${(props) => (props.content ? 'block' : 'none')};
       animation: fadeInLeft 0.5s;
       color: var(--greysky);
+   }
+
+   @media screen and (max-width: 765px) {
+      &::after {
+         top: -35%;
+      }
+
+      &:hover:after {
+         animation: fadeInUp 0.5s;
+      }
+   }
+
+   @media screen and (max-width: 515px) {
+      &::after {
+         display: none;
+      }
+
+      &:hover:after {
+         display: none;
+      }
+
+      &.active {
+         &::after {
+            display: none;
+         }
+      }
    }
 `;
 

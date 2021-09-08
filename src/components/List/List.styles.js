@@ -7,6 +7,10 @@ export const ListHeader = styled.div`
    margin-bottom: 1em;
    display: flex;
    align-items: flex-end;
+
+   @media screen and (max-width: 515px) {
+      margin: 0 2.3em;
+   }
 `;
 
 export const Text = styled.h3`
@@ -17,7 +21,7 @@ export const Text = styled.h3`
    }
 
    @media screen and (max-width: 515px) {
-      font-size: 1em;
+      font-size: 0.9em;
    }
 `;
 
@@ -34,11 +38,19 @@ export const StyledLink = styled(Link)`
    &:hover {
       color: var(--greysky);
    }
+
+   @media screen and (max-width: 515px) {
+      font-size: 0.7em;
+   }
 `;
 
 export const Carousel = styled.div`
    width: 100%;
    padding: 0 2em;
+
+   @media screen and (max-width: 515px) {
+      padding: 0 1em;
+   }
 `;
 
 export const StyledSlider = styled(Slider)`
@@ -47,15 +59,37 @@ export const StyledSlider = styled(Slider)`
       width: 50px;
       height: 100%;
       transition: all 0.5s;
+
+      @media screen and (max-width: 515px) {
+         width: 40px;
+      }
    }
    .slick-prev:hover,
    .slick-next:hover {
       color: transparent;
       outline: none;
       background: rgba(73, 73, 73, 0.3);
+
+      @media screen and (max-width: 515px) {
+         background: transparent;
+      }
+   }
+   .slick-prev {
+      @media screen and (max-width: 515px) {
+         padding-left: 1rem;
+      }
+   }
+   .slick-next {
+      @media screen and (max-width: 515px) {
+         padding-right: 1rem;
+      }
    }
    .slick-list {
       margin: 2em;
+
+      @media screen and (max-width: 515px) {
+         margin: 1em;
+      }
    }
    .slick-prev:before,
    .slick-next:before {
@@ -73,5 +107,13 @@ export const StyledSlider = styled(Slider)`
    .slick-prev:hover:before,
    .slick-next:hover:before {
       color: var(--darksky);
+   }
+
+   .slick-dots li {
+      margin: unset;
+   }
+
+   .slick-dots li button:before {
+      color: white;
    }
 `;

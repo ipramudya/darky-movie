@@ -17,6 +17,18 @@ export const SearchContainer = styled.div`
       top: 5%;
       transition: all 0.8s;
    }
+
+   @media screen and (max-width: 970px) {
+      width: 70%;
+
+      &.active {
+         top: 2%;
+      }
+   }
+
+   @media screen and (max-width: 515px) {
+      width: 90%;
+   }
 `;
 
 export const InputField = styled.input`
@@ -34,6 +46,10 @@ export const InputField = styled.input`
    &:focus {
       outline: none;
    }
+
+   @media screen and (max-width: 970px) {
+      min-width: 90%;
+   }
 `;
 
 export const CloseButton = styled.button`
@@ -47,5 +63,9 @@ export const CloseButton = styled.button`
       color: var(--greysky);
       font-size: 1.5em;
       cursor: pointer;
+   }
+
+   @media screen and (max-width: 970px) {
+      min-width: 10%;
    }
 `;
