@@ -37,7 +37,7 @@ const Overview = ({ content, children }) => {
                         ? `${content.name}'s Biography`
                         : 'Story Line'}
                   </Title>
-                  {content.overview && <p>{content.overview}</p>}
+                  {content.overview && <Subtitle>{content.overview}</Subtitle>}
                   {content.biography &&
                      content.biography
                         .split('\n\n')

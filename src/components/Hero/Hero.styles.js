@@ -82,6 +82,8 @@ export const HeroDescWrapper = styled.div`
 
    @media screen and (max-width: 765px) {
       height: 30%;
+      padding: unset;
+      padding-left: 3em;
    }
 
    @media screen and (max-width: 515px) {
@@ -164,6 +166,10 @@ export const Text2 = styled(Link)`
 
    &:hover {
       opacity: 0.8;
+   }
+
+   @media screen and (max-width: 515px) {
+      font-size: 0.8em;
    }
 `;
 

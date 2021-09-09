@@ -19,6 +19,7 @@ export const SearchContainer = styled.div`
    }
 
    @media screen and (max-width: 970px) {
+      padding-left: 5em;
       width: 70%;
 
       &.active {
@@ -26,8 +27,9 @@ export const SearchContainer = styled.div`
       }
    }
 
-   @media screen and (max-width: 515px) {
-      width: 90%;
+   @media screen and (max-width: 765px) {
+      padding: unset;
+      width: 70%;
    }
 `;
 

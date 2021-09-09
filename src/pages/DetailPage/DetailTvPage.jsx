@@ -131,7 +131,7 @@ const DetailTvPage = () => {
                         contents={seasonDetails}
                         setOptionValue={setOptionValue}
                      />
-                     <Grid long>
+                     <Grid long episodes>
                         {seasonDetails.episodes?.map((episode) => (
                            <EpisodeCard
                               episode={episode}

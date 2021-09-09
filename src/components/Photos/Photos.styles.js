@@ -4,22 +4,36 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 export const PhotosContainer = styled.div`
    margin: 5em 4.3em;
    animation: fadeIn 0.5s;
+
+   @media screen and (max-width: 970px) {
+      margin: 2em 2.3em;
+   }
 `;
 
 export const Grid = styled.div`
    display: grid;
    gap: 0.5em;
 
+   /* Backdrops */
    ${(props) =>
       props.landscape &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+         @media screen and (max-width: 970px) {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+         }
       `}
 
+   /* Posters */
    ${(props) =>
       !props.landscape &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+
+         @media screen and (max-width: 970px) {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+         }
       `}
 
    ${(props) =>

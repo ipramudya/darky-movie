@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ButtonContainer = styled.div`
    width: 50%;
@@ -7,6 +7,12 @@ export const ButtonContainer = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+
+   @media screen and (max-width: 970px) {
+      width: 100%;
+      justify-content: stretch;
+      margin: unset;
+   }
 `;
 
 export const ButtonItem = styled.button`
@@ -28,7 +34,17 @@ export const ButtonItem = styled.button`
       color: var(--darksky);
    }
 
+   @media screen and (max-width: 970px) {
+      background-color: #1c1c1c;
+      width: 100%;
+      margin: unset;
+   }
+
    ${(props) =>
       props.active &&
-      `border-bottom: 2px solid var(--darksky); color: var(--darksky)`}
+      css`
+         border-bottom: 2px solid var(--darksky);
+         color: var(--darksky);
+         background-color: transparent;
+      `}
 `;

@@ -8,7 +8,7 @@ export const ListHeader = styled.div`
    display: flex;
    align-items: flex-end;
 
-   @media screen and (max-width: 515px) {
+   @media screen and (max-width: 970px) {
       margin: 0 2.3em;
    }
 `;
@@ -27,6 +27,10 @@ export const Text = styled.h3`
 
 export const ListContainer = styled.div`
    margin: 3em 0;
+
+   @media screen and (max-width: 970px) {
+      margin: 1.5em 0;
+   }
 `;
 
 export const StyledLink = styled(Link)`

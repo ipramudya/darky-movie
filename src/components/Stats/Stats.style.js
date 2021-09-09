@@ -29,6 +29,7 @@ export const Text = styled.p`
 export const TextLink = styled(Link)`
    text-decoration: underline;
    color: var(--darksky);
+   flex: 2;
    transition: all 0.5s;
    cursor: pointer;
 

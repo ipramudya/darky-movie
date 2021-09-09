@@ -4,12 +4,20 @@ export const OverviewContainer = styled.div`
    margin: 5em 4.3em;
    display: flex;
    animation: fadeIn 1s;
+
+   @media screen and (max-width: 970px) {
+      margin: 1.5em 2.3em;
+   }
 `;
 
 export const LeftBox = styled.div`
    padding-right: 3em;
    width: 25%;
    max-width: 400px;
+
+   @media screen and (max-width: 970px) {
+      display: none;
+   }
 `;
 
 export const ImageWrapper = styled.div`
@@ -45,4 +53,8 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.p`
    margin-bottom: 0.8em;
+
+   @media screen and (max-width: 970px) {
+      font-size: 0.9em;
+   }
 `;

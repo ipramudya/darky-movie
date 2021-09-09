@@ -61,11 +61,9 @@ export const GlobalStyle = createGlobalStyle`
             list-style: none;
         }
 
-        @media screen and (max-width: 765px) {
-            padding: unset;
-        }
         
         @media screen and (max-width: 765px) {
+            padding: unset;
             padding-bottom: 3em;
         }
     }
