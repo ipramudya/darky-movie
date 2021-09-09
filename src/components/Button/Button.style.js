@@ -40,6 +40,11 @@ export const ButtonItem = styled.button`
       margin: unset;
    }
 
+   @media screen and (max-width: 515px) {
+      font-size: 0.8em;
+      min-height: 50px;
+   }
+
    ${(props) =>
       props.active &&
       css`

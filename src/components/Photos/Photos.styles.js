@@ -8,6 +8,14 @@ export const PhotosContainer = styled.div`
    @media screen and (max-width: 970px) {
       margin: 2em 2.3em;
    }
+
+   @media screen and (max-width: 970px) {
+      margin: 1.5em 2.3em;
+   }
+
+   @media screen and (max-width: 515px) {
+      margin: 1em 0.8em;
+   }
 `;
 
 export const Grid = styled.div`

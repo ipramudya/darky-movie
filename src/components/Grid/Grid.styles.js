@@ -8,7 +8,11 @@ export const GridContainer = styled.div`
    }
 
    @media screen and (max-width: 765px) {
-      margin: 4.5em 2.3em;
+      margin: 1.5em 2.3em;
+   }
+
+   @media screen and (max-width: 515px) {
+      margin: 1em 0.8em;
    }
 
    ${(props) =>
@@ -27,6 +31,11 @@ export const GridContent = styled.div`
 
    @media screen and (max-width: 765px) {
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5em 0.25em;
+   }
+
+   @media screen and (max-width: 515px) {
+      gap: 0.5em 0;
    }
 
    /* Episodes */
@@ -47,5 +56,9 @@ export const Header = styled.h3`
 
    @media screen and (max-width: 970px) {
       margin: 0 0.3em 1em 0.3em;
+   }
+
+   @media screen and (max-width: 765px) {
+      display: none;
    }
 `;

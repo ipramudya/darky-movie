@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router';
 import { Helmet } from 'react-helmet';
 import ApiDiscover from '../../api/discover';
-import { Card, Grid, Spinner } from '../../components';
+import { Card, Grid, Spinner, Topbar } from '../../components';
 import useLastItemRef from '../../hooks/useLastItemRef';
 import usePage from '../../hooks/usePage';
 
@@ -30,6 +30,7 @@ const DiscoverPage = () => {
       <>
          <Helmet title={`Genre: ${genres}`} />
          {loading && <Spinner loading={loading} />}
+         <Topbar header={`Genre: ${genres}`} />
          <Grid header={genres}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {

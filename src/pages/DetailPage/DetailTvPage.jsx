@@ -16,6 +16,7 @@ import {
    Photos,
    Select,
    Spinner,
+   Topbar,
    TvStats,
 } from '../../components';
 
@@ -102,6 +103,7 @@ const DetailTvPage = () => {
             <Spinner loading={loading} />
          ) : (
             <>
+               <Topbar header={details.name} />
                <Hero contents={details} disabled />
                <Button
                   buttonTypes={buttonTypes}

@@ -13,6 +13,10 @@ export const SelectHeaderContainer = styled.div`
    @media screen and (max-width: 765px) {
       flex-wrap: wrap;
    }
+
+   @media screen and (max-width: 515px) {
+      margin: 1em 0.8em 0 0.8em;
+   }
 `;
 
 export const SelectWrapper = styled.div`

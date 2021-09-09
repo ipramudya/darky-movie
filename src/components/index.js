@@ -14,3 +14,4 @@ export { default as TvStats } from './Stats/TvStats';
 export { default as PersonStats } from './Stats/PersonStats';
 export { default as IconLink } from './IconLink/IconLink';
 export { default as Select } from './Select/Select';
+export { default as Topbar } from './Topbar/Topbar';

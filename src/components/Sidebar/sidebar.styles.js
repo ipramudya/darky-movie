@@ -146,6 +146,7 @@ export const SearchButton = styled.button`
       vertical-align: middle;
       width: 25px;
       height: 25px;
+      font-size: 1.5em;
    }
 
    &:hover > * {

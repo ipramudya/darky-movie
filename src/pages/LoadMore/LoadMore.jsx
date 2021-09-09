@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Grid, Spinner, Card } from '../../components';
+import { Grid, Spinner, Card, Topbar } from '../../components';
 import usePage from '../../hooks/usePage';
 import useLastItemRef from '../../hooks/useLastItemRef';
 import ApiExploreMore from '../../api/exploreMore';
@@ -30,6 +30,7 @@ const LoadMore = () => {
       <>
          <Helmet title={list_header} />
          {loading && <Spinner loading={loading} />}
+         <Topbar header={list_header} />
          <Grid header={list_header}>
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {

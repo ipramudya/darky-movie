@@ -11,6 +11,10 @@ export const ListHeader = styled.div`
    @media screen and (max-width: 970px) {
       margin: 0 2.3em;
    }
+
+   @media screen and (max-width: 515px) {
+      margin: 0 0.8em;
+   }
 `;
 
 export const Text = styled.h3`

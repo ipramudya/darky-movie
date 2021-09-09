@@ -14,6 +14,7 @@ import {
    PersonCard,
    Photos,
    Spinner,
+   Topbar,
 } from '../../components';
 
 const DetailMoviePage = () => {
@@ -67,6 +68,7 @@ const DetailMoviePage = () => {
             <Spinner loading={loading} />
          ) : (
             <>
+               <Topbar header={details.title} />
                <Hero contents={details} disabled />
                <Button
                   buttonTypes={buttonTypes}

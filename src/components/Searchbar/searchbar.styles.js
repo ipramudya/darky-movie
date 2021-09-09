@@ -9,13 +9,13 @@ export const SearchContainer = styled.div`
    text-align: center;
    margin: 0 auto;
    height: fit-content;
-   transition: all 0.8s;
+   transition: all 1.5s;
    z-index: 2;
    display: flex;
 
    &.active {
       top: 5%;
-      transition: all 0.8s;
+      transition: all 1.5s;
    }
 
    @media screen and (max-width: 970px) {
@@ -30,6 +30,10 @@ export const SearchContainer = styled.div`
    @media screen and (max-width: 765px) {
       padding: unset;
       width: 70%;
+
+      &.active {
+         top: 7%;
+      }
    }
 `;
 

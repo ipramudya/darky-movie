@@ -11,6 +11,7 @@ import {
    PersonStats,
    Photos,
    Spinner,
+   Topbar,
 } from '../../components';
 import axios from 'axios';
 
@@ -64,6 +65,7 @@ const PersonPage = () => {
             <Spinner loading={loading} />
          ) : (
             <>
+               <Topbar header={details.name} />
                <Overview content={details} externalID={externalID}>
                   <PersonStats content={details} />
                   <IconLink
