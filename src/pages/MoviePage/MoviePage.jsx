@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Card, Hero, List, Spinner } from '../../components';
+import { ContentsCard, Hero, List, Spinner } from '../../components';
 import { useMoviesContext } from '../../context/MoviesContext';
 import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
@@ -19,41 +19,40 @@ const MoviePage = () => {
          ) : (
             <>
                <List
-                  list_header='Popular Movies'
-                  direct_to='popular'
-                  contents={movies}
-                  isMovie
+                  listHeader='Popular Movies'
+                  directTo='popular'
+                  contentPathname='movie'
                >
                   {movies?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
                <List
-                  list_header='Top Rated Movies'
-                  direct_to='top_rated'
-                  isMovie
+                  listHeader='Top Rated Movies'
+                  directTo='top_rated'
+                  contentPathname='movie'
                >
                   {topRated?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
                <List
-                  list_header='Now Playing Movies'
-                  direct_to='now_playing'
-                  isMovie
+                  listHeader='Now Playing Movies'
+                  directTo='now_playing'
+                  contentPathname='movie'
                >
                   {nowPlaying?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
                <List
-                  list_header='Upcoming Movies'
-                  direct_to='upcoming'
+                  listHeader='Upcoming Movies'
+                  directTo='upcoming'
                   contents={upcoming}
-                  isMovie
+                  contentPathname='movie'
                >
                   {upcoming?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
             </>

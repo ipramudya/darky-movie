@@ -3,7 +3,7 @@ export { default as List } from './List/List';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as Grid } from './Grid/Grid';
-export { default as Card } from './Card/Card';
+export { default as ContentsCard } from './ContentsCard/ContentsCard';
 export { default as PersonCard } from './PersonCard/PersonCard';
 export { default as EpisodeCard } from './EpisodeCard/EpisodeCard';
 export { default as Overview } from './Overview/Overview';

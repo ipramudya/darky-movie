@@ -11,7 +11,7 @@ import {
    StyledSlider,
 } from './List.styles';
 
-const List = ({ list_header, direct_to, isMovie, children }) => {
+const List = ({ listHeader, directTo, contentPathname, children }) => {
    const sliderConfig = {
       dots: false,
       slidesToShow: 7,
@@ -68,18 +68,27 @@ const List = ({ list_header, direct_to, isMovie, children }) => {
       ],
    };
 
+   const pathnameChecker = (contentPathname, directTo) => {
+      switch (contentPathname) {
+         case 'movie':
+            return `movie/category/${directTo}`;
+         case 'tv':
+            return `tv/category/${directTo}`;
+         default:
+            return '/';
+      }
+   };
+
    return (
       <ListContainer>
          <ListHeader>
-            <Text>{list_header}</Text>
-            {direct_to && (
+            <Text>{listHeader}</Text>
+            {directTo && (
                <StyledLink
                   to={{
-                     pathname: isMovie
-                        ? `movie/category/${direct_to}`
-                        : `tv/category/${direct_to}`,
+                     pathname: pathnameChecker(contentPathname, directTo),
                      state: {
-                        list_header,
+                        listHeader,
                      },
                   }}
                >

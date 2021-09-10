@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router';
 import { Helmet } from 'react-helmet';
 import ApiDiscover from '../../api/discover';
-import { Card, Grid, Spinner, Topbar } from '../../components';
+import { ContentsCard, Grid, Spinner, Topbar } from '../../components';
 import useLastItemRef from '../../hooks/useLastItemRef';
 import usePage from '../../hooks/usePage';
 
@@ -35,14 +35,14 @@ const DiscoverPage = () => {
             {data?.map((singleData, idx) => {
                if (data?.length === idx + 1) {
                   return (
-                     <Card
+                     <ContentsCard
                         item={singleData}
                         key={singleData.id}
                         ref={lastItemRef}
                      />
                   );
                } else {
-                  return <Card item={singleData} key={singleData.id} />;
+                  return <ContentsCard item={singleData} key={singleData.id} />;
                }
             })}
          </Grid>

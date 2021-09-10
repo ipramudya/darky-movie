@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import ApiPerson from '../../api/person';
 import {
    Button,
-   Card,
+   ContentsCard,
    Grid,
    IconLink,
    Overview,
@@ -82,7 +82,7 @@ const PersonPage = () => {
                   <>
                      <Grid>
                         {credits.cast?.map((credit) => (
-                           <Card item={credit} key={credit.id} />
+                           <ContentsCard item={credit} key={credit.id} />
                         ))}
                      </Grid>
                   </>

@@ -8,12 +8,12 @@ import {
    CardTitle,
    Star,
    Rating,
-} from './Card.styles';
+} from './ContentsCard.styles';
 import { IMAGE_URL } from '../../utils/config';
 import NoImagePotrait from '../../assets/no_image_potrait.jpg';
 import { StarIconPath, StarViewBox } from '../../assets/star-icon';
 
-const Card = forwardRef(({ item }, ref) => {
+const ContentsCard = forwardRef(({ item }, ref) => {
    let rating;
    if (item.vote_average) {
       rating = Math.floor(item.vote_average / 2);
@@ -58,4 +58,4 @@ const Card = forwardRef(({ item }, ref) => {
    );
 });
 
-export default Card;
+export default ContentsCard;

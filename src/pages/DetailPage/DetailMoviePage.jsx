@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import ApiMovies from '../../api/movies';
 import {
    Button,
-   Card,
+   ContentsCard,
    Hero,
    IconLink,
    List,
@@ -101,9 +101,9 @@ const DetailMoviePage = () => {
                      />
                   </>
                )}
-               <List list_header='More Like This'>
+               <List listHeader='More Like This'>
                   {similar.results?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
             </>

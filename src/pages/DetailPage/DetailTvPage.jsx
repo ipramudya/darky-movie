@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import ApiTv from '../../api/tv';
 import {
    Button,
-   Card,
+   ContentsCard,
    EpisodeCard,
    Grid,
    Hero,
@@ -121,7 +121,7 @@ const DetailTvPage = () => {
                            homepage={details.homepage}
                         />
                      </Overview>
-                     <List list_header='Cast'>
+                     <List listHeader='Cast'>
                         {aggregateCaster.cast?.slice(0, 19).map((content) => (
                            <PersonCard person={content} key={content.id} />
                         ))}
@@ -156,9 +156,9 @@ const DetailTvPage = () => {
                      />
                   </>
                )}
-               <List list_header='More Like This'>
+               <List listHeader='More Like This'>
                   {similar.results?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
             </>

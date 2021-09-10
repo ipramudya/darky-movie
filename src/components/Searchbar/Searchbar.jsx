@@ -20,6 +20,8 @@ const Searchbar = forwardRef(({ active, setActive }, ref) => {
       setActive((prevState) => !prevState);
    };
 
+   console.log(query);
+
    return (
       <>
          <SearchContainer className={active ? 'active' : null}>

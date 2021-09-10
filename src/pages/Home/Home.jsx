@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Card, Hero, List, Spinner } from '../../components';
+import { ContentsCard, Hero, List, Spinner } from '../../components';
 import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
 
@@ -16,14 +16,22 @@ const Home = () => {
             <Spinner loading={loading} />
          ) : (
             <>
-               <List list_header='Trending Movies' direct_to='popular' isMovie>
+               <List
+                  listHeader='Trending Movies'
+                  directTo='popular'
+                  contentPathname='movie'
+               >
                   {movies?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
-               <List list_header='Trending TVs' direct_to='popular'>
+               <List
+                  listHeader='Trending TVs'
+                  directTo='popular'
+                  contentPathname='tv'
+               >
                   {TVs?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
             </>

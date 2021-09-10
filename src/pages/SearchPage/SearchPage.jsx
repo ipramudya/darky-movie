@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Grid, Spinner, Card, Topbar } from '../../components';
+import { Grid, Spinner, ContentsCard, Topbar } from '../../components';
 import useLastItemRef from '../../hooks/useLastItemRef';
 import useSearch from '../../hooks/useSearch';
 
@@ -16,11 +16,13 @@ const SearchPage = () => {
       useSearch();
    const initial = useRef(true);
 
+   console.log(initial.current);
+
    useEffect(() => {
-      if (initial.current) {
-         initial.current = false;
-         return;
-      }
+      // if (initial.current) {
+      //    initial.current = false;
+      //    return;
+      // }
       const delay = setTimeout(() => {
          setSearchTerm(query);
       }, 500);
@@ -45,10 +47,14 @@ const SearchPage = () => {
             {foundContent?.map((content, idx) => {
                if (foundContent?.length === idx + 1) {
                   return (
-                     <Card item={content} key={content.id} ref={lastItemRef} />
+                     <ContentsCard
+                        item={content}
+                        key={content.id}
+                        ref={lastItemRef}
+                     />
                   );
                } else {
-                  return <Card item={content} key={content.id} />;
+                  return <ContentsCard item={content} key={content.id} />;
                }
             })}
          </Grid>

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { Card, Hero, List, Spinner } from '../../components';
+import { ContentsCard, Hero, List, Spinner } from '../../components';
 import { useTVsContext } from '../../context/TVsContext';
 import { usePopularContext } from '../../context/PopularContext';
 import { randomNumber } from '../../utils/helpers';
@@ -19,33 +19,39 @@ const TVPage = () => {
          ) : (
             <>
                <List
-                  list_header='Popular TV Shows'
-                  direct_to='popular'
-                  contents={TVs}
+                  listHeader='Popular TV Shows'
+                  directTo='popular'
+                  contentPathname='tv'
                >
                   {TVs?.map((content) => (
-                     <Card item={content} key={content.id} />
-                  ))}
-               </List>
-               <List list_header='Top Rated TV Shows' direct_to='top_rated'>
-                  {topRated?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
                <List
-                  list_header='TV Shows Airing Today'
-                  direct_to='airing_today'
+                  listHeader='Top Rated TV Shows'
+                  directTo='top_rated'
+                  contentPathname='tv'
+               >
+                  {topRated?.map((content) => (
+                     <ContentsCard item={content} key={content.id} />
+                  ))}
+               </List>
+               <List
+                  listHeader='TV Shows Airing Today'
+                  directTo='airing_today'
+                  contentPathname='tv'
                >
                   {airing?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
                <List
-                  list_header='Currently on the Air TV Shows'
-                  direct_to='on_the_air'
+                  listHeader='Currently on the Air TV Shows'
+                  directTo='on_the_air'
+                  contentPathname='tv'
                >
                   {onAir?.map((content) => (
-                     <Card item={content} key={content.id} />
+                     <ContentsCard item={content} key={content.id} />
                   ))}
                </List>
             </>
