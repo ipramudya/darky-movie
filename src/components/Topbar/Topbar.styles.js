@@ -11,7 +11,7 @@ export const TopbarContainer = styled.nav`
    height: 3em;
    background-color: black;
    display: none;
-   z-index: 1;
+   z-index: 2;
 
    @media screen and (max-width: 765px) {
       display: flex;

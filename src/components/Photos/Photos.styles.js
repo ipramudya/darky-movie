@@ -23,8 +23,8 @@ export const Grid = styled.div`
    gap: 0.5em;
 
    /* Backdrops */
-   ${(props) =>
-      props.landscape &&
+   ${({ landscape }) =>
+      landscape &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
@@ -34,8 +34,8 @@ export const Grid = styled.div`
       `}
 
    /* Posters */
-   ${(props) =>
-      !props.landscape &&
+   ${({ landscape }) =>
+      !landscape &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
 
@@ -44,8 +44,8 @@ export const Grid = styled.div`
          }
       `}
 
-   ${(props) =>
-      props.gutterBottom &&
+   ${({ gutterBottom }) =>
+      gutterBottom &&
       css`
          margin-bottom: 3em;
       `}
@@ -60,8 +60,8 @@ export const HeaderWrapper = styled.div`
 export const Header = styled.h3`
    font-size: 1.5em;
 
-   ${(props) =>
-      !props.main && 'font-size: 0.8em; font-weight: 300; margin-left: 1em;'}
+   ${({ main }) =>
+      !main && 'font-size: 0.8em; font-weight: 300; margin-left: 1em;'}
 `;
 
 export const GridItem = styled.div`
@@ -72,7 +72,7 @@ export const GridItem = styled.div`
    background-color: #202124;
    transition: all 0.8s;
 
-   ${(props) => !props.poster && 'padding-top: 60%;'}
+   ${({ poster }) => !poster && 'padding-top: 60%;'}
 `;
 
 export const LazyImage = styled(LazyLoadImage)`

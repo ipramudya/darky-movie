@@ -10,7 +10,7 @@ export const SearchContainer = styled.div`
    margin: 0 auto;
    height: fit-content;
    transition: all 1.5s;
-   z-index: 2;
+   z-index: 5;
    display: flex;
 
    &.active {

@@ -23,12 +23,6 @@ export const SelectWrapper = styled.div`
    display: flex;
    align-items: baseline;
    flex-wrap: wrap;
-
-   @media screen and (max-width: 765px) {
-      > h3 {
-         margin-left: 1em;
-      }
-   }
 `;
 
 export const SelectContent = styled.select`
@@ -36,12 +30,16 @@ export const SelectContent = styled.select`
    color: var(--darksky);
    background-color: #141414;
    border: 2px solid var(--blacksky);
+   margin-right: 1em;
+
+   @media screen and (max-width: 515px) {
+      max-width: 90%;
+   }
 `;
 
 export const Text = styled.h3`
    font-size: 0.8em;
    font-weight: 300;
-   margin-left: 1em;
 
    @media screen and (max-width: 765px) {
       margin: unset;

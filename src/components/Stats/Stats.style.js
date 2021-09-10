@@ -23,7 +23,7 @@ export const Text = styled.p`
    transition: all 0.5s;
    letter-spacing: 1px;
 
-   ${(props) => props.main && `flex: 1; max-width: 200px;`}
+   ${({ main }) => main && `flex: 1; max-width: 200px;`}
 `;
 
 export const TextLink = styled(Link)`
@@ -37,8 +37,8 @@ export const TextLink = styled(Link)`
       color: var(--blacksky);
    }
 
-   ${(props) =>
-      props.underline &&
+   ${({ underline }) =>
+      underline &&
       css`
          > span {
             text-decoration: underline;

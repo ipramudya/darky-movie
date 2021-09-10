@@ -45,8 +45,8 @@ export const ButtonItem = styled.button`
       min-height: 50px;
    }
 
-   ${(props) =>
-      props.active &&
+   ${({ active }) =>
+      active &&
       css`
          border-bottom: 2px solid var(--darksky);
          color: var(--darksky);

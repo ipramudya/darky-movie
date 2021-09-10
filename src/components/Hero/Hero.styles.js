@@ -82,12 +82,11 @@ export const HeroDescWrapper = styled.div`
 
    @media screen and (max-width: 765px) {
       height: 30%;
-      padding: unset;
-      padding-left: 3em;
+      padding: 0 0 1.5em 3em;
    }
 
    @media screen and (max-width: 515px) {
-      padding-left: 2em;
+      padding: 0 0 1em 1em;
    }
 `;
 
@@ -113,8 +112,8 @@ export const HeroContainer = styled.div`
       height: 30rem;
    }
 
-   ${(props) =>
-      !props.disable &&
+   ${({ disable }) =>
+      !disable &&
       css`
          &:hover ${BackdropImg} {
             transform: scale(1.02);
@@ -122,8 +121,8 @@ export const HeroContainer = styled.div`
          }
       `}
 
-   ${(props) =>
-      props.disable &&
+   ${({ disable }) =>
+      disable &&
       css`
          ${HeroBackdrop}, ${HeroDescWrapper} {
             animation: none;
@@ -152,7 +151,7 @@ export const Text = styled.p`
 
    @media screen and (max-width: 515px) {
       font-size: 0.8em;
-      display: ${(props) => (props.year ? 'none' : 'block')};
+      display: ${(year) => (year ? 'none' : 'block')};
       margin-left: 0;
    }
 `;
@@ -170,6 +169,7 @@ export const Text2 = styled(Link)`
 
    @media screen and (max-width: 515px) {
       font-size: 0.8em;
+      margin-bottom: 0.8em;
    }
 `;
 
@@ -196,10 +196,11 @@ export const Meta = styled.div`
 export const SubMeta = styled.div`
    display: flex;
    align-items: center;
+   flex-wrap: wrap;
    margin-top: 0.8em;
 
    @media screen and (max-width: 515px) {
-      flex-direction: ${(props) => (props.genre ? 'row' : 'column')};
-      align-items: ${(props) => (props.genre ? 'center' : 'unset')};
+      flex-direction: ${({ genre }) => (genre ? 'row' : 'column')};
+      align-items: ${({ genre }) => (genre ? 'center' : 'unset')};
    }
 `;

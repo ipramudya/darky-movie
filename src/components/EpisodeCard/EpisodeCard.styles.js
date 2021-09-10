@@ -33,8 +33,8 @@ export const Text = styled.h3`
       color: var(--greysky);
    }
 
-   ${(props) =>
-      props.date &&
+   ${(date) =>
+      date &&
       css`
          font-size: 0.8em;
          margin-top: 0.5em;

@@ -59,7 +59,7 @@ export const NavDirection = styled(NavLink)`
          color: var(--darksky);
       }
       &::after {
-         display: ${(props) => props.content && 'block'};
+         display: ${({ content }) => content && 'block'};
       }
    }
 
@@ -79,7 +79,7 @@ export const NavDirection = styled(NavLink)`
    }
 
    &::after {
-      content: '${(props) => props.content}';
+      content: '${({ content }) => content}';
       display: none;
       position: absolute;
       top: -5%;
@@ -97,7 +97,7 @@ export const NavDirection = styled(NavLink)`
    }
 
    &:hover:after {
-      display: ${(props) => (props.content ? 'block' : 'none')};
+      display: ${({ content }) => (content ? 'block' : 'none')};
       animation: fadeInLeft 0.5s;
       color: var(--greysky);
    }

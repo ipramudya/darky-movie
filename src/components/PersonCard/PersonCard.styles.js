@@ -31,5 +31,5 @@ export const Image = styled(LazyLoadImage)`
 export const Subtitle = styled.p`
    font-size: 0.8em;
    margin-top: 0.5em;
-   color: ${(props) => (props.main ? 'var(--greysky)' : '#787A91')};
+   color: ${({ main }) => (main ? 'var(--greysky)' : '#787A91')};
 `;

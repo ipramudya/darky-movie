@@ -15,11 +15,15 @@ export const GridContainer = styled.div`
       margin: 1em 0.8em;
    }
 
-   ${(props) =>
-      props.episodes &&
+   ${({ episodes }) =>
+      episodes &&
       css`
          @media screen and (max-width: 970px) {
             margin: 1.5em 2.3em;
+         }
+
+         @media screen and (max-width: 515px) {
+            margin: 1em 0.8em;
          }
       `}
 `;
@@ -39,13 +43,17 @@ export const GridContent = styled.div`
    }
 
    /* Episodes */
-   ${(props) =>
-      props.long &&
+   ${({ long }) =>
+      long &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
          @media screen and (max-width: 765px) {
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+         }
+
+         @media screen and (max-width: 515px) {
+            gap: 0.5em 0.25em;
          }
       `}
 `;

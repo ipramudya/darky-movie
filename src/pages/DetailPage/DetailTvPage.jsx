@@ -43,6 +43,8 @@ const DetailTvPage = () => {
       seasonDetails,
    } = detailTv;
 
+   console.log(seasonDetails);
+
    useEffect(() => {
       setLoading(true);
       axios
