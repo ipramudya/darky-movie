@@ -47,6 +47,11 @@ const ApiTv = {
          await axios.get(SEASON_URL(id, season_num))
       ).data;
    },
+   async fetchVideos(id) {
+      return await (
+         await axios.get(DETAILS_CONTENT_URL('tv', id, 'videos'))
+      ).data;
+   },
 };
 
 export default ApiTv;

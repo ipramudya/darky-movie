@@ -15,8 +15,22 @@ export const GridContainer = styled.div`
       margin: 1em 0.8em;
    }
 
+   /* If prop has Episodes, handle below */
    ${({ episodes }) =>
       episodes &&
+      css`
+         @media screen and (max-width: 970px) {
+            margin: 1.5em 2.3em;
+         }
+
+         @media screen and (max-width: 515px) {
+            margin: 1em 0.8em;
+         }
+      `}
+
+   /* If prop has Videos, handle below*/
+   ${({ videos }) =>
+      videos &&
       css`
          @media screen and (max-width: 970px) {
             margin: 1.5em 2.3em;
@@ -42,18 +56,27 @@ export const GridContent = styled.div`
       gap: 0.5em 0;
    }
 
-   /* Episodes */
-   ${({ long }) =>
-      long &&
+   /* If prop has Episodes, handle below */
+   ${({ episodes }) =>
+      episodes &&
       css`
          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
          @media screen and (max-width: 765px) {
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5em 0.5em;
          }
+      `}
 
-         @media screen and (max-width: 515px) {
-            gap: 0.5em 0.25em;
+   /* If prop has Videos, handle below*/
+   ${({ videos }) =>
+      videos &&
+      css`
+         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+         @media screen and (max-width: 765px) {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5em 0.5em;
          }
       `}
 `;

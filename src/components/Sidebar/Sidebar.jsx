@@ -12,6 +12,7 @@ import Logo from '../../assets/movie-ticket-icon.png';
 
 const Sidebar = () => {
    const [isActive, setIsActive] = useState(false);
+   const [query, setQuery] = useState('');
 
    const inputRef = useRef();
 
@@ -46,7 +47,13 @@ const Sidebar = () => {
                </NavItem>
             </NavWrapper>
          </SidebarContainer>
-         <Searchbar active={isActive} ref={inputRef} setActive={setIsActive} />
+         <Searchbar
+            active={isActive}
+            ref={inputRef}
+            setActive={setIsActive}
+            query={query}
+            setQuery={setQuery}
+         />
       </>
    );
 };

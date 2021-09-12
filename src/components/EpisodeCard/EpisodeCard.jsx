@@ -26,8 +26,8 @@ const EpisodeCard = ({ episode, epNumber }) => {
             />
          </ImageWrapper>
          <Text>
-            E{epNumber}
-            <span>{episode.name}</span>
+            <span>E{epNumber}</span>
+            {episode.name}
          </Text>
          <Subtitle>{episode.overview}</Subtitle>
          <Text date>{airDate}</Text>

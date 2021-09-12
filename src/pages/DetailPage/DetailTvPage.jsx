@@ -43,8 +43,6 @@ const DetailTvPage = () => {
       seasonDetails,
    } = detailTv;
 
-   console.log(seasonDetails);
-
    useEffect(() => {
       setLoading(true);
       axios
@@ -94,6 +92,7 @@ const DetailTvPage = () => {
       });
    }, [optionValue, id]);
 
+   /* Button Functionality */
    const buttonTypes = ['overview', 'episodes', 'photos'];
    const [activeButton, setActiveButton] = useState(buttonTypes[0]);
 
@@ -135,7 +134,7 @@ const DetailTvPage = () => {
                         contents={seasonDetails}
                         setOptionValue={setOptionValue}
                      />
-                     <Grid long episodes>
+                     <Grid episodes>
                         {seasonDetails.episodes?.map((episode) => (
                            <EpisodeCard
                               episode={episode}

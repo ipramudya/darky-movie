@@ -1,10 +1,9 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styled, { css } from 'styled-components';
 
-export const EpisodeCardContainer = styled.div`
+export const VideosCardContainer = styled.div`
    display: flex;
    flex-direction: column;
-   animation: fadeIn 1s;
 `;
 
 export const ImageWrapper = styled.div`
@@ -14,6 +13,26 @@ export const ImageWrapper = styled.div`
    padding-top: 60%;
    overflow: hidden;
    background-color: #202124;
+`;
+
+export const PlayButton = styled.button`
+   width: 48px;
+   height: 48px;
+   background: none;
+   border: transparent;
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 9;
+
+   > svg {
+      color: var(--greysky);
+      vertical-align: middle;
+      width: 70%;
+      height: 70%;
+   }
 `;
 
 export const LazyImage = styled(LazyLoadImage)`
@@ -26,18 +45,13 @@ export const LazyImage = styled(LazyLoadImage)`
 `;
 
 export const Text = styled.h3`
-   font-size: 1em;
+   font-size: 0.9em;
    color: var(--greysky);
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-line-clamp: 1;
    -webkit-box-orient: vertical;
-
-   > span {
-      margin-right: 0.5em;
-      color: var(--darksky);
-   }
 
    ${({ date }) =>
       date &&
@@ -46,15 +60,9 @@ export const Text = styled.h3`
          margin-top: 0.5em;
          color: #787a91;
          font-weight: 300;
-      `}
-`;
 
-export const Subtitle = styled.p`
-   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 4;
-   -webkit-box-orient: vertical;
-   font-size: 0.8em;
-   margin-bottom: 0.5em;
+         > span {
+            margin-left: 0.5em;
+         }
+      `}
 `;

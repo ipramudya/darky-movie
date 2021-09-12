@@ -7,21 +7,11 @@ import {
    GridItem,
    Grid,
 } from './Photos.styles';
-
+import useLazyScroll from '../../hooks/useLazyScroll';
 import NoImagePotrait from '../../assets/no_image_potrait.jpg';
-import { useEffect, useState } from 'react';
 
 const Photos = ({ contents, title, landscape = false }) => {
-   const [scroll, setScroll] = useState(0);
-
-   useEffect(() => {
-      const updatePosition = () => {
-         setScroll(window.pageYOffset);
-      };
-      window.addEventListener('scroll', updatePosition);
-      updatePosition();
-      return () => window.removeEventListener('scroll', updatePosition);
-   }, []);
+   const { scroll } = useLazyScroll();
 
    return (
       <PhotosContainer>

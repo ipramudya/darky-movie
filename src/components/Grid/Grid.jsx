@@ -1,10 +1,12 @@
 import { GridContainer, GridContent, Header } from './Grid.styles';
 
-const Grid = ({ children, header, long, episodes }) => {
+const Grid = ({ children, header, episodes, videos }) => {
    return (
-      <GridContainer episodes={episodes}>
+      <GridContainer episodes={episodes} videos={videos}>
          <Header>{header}</Header>
-         <GridContent long={long}>{children}</GridContent>
+         <GridContent episodes={episodes} videos={videos}>
+            {children}
+         </GridContent>
       </GridContainer>
    );
 };

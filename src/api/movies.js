@@ -41,6 +41,11 @@ const ApiMovies = {
          await axios.get(IMAGES_CONTENT_URL('movie', id))
       ).data;
    },
+   async fetchVideos(id) {
+      return await (
+         await axios.get(DETAILS_CONTENT_URL('movie', id, 'videos'))
+      ).data;
+   },
 };
 
 export default ApiMovies;

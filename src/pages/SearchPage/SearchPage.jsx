@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useLocation, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Grid, Spinner, ContentsCard, Topbar } from '../../components';
@@ -14,15 +14,8 @@ const SearchPage = () => {
 
    const { foundContent, loading, setSearchTerm, setPage, totalResults } =
       useSearch();
-   const initial = useRef(true);
-
-   console.log(initial.current);
 
    useEffect(() => {
-      // if (initial.current) {
-      //    initial.current = false;
-      //    return;
-      // }
       const delay = setTimeout(() => {
          setSearchTerm(query);
       }, 500);

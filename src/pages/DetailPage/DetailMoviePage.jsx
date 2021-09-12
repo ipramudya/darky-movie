@@ -6,6 +6,7 @@ import ApiMovies from '../../api/movies';
 import {
    Button,
    ContentsCard,
+   Grid,
    Hero,
    IconLink,
    List,
@@ -15,6 +16,7 @@ import {
    Photos,
    Spinner,
    Topbar,
+   VideosCard,
 } from '../../components';
 
 const DetailMoviePage = () => {
@@ -27,8 +29,9 @@ const DetailMoviePage = () => {
       caster: [],
       images: [],
       externalId: [],
+      videos: [],
    });
-   const { details, similar, caster, images, externalId } = detailMovie;
+   const { details, similar, caster, images, externalId, videos } = detailMovie;
    useEffect(() => {
       setLoading(true);
       axios
@@ -38,6 +41,7 @@ const DetailMoviePage = () => {
             ApiMovies.fetchCaster(id),
             ApiMovies.fetchImages(id),
             ApiMovies.fetchExternalId(id),
+            ApiMovies.fetchVideos(id),
          ])
          .then(
             axios.spread((...data) => {
@@ -47,6 +51,7 @@ const DetailMoviePage = () => {
                   caster: data[2],
                   images: data[3],
                   externalId: data[4],
+                  videos: data[5],
                });
                setLoading(false);
             })
@@ -57,7 +62,7 @@ const DetailMoviePage = () => {
          });
    }, [id]);
 
-   const buttonTypes = ['overview', 'photos'];
+   const buttonTypes = ['overview', 'photos', 'videos'];
    const [activeButton, setActiveButton] = useState(buttonTypes[0]);
 
    return (
@@ -99,6 +104,15 @@ const DetailMoviePage = () => {
                         title='Backdrops'
                         landscape
                      />
+                  </>
+               )}
+               {activeButton === buttonTypes[2] && (
+                  <>
+                     <Grid header='Available videos' videos>
+                        {videos.results?.map((video) => (
+                           <VideosCard video={video} key={video.id} />
+                        ))}
+                     </Grid>
                   </>
                )}
                <List listHeader='More Like This'>
