@@ -18,7 +18,9 @@ import {
    Spinner,
    Topbar,
    TvStats,
+   VideosCard,
 } from '../../components';
+import Videos from '../../components/Videos/Videos';
 
 const DetailTvPage = () => {
    const { id } = useParams();
@@ -31,6 +33,7 @@ const DetailTvPage = () => {
       images: [],
       externalId: [],
       seasonDetails: [],
+      videos: [],
    });
    const [optionValue, setOptionValue] = useState(1);
 
@@ -41,6 +44,7 @@ const DetailTvPage = () => {
       images,
       externalId,
       seasonDetails,
+      videos,
    } = detailTv;
 
    useEffect(() => {
@@ -53,6 +57,7 @@ const DetailTvPage = () => {
             ApiTv.fetchImages(id),
             ApiTv.fetchExternalId(id),
             ApiTv.fetchSeasonDetail(id, 1),
+            ApiTv.fetchVideos(id),
          ])
          .then(
             axios.spread((...data) => {
@@ -63,6 +68,7 @@ const DetailTvPage = () => {
                   images: data[3],
                   externalId: data[4],
                   seasonDetails: data[5],
+                  videos: data[6],
                });
                setLoading(false);
             })
@@ -93,8 +99,12 @@ const DetailTvPage = () => {
    }, [optionValue, id]);
 
    /* Button Functionality */
-   const buttonTypes = ['overview', 'episodes', 'photos'];
+   const buttonTypes = ['overview', 'episodes', 'photos', 'videos'];
    const [activeButton, setActiveButton] = useState(buttonTypes[0]);
+
+   /* Show and Play Videos */
+   const [playVideo, setPlayVideo] = useState(false);
+   const [videoResource, setVideoResource] = useState('');
 
    return (
       <>
@@ -153,6 +163,26 @@ const DetailTvPage = () => {
                         title='Backdrops'
                         landscape
                      />
+                  </>
+               )}
+               {activeButton === buttonTypes[3] && (
+                  <>
+                     <Grid header='Available videos' videos>
+                        {videos.results?.map((video) => (
+                           <VideosCard
+                              video={video}
+                              key={video.id}
+                              setUrl={setVideoResource}
+                              setPlayVideo={setPlayVideo}
+                           />
+                        ))}
+                     </Grid>
+                     {playVideo && (
+                        <Videos
+                           url={videoResource}
+                           setPlayVideo={setPlayVideo}
+                        />
+                     )}
                   </>
                )}
                <List listHeader='More Like This'>

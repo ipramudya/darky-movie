@@ -18,6 +18,7 @@ import {
    Topbar,
    VideosCard,
 } from '../../components';
+import Videos from '../../components/Videos/Videos';
 
 const DetailMoviePage = () => {
    const { id } = useParams();
@@ -62,8 +63,13 @@ const DetailMoviePage = () => {
          });
    }, [id]);
 
+   /* Toggling section on detail page */
    const buttonTypes = ['overview', 'photos', 'videos'];
    const [activeButton, setActiveButton] = useState(buttonTypes[0]);
+
+   /* Show and Play Videos */
+   const [playVideo, setPlayVideo] = useState(false);
+   const [videoResource, setVideoResource] = useState('');
 
    return (
       <>
@@ -110,9 +116,20 @@ const DetailMoviePage = () => {
                   <>
                      <Grid header='Available videos' videos>
                         {videos.results?.map((video) => (
-                           <VideosCard video={video} key={video.id} />
+                           <VideosCard
+                              video={video}
+                              key={video.id}
+                              setUrl={setVideoResource}
+                              setPlayVideo={setPlayVideo}
+                           />
                         ))}
                      </Grid>
+                     {playVideo && (
+                        <Videos
+                           url={videoResource}
+                           setPlayVideo={setPlayVideo}
+                        />
+                     )}
                   </>
                )}
                <List listHeader='More Like This'>

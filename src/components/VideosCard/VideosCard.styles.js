@@ -27,11 +27,16 @@ export const PlayButton = styled.button`
    transform: translate(-50%, -50%);
    z-index: 9;
 
+   &:hover > svg {
+      color: var(--darksky);
+   }
+
    > svg {
       color: var(--greysky);
       vertical-align: middle;
-      width: 70%;
-      height: 70%;
+      width: 80%;
+      height: 80%;
+      transition: all 0.5s;
    }
 `;
 

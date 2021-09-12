@@ -1,4 +1,4 @@
-import { AiOutlinePlayCircle } from 'react-icons/ai';
+import { CgPlayButtonO } from 'react-icons/cg';
 import { convertDate } from '../../utils/helpers';
 import {
    ImageWrapper,
@@ -8,9 +8,11 @@ import {
    Text,
 } from './VideosCard.styles';
 
-const VideosCard = ({ video }) => {
+const VideosCard = ({ video, setUrl, setPlayVideo }) => {
    const handleOpenVideos = () => {
-      console.log('Button Clicked');
+      document.body.style.overflow = 'hidden';
+      setUrl(video.key);
+      setPlayVideo((prev) => !prev);
    };
 
    const publishedAt = convertDate(video.published_at);
@@ -19,7 +21,7 @@ const VideosCard = ({ video }) => {
       <VideosCardContainer>
          <ImageWrapper>
             <PlayButton onClick={handleOpenVideos}>
-               <AiOutlinePlayCircle />
+               <CgPlayButtonO />
             </PlayButton>
             <LazyImage
                alt={video.type}
