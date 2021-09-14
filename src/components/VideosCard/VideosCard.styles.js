@@ -10,7 +10,7 @@ export const ImageWrapper = styled.div`
    margin-bottom: 0.5em;
    position: relative;
    height: 0;
-   padding-top: 60%;
+   padding-top: 65%;
    overflow: hidden;
    background-color: #202124;
 `;

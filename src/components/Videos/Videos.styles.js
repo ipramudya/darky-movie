@@ -26,6 +26,16 @@ export const VideoBody = styled.div`
       top: 0;
       left: 0;
    }
+
+   @media screen and (max-width: 765px) {
+      width: 90%;
+      height: 80vh;
+   }
+
+   @media screen and (max-width: 515px) {
+      width: 100%;
+      height: 80vh;
+   }
 `;
 
 export const CloseButton = styled.button`

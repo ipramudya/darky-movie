@@ -21,6 +21,7 @@ import {
    VideosCard,
 } from '../../components';
 import Videos from '../../components/Videos/Videos';
+import NoImageLandscape from '../../assets/no_image_landscape.jpg';
 
 const DetailTvPage = () => {
    const { id } = useParams();
@@ -167,6 +168,14 @@ const DetailTvPage = () => {
                )}
                {activeButton === buttonTypes[3] && (
                   <>
+                     {videos.results?.length <= 0 && (
+                        <Grid header='Not Available' episodes>
+                           <img
+                              src={NoImageLandscape}
+                              alt='Videos not available'
+                           />
+                        </Grid>
+                     )}
                      <Grid header='Available videos' videos>
                         {videos.results?.map((video) => (
                            <VideosCard

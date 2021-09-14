@@ -36,17 +36,17 @@ const Hero = ({ contents, disabled }) => {
       svgIconViewBox: StarViewBox,
    };
 
-   const pathnameChecker = (contentsToIdentify) => {
+   const pathnameChecker = (contentsToIdentify, genre) => {
       // check availability
       if (contentsToIdentify) {
          if ('title' in contentsToIdentify) {
             // title = movie
-            return `/discover/movie/${contentsToIdentify?.id}`;
+            return `/discover/movie/${genre?.id}`;
          }
 
          if ('name' in contentsToIdentify) {
             // name = tv
-            return `/discover/tv/${contentsToIdentify?.id}`;
+            return `/discover/tv/${genre?.id}`;
          }
       }
    };
@@ -74,7 +74,7 @@ const Hero = ({ contents, disabled }) => {
                            <Text2
                               key={genre.id}
                               to={{
-                                 pathname: pathnameChecker(contents),
+                                 pathname: pathnameChecker(contents, genre),
                                  state: {
                                     genres: `#${genre.name?.replace(/ /g, '')}`,
                                  },

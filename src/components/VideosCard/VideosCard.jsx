@@ -10,9 +10,9 @@ import {
 
 const VideosCard = ({ video, setUrl, setPlayVideo }) => {
    const handleOpenVideos = () => {
-      document.body.style.overflow = 'hidden';
       setUrl(video.key);
       setPlayVideo((prev) => !prev);
+      document.body.style.overflow = 'hidden';
    };
 
    const publishedAt = convertDate(video.published_at);
@@ -25,7 +25,7 @@ const VideosCard = ({ video, setUrl, setPlayVideo }) => {
             </PlayButton>
             <LazyImage
                alt={video.type}
-               src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
+               src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
             />
          </ImageWrapper>
          <Text>{video.name}</Text>
